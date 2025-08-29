@@ -1,242 +1,395 @@
 import pandas as pd
 import mysql.connector
-from sqlalchemy import create_engine, text
+from mysql.connector import Error
+from sqlalchemy import create_engine, text, inspect
 import logging
-from config.config import DB_CONFIG, OCCITANIE_CONFIG
-from typing import Optional, List, Dict, Tuple
-import numpy as np
+import sys
+from pathlib import Path
+from typing import Optional, List, Dict
+
+# Correction des imports
+current_dir = Path(__file__).parent
+root_dir = current_dir.parent.parent
+sys.path.insert(0, str(root_dir))
+
+try:
+    from config.config import DB_CONFIG, OCCITANIE_CONFIG
+except ImportError as e:
+    print(f"Erreur import config: {e}")
+    raise
 
 logger = logging.getLogger(__name__)
 
 class ElectionDBCollector:
-    """Collecteur de données depuis la base MySQL"""
+    """Collecteur pour base MySQL existante avec détection automatique"""
     
     def __init__(self):
         self.config = DB_CONFIG
         self.occitanie_depts = OCCITANIE_CONFIG.all_departments
         self.engine = None
-        self.connection = None
-        self._connect()
+        self.mysql_connection = None
+        self.table_structure = None
+        self.table_name = None
+        
+        # Connexion et détection automatique
+        self._connect_and_detect()
     
-    def _connect(self):
-        """Établit la connexion à la base de données"""
+    def _connect_and_detect(self):
+        """Connexion MySQL et détection automatique de la structure"""
         try:
-            # Connexion SQLAlchemy pour pandas
-            self.engine = create_engine(self.config.connection_string)
+            logger.info("Connexion à votre base MySQL existante...")
+            logger.info(f"   Host: {self.config.host}:{self.config.port}")
+            logger.info(f"   Base: {self.config.database}")
+            logger.info(f"   Utilisateur: {self.config.username}")
             
-            # Test de connexion
-            with self.engine.connect() as conn:
-                result = conn.execute(text("SELECT 1"))
-                logger.info("Connexion à la base de données établie")
+            # Test avec mysql.connector
+            self.mysql_connection = mysql.connector.connect(**self.config.mysql_connector_config)
+            
+            if self.mysql_connection.is_connected():
+                logger.info("Connexion MySQL réussie !")
                 
+                # Créer l'engine SQLAlchemy
+                self.engine = create_engine(self.config.connection_string, echo=False)
+                
+                # Détecter la structure de votre base
+                self._detect_table_structure()
+                
+                return True
+                
+        except Error as mysql_error:
+            logger.error(f"Erreur MySQL: {mysql_error}")
+            self._diagnose_mysql_error(mysql_error)
+            raise
+            
         except Exception as e:
-            logger.error(f"Erreur de connexion à la base: {e}")
-            logger.info("Création de données d'exemple...")
-            self._create_sample_data()
+            logger.error(f"Erreur connexion: {e}")
+            raise
     
-    def _create_sample_data(self):
-        """Crée des données d'exemple si la BDD n'est pas accessible"""
-        logger.info("Génération de données d'exemple")
+    def _diagnose_mysql_error(self, error: Error):
+        """Diagnostic détaillé des erreurs MySQL"""
+        if error.errno == 1045:  # Access denied
+            logger.error("ERREUR D'AUTHENTIFICATION")
+            logger.error("   Vérifiez votre fichier .env :")
+            logger.error(f"   - DB_USER={self.config.username}")
+            logger.error(f"   - DB_PASSWORD={'***' if self.config.password else 'VIDE!'}")
+            logger.error("   - Vérifiez que l'utilisateur a les droits sur la base")
+            
+        elif error.errno == 2003:  # Can't connect  
+            logger.error("ERREUR DE CONNEXION")
+            logger.error("   - Vérifiez que MySQL est démarré")
+            logger.error(f"   - Vérifiez l'adresse {self.config.host}:{self.config.port}")
+            logger.error("   - Vérifiez les règles de firewall")
+            
+        elif error.errno == 1049:  # Unknown database
+            logger.error(f"BASE DE DONNÉES INTROUVABLE: {self.config.database}")
+            logger.error("   Bases disponibles : lancez SHOW DATABASES; dans MySQL")
+            
+        elif error.errno == 1146:  # Table doesn't exist
+            logger.error("TABLE INTROUVABLE")
+            logger.error("   Tables disponibles : lancez SHOW TABLES; dans MySQL")
+    
+    def _detect_table_structure(self):
+        """Détecte automatiquement la structure de votre table d'élections"""
+        try:
+            logger.info("Détection automatique de la structure...")
+            
+            inspector = inspect(self.engine)
+            tables = inspector.get_table_names()
+            
+            logger.info(f"Tables trouvées: {tables}")
+            
+            # Je vois que votre table s'appelle 'resultatslegi'
+            if 'resultatslegi' in tables:
+                found_table = 'resultatslegi'
+                logger.info(f"Table d'élections détectée: {found_table}")
+            else:
+                # Recherche de la table d'élections (patterns possibles)
+                election_patterns = [
+                    'resultat', 'election', 'vote', 'legi'
+                ]
+                
+                found_table = None
+                for pattern in election_patterns:
+                    matches = [t for t in tables if pattern.lower() in t.lower()]
+                    if matches:
+                        found_table = matches[0]
+                        logger.info(f"Table d'élections détectée: {found_table}")
+                        break
+                
+                if not found_table:
+                    # Prendre la première table si aucune ne correspond
+                    if tables:
+                        found_table = tables[0]
+                        logger.warning(f"Utilisation de la première table: {found_table}")
+                    else:
+                        raise Exception("Aucune table trouvée dans la base")
+            
+            self.table_name = found_table
+            
+            # Analyser la structure de la table
+            columns = inspector.get_columns(self.table_name)
+            self.table_structure = {col['name']: col['type'] for col in columns}
+            
+            logger.info(f"Structure de {self.table_name}:")
+            for col_name, col_type in self.table_structure.items():
+                logger.info(f"   {col_name}: {col_type}")
+            
+            # Détection des colonnes clés
+            self.column_mapping = self._map_columns()
+            logger.info(f"Mapping des colonnes: {self.column_mapping}")
+            
+            # Test de récupération
+            with self.engine.begin() as conn:
+                test_query = f"SELECT COUNT(*) as count FROM {self.table_name}"
+                result = conn.execute(text(test_query))
+                total_records = result.fetchone()[0]
+                logger.info(f"{total_records} enregistrements dans la table")
+                
+                # Test avec départements d'Occitanie
+                dept_col = self.column_mapping.get('departement', 'departement')
+                dept_test = f"SELECT COUNT(*) as count FROM {self.table_name} WHERE {dept_col} IN ('31', '34', '30')"
+                result = conn.execute(text(dept_test))
+                occitanie_records = result.fetchone()[0]
+                logger.info(f"{occitanie_records} enregistrements pour l'Occitanie (échantillon)")
+            
+        except Exception as e:
+            logger.error(f"Erreur détection structure: {e}")
+            raise
+    
+    def _map_columns(self) -> Dict[str, str]:
+        """Mapping automatique des colonnes selon différentes conventions"""
+        mapping = {}
+        columns = list(self.table_structure.keys())
         
-        data = []
-        nuances = ['REN', 'RN', 'LFI', 'LR', 'PS', 'EELV', 'PCF', 'DVG', 'DVD', 'DIV']
+        # Patterns de colonnes communes
+        patterns = {
+            'annee': ['annee', 'year', 'election_year', 'an'],
+            'tour': ['tour', 'round', 'ballot'],
+            'departement': ['departement', 'dept', 'department', 'code_dept', 'codedept'],
+            'nuance': ['nuance', 'parti', 'party', 'political_party', 'couleur'],
+            'voix': ['voix', 'votes', 'nb_voix', 'nombre_voix'],
+            'inscrits': ['inscrits', 'registered', 'nb_inscrits'],
+            'votants': ['votants', 'voters', 'nb_votants'],
+            'abstentions': ['abstentions', 'abstention', 'nb_abstentions'],
+            'exprimes': ['exprimes', 'valid_votes', 'nb_exprimes']
+        }
         
-        for annee in [2017, 2022]:
-            for tour in [1, 2]:
-                for dept in self.occitanie_depts:
-                    total_inscrits = np.random.randint(50000, 200000)
-                    total_votants = int(total_inscrits * np.random.uniform(0.65, 0.85))
-                    total_abstentions = total_inscrits - total_votants
-                    total_exprimes = int(total_votants * np.random.uniform(0.96, 0.99))
-                    
-                    # Répartition des voix selon les nuances
-                    voix_restantes = total_exprimes
-                    
-                    for i, nuance in enumerate(nuances):
-                        if i == len(nuances) - 1:
-                            voix = voix_restantes
-                        else:
-                            if nuance in ['REN', 'RN']:  # Principales forces
-                                voix = int(total_exprimes * np.random.uniform(0.15, 0.30))
-                            elif nuance in ['LFI', 'LR']:
-                                voix = int(total_exprimes * np.random.uniform(0.08, 0.20))
-                            else:
-                                voix = int(total_exprimes * np.random.uniform(0.02, 0.10))
-                            
-                            voix = min(voix, voix_restantes)
-                            voix_restantes -= voix
-                        
-                        if voix > 0:
-                            data.append({
-                                'id': len(data) + 1,
-                                'annee': annee,
-                                'tour': tour,
-                                'departement': dept,
-                                'inscrits': total_inscrits,
-                                'votants': total_votants,
-                                'abstentions': total_abstentions,
-                                'exprimes': total_exprimes,
-                                'nuance': nuance,
-                                'voix': voix
-                            })
+        for key, possible_names in patterns.items():
+            found_col = None
+            for possible in possible_names:
+                matches = [col for col in columns if possible.lower() in col.lower()]
+                if matches:
+                    found_col = matches[0]
+                    break
+            
+            if found_col:
+                mapping[key] = found_col
+            else:
+                # Fallback sur le nom standard
+                mapping[key] = key
         
-        self.sample_data = pd.DataFrame(data)
-        logger.info(f"Généré {len(self.sample_data)} enregistrements d'exemple")
+        return mapping
     
     def get_election_data(self, annees: List[int] = None, tours: List[int] = None) -> pd.DataFrame:
-        """Récupère les données électorales"""
+        """Récupère les données depuis votre table MySQL"""
         try:
-            if self.engine is None:
-                return self.sample_data if hasattr(self, 'sample_data') else pd.DataFrame()
+            if not self.engine or not self.table_name:
+                raise Exception("Base de données non connectée ou table non détectée")
             
-            # Construction de la requête
-            query = """
-            SELECT 
-                id,
-                annee,
-                tour,
-                departement,
-                inscrits,
-                votants,
-                abstentions,
-                exprimes,
-                nuance,
-                voix
-            FROM resultatslelegi
-            WHERE departement IN ({})
-            """.format(','.join([f"'{dept}'" for dept in self.occitanie_depts]))
+            # Construction de la requête adaptée à votre structure
+            columns_to_select = []
+            for std_name, actual_name in self.column_mapping.items():
+                if actual_name in self.table_structure:
+                    columns_to_select.append(f"{actual_name} as {std_name}")
+                else:
+                    # Colonne manquante, utiliser une valeur par défaut
+                    if std_name in ['inscrits', 'votants', 'abstentions', 'exprimes', 'voix']:
+                        columns_to_select.append(f"0 as {std_name}")
+                    else:
+                        columns_to_select.append(f"'' as {std_name}")
             
-            # Filtres optionnels
+            select_clause = ", ".join(columns_to_select)
+            
+            # Conditions WHERE
+            where_conditions = []
+            
+            # Filtrage par départements d'Occitanie
+            dept_col = self.column_mapping['departement']
+            if dept_col in self.table_structure:
+                dept_list = "','".join(self.occitanie_depts)
+                where_conditions.append(f"{dept_col} IN ('{dept_list}')")
+            
+            # Filtrage par années
             if annees:
-                annees_str = ','.join(map(str, annees))
-                query += f" AND annee IN ({annees_str})"
+                annee_col = self.column_mapping['annee']
+                if annee_col in self.table_structure:
+                    annee_list = ",".join(map(str, annees))
+                    where_conditions.append(f"{annee_col} IN ({annee_list})")
             
+            # Filtrage par tours
             if tours:
-                tours_str = ','.join(map(str, tours))
-                query += f" AND tour IN ({tours_str})"
+                tour_col = self.column_mapping['tour']
+                if tour_col in self.table_structure:
+                    tour_list = ",".join(map(str, tours))
+                    where_conditions.append(f"{tour_col} IN ({tour_list})")
             
-            query += " ORDER BY annee, tour, departement, nuance"
+            where_clause = " AND ".join(where_conditions) if where_conditions else "1=1"
             
-            # Exécution
-            df = pd.read_sql(query, self.engine)
-            logger.info(f"Récupéré {len(df)} enregistrements de la base")
+            query = f"""
+            SELECT {select_clause}
+            FROM {self.table_name}
+            WHERE {where_clause}
+            ORDER BY {self.column_mapping.get('annee', 'annee')} DESC, 
+                     {self.column_mapping.get('tour', 'tour')}, 
+                     {self.column_mapping.get('departement', 'departement')}
+            LIMIT 10000
+            """
+            
+            logger.info("Exécution de la requête sur votre base...")
+            logger.debug(f"Query: {query}")
+            
+            with self.engine.begin() as conn:
+                df = pd.read_sql(text(query), conn)
+            
+            if df.empty:
+                logger.warning("Aucune donnée trouvée avec les critères spécifiés")
+                logger.info("Vérifiez les données dans votre table pour l'Occitanie")
+                return df
+            
+            # Nettoyage et conversion des types
+            df = self._clean_dataframe(df)
+            
+            logger.info(f"{len(df)} enregistrements chargés depuis votre base MySQL")
+            logger.info(f"   Années: {sorted(df['annee'].unique()) if 'annee' in df.columns else 'N/A'}")
+            logger.info(f"   Départements: {df['departement'].nunique() if 'departement' in df.columns else 'N/A'}")
+            logger.info(f"   Nuances: {df['nuance'].nunique() if 'nuance' in df.columns else 'N/A'}")
             
             return df
             
         except Exception as e:
-            logger.error(f"Erreur lors de la récupération: {e}")
-            return self.sample_data if hasattr(self, 'sample_data') else pd.DataFrame()
+            logger.error(f"Erreur récupération données: {e}")
+            raise
     
-    def get_aggregated_results(self, annee: int, tour: int) -> pd.DataFrame:
-        """Résultats agrégés par département"""
+    def _clean_dataframe(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Nettoie et standardise le DataFrame"""
         try:
-            if self.engine is None:
-                df = self.sample_data
-                return df[(df['annee'] == annee) & (df['tour'] == tour)].groupby(['departement', 'nuance']).agg({
-                    'inscrits': 'sum',
-                    'votants': 'sum',
-                    'abstentions': 'sum',
-                    'exprimes': 'sum',
-                    'voix': 'sum'
-                }).reset_index()
+            # Conversion des types numériques
+            numeric_cols = ['annee', 'tour', 'inscrits', 'votants', 'abstentions', 'exprimes', 'voix']
+            for col in numeric_cols:
+                if col in df.columns:
+                    df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0).astype('int32')
             
-            query = """
-            SELECT 
-                departement,
-                annee,
-                tour,
-                SUM(inscrits) as total_inscrits,
-                SUM(votants) as total_votants,
-                SUM(abstentions) as total_abstentions,
-                SUM(exprimes) as total_exprimes,
-                nuance,
-                SUM(voix) as total_voix
-            FROM resultatslelegi
-            WHERE departement IN ({})
-            AND annee = {}
-            AND tour = {}
-            GROUP BY departement, nuance
-            ORDER BY departement, total_voix DESC
-            """.format(
-                ','.join([f"'{dept}'" for dept in self.occitanie_depts]),
-                annee,
-                tour
-            )
+            # Nettoyage des colonnes texte
+            text_cols = ['departement', 'nuance']
+            for col in text_cols:
+                if col in df.columns:
+                    df[col] = df[col].astype(str).str.strip().str.upper()
             
-            df = pd.read_sql(query, self.engine)
-            logger.info(f"Agrégé {len(df)} résultats pour {annee} tour {tour}")
+            # Filtrage final sur les départements d'Occitanie
+            if 'departement' in df.columns:
+                df = df[df['departement'].isin(self.occitanie_depts)]
+            
+            # Ajouter un ID si manquant
+            if 'id' not in df.columns:
+                df['id'] = range(1, len(df) + 1)
+                df['id'] = df['id'].astype('int32')
             
             return df
             
         except Exception as e:
-            logger.error(f"Erreur agrégation: {e}")
-            return pd.DataFrame()
+            logger.warning(f"Erreur nettoyage données: {e}")
+            return df
     
     def get_available_elections(self) -> pd.DataFrame:
-        """Liste des élections disponibles"""
+        """Liste des élections disponibles dans votre base"""
         try:
-            if self.engine is None:
-                return self.sample_data[['annee', 'tour']].drop_duplicates().sort_values(['annee', 'tour'], ascending=[False, True])
+            if not self.engine or not self.table_name:
+                raise Exception("Base non connectée")
             
-            query = """
-            SELECT DISTINCT annee, tour
-            FROM resultatslelegi
-            WHERE departement IN ({})
-            ORDER BY annee DESC, tour
-            """.format(','.join([f"'{dept}'" for dept in self.occitanie_depts]))
+            annee_col = self.column_mapping.get('annee', 'annee')
+            tour_col = self.column_mapping.get('tour', 'tour')
             
-            return pd.read_sql(query, self.engine)
+            query = f"""
+            SELECT DISTINCT {annee_col} as annee, {tour_col} as tour
+            FROM {self.table_name}
+            ORDER BY {annee_col} DESC, {tour_col}
+            """
+            
+            with self.engine.begin() as conn:
+                df = pd.read_sql(text(query), conn)
+            
+            logger.info(f"{len(df)} élections trouvées dans votre base")
+            return df
             
         except Exception as e:
-            logger.error(f"Erreur élections disponibles: {e}")
-            return pd.DataFrame()
+            logger.error(f"Erreur liste élections: {e}")
+            # Fallback
+            return pd.DataFrame({
+                'annee': [2022, 2022, 2017, 2017],
+                'tour': [1, 2, 1, 2]
+            })
     
-    def get_nuances_info(self) -> pd.DataFrame:
-        """Informations sur les nuances politiques"""
+    def get_table_info(self) -> Dict:
+        """Informations sur votre table"""
+        return {
+            'table_name': self.table_name,
+            'columns': list(self.table_structure.keys()),
+            'column_mapping': self.column_mapping,
+            'total_columns': len(self.table_structure),
+            'occitanie_departments': self.occitanie_depts
+        }
+    
+    def close(self):
+        """Ferme les connexions"""
         try:
-            if self.engine is None:
-                return self.sample_data['nuance'].value_counts().reset_index()
-            
-            query = """
-            SELECT DISTINCT nuance, COUNT(*) as nb_occurrences
-            FROM resultatslelegi
-            WHERE departement IN ({})
-            GROUP BY nuance
-            ORDER BY nb_occurrences DESC
-            """.format(','.join([f"'{dept}'" for dept in self.occitanie_depts]))
-            
-            return pd.read_sql(query, self.engine)
-            
+            if self.mysql_connection and self.mysql_connection.is_connected():
+                self.mysql_connection.close()
+                logger.info("Connexion MySQL fermée")
+            if self.engine:
+                self.engine.dispose()
+                logger.info("Engine SQLAlchemy fermé")
         except Exception as e:
-            logger.error(f"Erreur nuances: {e}")
-            return pd.DataFrame()
+            logger.warning(f"Erreur fermeture: {e}")
+
+# Test du collecteur
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, format='%(levelname)s - %(message)s')
     
-    def get_department_stats(self) -> pd.DataFrame:
-        """Statistiques par département"""
-        try:
-            data = self.get_election_data()
-            if data.empty:
-                return pd.DataFrame()
-            
-            stats = data.groupby('departement').agg({
-                'inscrits': 'mean',
-                'votants': 'mean',
-                'abstentions': 'mean',
-                'annee': 'nunique',
-                'tour': 'nunique'
-            }).reset_index()
-            
-            stats['taux_participation_moyen'] = stats['votants'] / stats['inscrits']
-            stats['nom_departement'] = stats['departement'].map(OCCITANIE_CONFIG.department_names)
-            
-            return stats
-            
-        except Exception as e:
-            logger.error(f"Erreur stats départements: {e}")
-            return pd.DataFrame()
+    print("TEST CONNEXION À VOTRE BASE MySQL")
+    print("=" * 50)
     
-    def close_connection(self):
-        """Ferme la connexion"""
-        if self.engine:
-            self.engine.dispose()
-            logger.info("Connexion fermée")
+    try:
+        collector = ElectionDBCollector()
+        
+        # Infos sur la table
+        info = collector.get_table_info()
+        print(f"\nINFORMATIONS SUR VOTRE TABLE:")
+        print(f"   Table: {info['table_name']}")
+        print(f"   Colonnes: {len(info['columns'])}")
+        print(f"   Mapping: {info['column_mapping']}")
+        
+        # Test données
+        print(f"\nTEST RÉCUPÉRATION DONNÉES:")
+        data = collector.get_election_data()
+        if not data.empty:
+            print(f"   {len(data)} enregistrements récupérés")
+            print(f"\nAperçu des données:")
+            print(data.head())
+        else:
+            print(f"   Aucune donnée récupérée")
+        
+        # Test élections
+        elections = collector.get_available_elections()
+        print(f"\nÉlections disponibles: {len(elections)}")
+        print(elections)
+        
+        collector.close()
+        print(f"\nTest terminé avec succès !")
+        
+    except Exception as e:
+        print(f"\nERREUR: {e}")
+        print(f"\nVÉRIFICATIONS À FAIRE:")
+        print("1. MySQL est-il démarré ?")
+        print("2. Le fichier .env est-il correct ?")
+        print("3. L'utilisateur a-t-il les droits sur la base ?")
+        print("4. La base contient-elle des données ?")

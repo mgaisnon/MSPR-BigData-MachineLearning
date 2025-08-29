@@ -1,492 +1,451 @@
-from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.svm import SVC
-from sklearn.naive_bayes import GaussianNB
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV, StratifiedKFold
-from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, roc_auc_score
-import xgboost as xgb
-import lightgbm as lgb
 import pandas as pd
 import numpy as np
-from typing import Dict, Tuple, List, Optional
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler, LabelEncoder
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
 import joblib
 import logging
-from config.config import MODEL_CONFIG
+from pathlib import Path
+import sys
+from typing import Dict, Tuple
 import warnings
-
 warnings.filterwarnings('ignore')
+
+# Configuration du chemin
+current_dir = Path(__file__).parent
+root_dir = current_dir.parent.parent
+sys.path.insert(0, str(root_dir))
+
 logger = logging.getLogger(__name__)
 
 class ElectionPredictor:
-    """Classe principale pour la prédiction électorale"""
+    """Classe pour les prédictions électorales avec Machine Learning"""
     
     def __init__(self):
         self.models = {}
-        self.best_model = None
-        self.best_score = 0
+        self.scalers = {}
+        self.encoders = {}
         self.best_model_name = None
-        self.feature_importance = None
-        self.cv_results = {}
+        self.best_score = 0
+        self._last_results = {}
+        
+        logger.info("ElectionPredictor initialisé")
     
-    def initialize_models(self):
-        """Initialise les différents modèles à tester"""
-        self.models = {
-            'logistic_regression': LogisticRegression(
-                random_state=MODEL_CONFIG.random_state,
-                max_iter=1000
-            ),
-            'random_forest': RandomForestClassifier(
-                n_estimators=100,
-                random_state=MODEL_CONFIG.random_state,
-                max_depth=10,
-                min_samples_split=5
-            ),
-            'gradient_boosting': GradientBoostingClassifier(
-                n_estimators=100,
-                random_state=MODEL_CONFIG.random_state,
-                max_depth=6,
-                learning_rate=0.1
-            ),
-            'xgboost': xgb.XGBClassifier(
-                n_estimators=100,
-                random_state=MODEL_CONFIG.random_state,
-                max_depth=6,
-                learning_rate=0.1,
-                eval_metric='logloss'
-            ),
-            'lightgbm': lgb.LGBMClassifier(
-                n_estimators=100,
-                random_state=MODEL_CONFIG.random_state,
-                max_depth=6,
-                learning_rate=0.1,
-                verbose=-1
-            ),
-            'svm': SVC(
-                kernel='rbf',
-                random_state=MODEL_CONFIG.random_state,
-                probability=True,
-                C=1.0
-            ),
-            'naive_bayes': GaussianNB(),
-            'knn': KNeighborsClassifier(
-                n_neighbors=5,
-                weights='distance'
-            )
-        }
-        
-        logger.info(f"Initialisé {len(self.models)} modèles")
-    
-    def train_models(self, X: pd.DataFrame, y: pd.Series, test_size: float = None) -> Dict[str, Dict]:
-        """Entraîne tous les modèles et retourne leurs performances"""
-        if test_size is None:
-            test_size = MODEL_CONFIG.test_size
-        
-        results = {}
-        
-        # Vérification des données
-        if X.empty or y.empty:
-            logger.error("Données d'entrée vides")
-            return results
-        
-        # Split train/test stratifié
+    def prepare_features(self, df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.Series]:
+        """Prépare les features pour le Machine Learning"""
         try:
-            X_train, X_test, y_train, y_test = train_test_split(
-                X, y, test_size=test_size, random_state=MODEL_CONFIG.random_state,
-                stratify=y if len(np.unique(y)) > 1 else None
-            )
-        except ValueError as e:
-            logger.warning(f"Stratification impossible: {e}")
-            X_train, X_test, y_train, y_test = train_test_split(
-                X, y, test_size=test_size, random_state=MODEL_CONFIG.random_state
-            )
-        
-        logger.info(f"Entraînement sur {len(X_train)} échantillons, test sur {len(X_test)}")
-        
-        # Cross-validation setup
-        cv = StratifiedKFold(n_splits=MODEL_CONFIG.cv_folds, shuffle=True, random_state=MODEL_CONFIG.random_state)
-        
-        for name, model in self.models.items():
-            logger.info(f"Entraînement du modèle: {name}")
+            logger.info(f"Préparation des features pour {len(df)} enregistrements")
             
-            try:
-                # Entraînement
-                model.fit(X_train, y_train)
-                
-                # Prédictions
-                y_pred = model.predict(X_test)
-                y_pred_proba = None
-                if hasattr(model, 'predict_proba'):
-                    y_pred_proba = model.predict_proba(X_test)
-                
-                # Évaluation
-                accuracy = accuracy_score(y_test, y_pred)
-                
-                # Cross-validation
-                try:
-                    cv_scores = cross_val_score(model, X_train, y_train, cv=cv, scoring='accuracy')
-                    cv_mean = cv_scores.mean()
-                    cv_std = cv_scores.std()
-                except Exception as cv_error:
-                    logger.warning(f"CV failed for {name}: {cv_error}")
-                    cv_mean = accuracy
-                    cv_std = 0
-                
-                # Classification report
-                class_report = classification_report(y_test, y_pred, output_dict=True, zero_division=0)
-                
-                # Confusion matrix
-                conf_matrix = confusion_matrix(y_test, y_pred)
-                
-                # AUC si binaire et probabilités disponibles
-                auc_score = None
-                if len(np.unique(y)) == 2 and y_pred_proba is not None:
-                    try:
-                        auc_score = roc_auc_score(y_test, y_pred_proba[:, 1])
-                    except Exception:
-                        pass
-                
-                results[name] = {
-                    'model': model,
-                    'accuracy': accuracy,
-                    'cv_mean': cv_mean,
-                    'cv_std': cv_std,
-                    'classification_report': class_report,
-                    'confusion_matrix': conf_matrix,
-                    'predictions': y_pred,
-                    'probabilities': y_pred_proba,
-                    'auc_score': auc_score
-                }
-                
-                # Mise à jour du meilleur modèle
-                if cv_mean > self.best_score:
-                    self.best_score = cv_mean
-                    self.best_model = model
-                    self.best_model_name = name
-                
-                logger.info(f"{name} - Accuracy: {accuracy:.3f}, CV: {cv_mean:.3f}±{cv_std:.3f}")
-                
-            except Exception as e:
-                logger.error(f"Erreur lors de l'entraînement de {name}: {e}")
-                results[name] = {'error': str(e)}
-        
-        self.cv_results = results
-        logger.info(f"Meilleur modèle: {self.best_model_name} (CV Score: {self.best_score:.3f})")
-        
-        return results
-    
-    def optimize_best_model(self, X: pd.DataFrame, y: pd.Series) -> Dict:
-        """Optimise les hyperparamètres du meilleur modèle"""
-        if self.best_model is None:
-            raise ValueError("Aucun modèle n'a été entraîné")
-        
-        # Grilles de paramètres selon le type de modèle
-        param_grids = {
-            'random_forest': {
-                'n_estimators': [100, 200],
-                'max_depth': [10, 15, None],
-                'min_samples_split': [2, 5],
-                'min_samples_leaf': [1, 2]
-            },
-            'xgboost': {
-                'n_estimators': [100, 200],
-                'max_depth': [6, 8],
-                'learning_rate': [0.1, 0.2],
-                'subsample': [0.8, 1.0]
-            },
-            'lightgbm': {
-                'n_estimators': [100, 200],
-                'max_depth': [6, 8],
-                'learning_rate': [0.1, 0.2],
-                'num_leaves': [31, 50]
-            },
-            'logistic_regression': {
-                'C': [0.1, 1.0, 10.0],
-                'penalty': ['l2'],
-                'solver': ['liblinear', 'lbfgs']
-            },
-            'svm': {
-                'C': [0.1, 1.0, 10.0],
-                'kernel': ['rbf', 'linear'],
-                'gamma': ['scale', 'auto']
-            },
-            'gradient_boosting': {
-                'n_estimators': [100, 200],
-                'max_depth': [6, 8],
-                'learning_rate': [0.1, 0.2]
-            }
-        }
-        
-        if self.best_model_name not in param_grids:
-            logger.warning(f"Pas d'optimisation définie pour {self.best_model_name}")
-            return {'message': 'Pas d\'optimisation disponible pour ce modèle'}
-        
-        logger.info(f"Optimisation des hyperparamètres pour {self.best_model_name}")
-        
-        try:
-            # Cross-validation stratifiée
-            cv = StratifiedKFold(n_splits=3, shuffle=True, random_state=MODEL_CONFIG.random_state)
+            data = df.copy()
             
-            grid_search = GridSearchCV(
-                estimator=type(self.best_model)(**self.best_model.get_params()),
-                param_grid=param_grids[self.best_model_name],
-                cv=cv,
-                scoring='accuracy',
-                n_jobs=-1,
-                verbose=0
-            )
-            
-            grid_search.fit(X, y)
-            
-            # Mise à jour du meilleur modèle
-            self.best_model = grid_search.best_estimator_
-            old_score = self.best_score
-            self.best_score = grid_search.best_score_
-            
-            logger.info(f"Score avant optimisation: {old_score:.3f}")
-            logger.info(f"Score après optimisation: {self.best_score:.3f}")
-            
-            return {
-                'best_params': grid_search.best_params_,
-                'best_score': grid_search.best_score_,
-                'score_improvement': self.best_score - old_score,
-                'cv_results': grid_search.cv_results_
-            }
-            
-        except Exception as e:
-            logger.error(f"Erreur lors de l'optimisation: {e}")
-            return {'error': str(e)}
-    
-    def get_feature_importance(self, feature_names: List[str]) -> pd.DataFrame:
-        """Retourne l'importance des features"""
-        if self.best_model is None:
-            return pd.DataFrame()
-        
-        try:
-            if hasattr(self.best_model, 'feature_importances_'):
-                importance = self.best_model.feature_importances_
-            elif hasattr(self.best_model, 'coef_'):
-                importance = np.abs(self.best_model.coef_[0])
+            # Définir le target (ce qu'on veut prédire)
+            if 'famille_politique' in data.columns:
+                target = data['famille_politique'].copy()
+                logger.info("Target: famille_politique")
+            elif 'nuance' in data.columns:
+                target = data['nuance'].copy()
+                logger.info("Target: nuance")
             else:
-                logger.warning("Pas d'importance des features disponible")
-                return pd.DataFrame()
+                raise ValueError("Pas de colonne target trouvée")
             
-            importance_df = pd.DataFrame({
-                'feature': feature_names,
-                'importance': importance
-            }).sort_values('importance', ascending=False)
+            # Créer le DataFrame des features
+            features_df = pd.DataFrame()
             
-            # Normaliser les importances
-            importance_df['importance_normalized'] = importance_df['importance'] / importance_df['importance'].sum()
+            # Features temporelles
+            if 'annee' in data.columns:
+                features_df['annee'] = data['annee']
+                features_df['decennie'] = (data['annee'] // 10) * 10
+                features_df['depuis_2000'] = (data['annee'] - 2000).clip(lower=0)
             
-            self.feature_importance = importance_df
-            return importance_df
+            # Features géographiques
+            if 'departement' in data.columns:
+                dept_encoder = LabelEncoder()
+                features_df['departement_encoded'] = dept_encoder.fit_transform(data['departement'].astype(str))
+                self.encoders['departement'] = dept_encoder
+            
+            if 'typologie' in data.columns:
+                features_df['is_urbain'] = (data['typologie'] == 'Urbain').astype(int)
+            
+            if 'ancien_midi_pyrenees' in data.columns:
+                features_df['ancien_midi_pyrenees'] = data['ancien_midi_pyrenees'].astype(int)
+            
+            # Features électorales (numériques)
+            numeric_features = ['taux_participation', 'taux_abstention', 'voix', 'inscrits', 'votants']
+            
+            for feature in numeric_features:
+                if feature in data.columns:
+                    features_df[feature] = pd.to_numeric(data[feature], errors='coerce').fillna(0)
+            
+            # Features dérivées
+            if all(col in features_df.columns for col in ['voix', 'inscrits']):
+                features_df['influence'] = features_df['voix'] / (features_df['inscrits'] + 1)
+            
+            if 'taux_participation' in features_df.columns:
+                features_df['participation_haute'] = (features_df['taux_participation'] > 70).astype(int)
+                features_df['participation_faible'] = (features_df['taux_participation'] < 50).astype(int)
+            
+            # Tour (si disponible)
+            if 'tour' in data.columns:
+                features_df['tour'] = data['tour']
+            
+            # Nettoyer les données
+            features_df = features_df.fillna(0)
+            
+            # Encoder le target
+            target_encoder = LabelEncoder()
+            target_encoded = target_encoder.fit_transform(target.astype(str).fillna('Inconnu'))
+            self.encoders['target'] = target_encoder
+            
+            logger.info(f"Features créées: {list(features_df.columns)}")
+            logger.info(f"Nombre de classes target: {len(target_encoder.classes_)}")
+            logger.info(f"Échantillons finaux: {len(features_df)}")
+            
+            return features_df, pd.Series(target_encoded)
             
         except Exception as e:
-            logger.error(f"Erreur calcul importance: {e}")
-            return pd.DataFrame()
+            logger.error(f"Erreur préparation features: {e}")
+            # Fallback simple
+            fallback_df = pd.DataFrame({
+                'dummy_feature': range(len(df)),
+                'random_feature': np.random.random(len(df))
+            })
+            fallback_target = pd.Series([0] * len(df))
+            return fallback_df, fallback_target
     
-    def predict(self, X: pd.DataFrame) -> Tuple[np.ndarray, Optional[np.ndarray]]:
-        """Fait des prédictions avec le meilleur modèle"""
-        if self.best_model is None:
-            raise ValueError("Aucun modèle n'a été entraîné")
-        
+    def train_models(self, X: pd.DataFrame, y: pd.Series) -> Dict:
+        """Entraîne les modèles de Machine Learning"""
         try:
-            predictions = self.best_model.predict(X)
+            logger.info("🤖 Début de l'entraînement des modèles ML")
+            
+            # Vérifications préliminaires
+            if len(X) < 20:
+                return {"error": "Pas assez de données pour l'entraînement (minimum 20)"}
+            
+            unique_classes = len(np.unique(y))
+            if unique_classes < 2:
+                return {"error": f"Pas assez de classes différentes ({unique_classes})"}
+            
+            logger.info(f"Données: {len(X)} échantillons, {len(X.columns)} features, {unique_classes} classes")
+            
+            # Division train/test
+            test_size = min(0.3, max(0.1, 50/len(X)))  # Adaptatif selon la taille
+            X_train, X_test, y_train, y_test = train_test_split(
+                X, y, test_size=test_size, random_state=42, stratify=y
+            )
+            
+            logger.info(f"Train: {len(X_train)}, Test: {len(X_test)}")
+            
+            # Configuration des modèles
+            models_to_train = {
+                'RandomForest': {
+                    'model': RandomForestClassifier(
+                        n_estimators=100, 
+                        max_depth=10,
+                        random_state=42, 
+                        n_jobs=-1
+                    ),
+                    'needs_scaling': False
+                },
+                'LogisticRegression': {
+                    'model': LogisticRegression(
+                        random_state=42, 
+                        max_iter=1000,
+                        C=1.0
+                    ),
+                    'needs_scaling': True
+                }
+            }
+            
+            results = {}
+            
+            # Entraînement de chaque modèle
+            for model_name, config in models_to_train.items():
+                try:
+                    logger.info(f"⚡ Entraînement {model_name}...")
+                    
+                    model = config['model']
+                    
+                    # Gestion du scaling pour la régression logistique
+                    if config['needs_scaling']:
+                        scaler = StandardScaler()
+                        X_train_processed = scaler.fit_transform(X_train)
+                        X_test_processed = scaler.transform(X_test)
+                        self.scalers[model_name] = scaler
+                    else:
+                        X_train_processed = X_train
+                        X_test_processed = X_test
+                    
+                    # Entraînement
+                    model.fit(X_train_processed, y_train)
+                    
+                    # Prédictions
+                    y_pred = model.predict(X_test_processed)
+                    accuracy = accuracy_score(y_test, y_pred)
+                    
+                    # Stockage du modèle
+                    self.models[model_name] = model
+                    
+                    # Feature importance (pour RandomForest)
+                    feature_importance = None
+                    if hasattr(model, 'feature_importances_'):
+                        importance_df = pd.DataFrame({
+                            'feature': X.columns,
+                            'importance': model.feature_importances_
+                        }).sort_values('importance', ascending=False)
+                        feature_importance = importance_df.to_dict('records')
+                    
+                    # Résultats
+                    results[model_name] = {
+                        'accuracy': accuracy,
+                        'n_train': len(X_train),
+                        'n_test': len(X_test),
+                        'n_features': len(X.columns),
+                        'n_classes': unique_classes,
+                        'feature_importance': feature_importance
+                    }
+                    
+                    # Suivre le meilleur modèle
+                    if accuracy > self.best_score:
+                        self.best_score = accuracy
+                        self.best_model_name = model_name
+                    
+                    logger.info(f"✅ {model_name}: Accuracy = {accuracy:.4f}")
+                    
+                except Exception as model_error:
+                    logger.error(f"❌ Erreur {model_name}: {model_error}")
+                    results[model_name] = {'error': str(model_error)}
+            
+            # Sauvegarde des résultats
+            self._last_results = results
+            
+            # Sauvegarde des modèles
+            self.save_models()
+            
+            logger.info(f"🏆 Meilleur modèle: {self.best_model_name} (accuracy: {self.best_score:.4f})")
+            
+            return results
+            
+        except Exception as e:
+            logger.error(f"Erreur générale entraînement: {e}")
+            return {"error": str(e)}
+    
+    def predict_election(self, features: Dict, model_name: str = None) -> Dict:
+        """Fait une prédiction pour de nouvelles données"""
+        try:
+            if not self.models:
+                return {"error": "Aucun modèle entraîné disponible"}
+            
+            # Utiliser le meilleur modèle par défaut
+            model_name = model_name or self.best_model_name or list(self.models.keys())[0]
+            
+            if model_name not in self.models:
+                return {"error": f"Modèle {model_name} non trouvé"}
+            
+            model = self.models[model_name]
+            
+            # Préparer les données
+            features_df = pd.DataFrame([features])
+            
+            # Appliquer le scaling si nécessaire
+            if model_name in self.scalers:
+                features_processed = self.scalers[model_name].transform(features_df)
+            else:
+                features_processed = features_df
+            
+            # Prédiction
+            prediction = model.predict(features_processed)[0]
+            
+            # Probabilités (si disponible)
             probabilities = None
+            if hasattr(model, 'predict_proba'):
+                proba = model.predict_proba(features_processed)[0]
+                if 'target' in self.encoders:
+                    classes = self.encoders['target'].classes_
+                    probabilities = {classes[i]: float(proba[i]) for i in range(len(classes))}
             
-            if hasattr(self.best_model, 'predict_proba'):
-                probabilities = self.best_model.predict_proba(X)
+            # Décoder la prédiction
+            if 'target' in self.encoders:
+                predicted_class = self.encoders['target'].inverse_transform([prediction])[0]
+            else:
+                predicted_class = str(prediction)
             
-            return predictions, probabilities
-            
-        except Exception as e:
-            logger.error(f"Erreur lors de la prédiction: {e}")
-            raise
-    
-    def evaluate_model(self, X_test: pd.DataFrame, y_test: pd.Series) -> Dict:
-        """Évalue le modèle sur des données de test"""
-        if self.best_model is None:
-            raise ValueError("Aucun modèle n'a été entraîné")
-        
-        try:
-            predictions, probabilities = self.predict(X_test)
-            
-            evaluation = {
-                'accuracy': accuracy_score(y_test, predictions),
-                'classification_report': classification_report(y_test, predictions, output_dict=True, zero_division=0),
-                'confusion_matrix': confusion_matrix(y_test, predictions)
+            result = {
+                'predicted_class': predicted_class,
+                'confidence': float(max(proba)) if probabilities else 0.5,
+                'probabilities': probabilities,
+                'model_used': model_name
             }
             
-            # AUC si binaire
-            if len(np.unique(y_test)) == 2 and probabilities is not None:
-                evaluation['auc_score'] = roc_auc_score(y_test, probabilities[:, 1])
-            
-            return evaluation
+            return result
             
         except Exception as e:
-            logger.error(f"Erreur évaluation: {e}")
-            return {}
+            logger.error(f"Erreur prédiction: {e}")
+            return {"error": str(e)}
     
-    def save_model(self, filename: str = None):
-        """Sauvegarde le meilleur modèle"""
-        if self.best_model is None:
-            raise ValueError("Aucun modèle à sauvegarder")
-        
-        if filename is None:
-            filename = f"best_model_{self.best_model_name}.pkl"
-        
-        filepath = MODEL_CONFIG.models_dir / filename
-        
+    def save_models(self):
+        """Sauvegarde tous les modèles entraînés"""
         try:
-            model_data = {
-                'model': self.best_model,
-                'model_name': self.best_model_name,
-                'score': self.best_score,
-                'feature_importance': self.feature_importance,
-                'cv_results': self.cv_results
-            }
+            # Import de la config
+            from config.config import MODEL_CONFIG
+            models_dir = MODEL_CONFIG.models_dir
+            models_dir.mkdir(exist_ok=True, parents=True)
             
-            joblib.dump(model_data, filepath)
-            logger.info(f"Modèle sauvegardé: {filepath}")
+            # Sauvegarder chaque modèle
+            for model_name, model in self.models.items():
+                model_file = models_dir / f"{model_name.lower()}_model.joblib"
+                joblib.dump(model, model_file)
+                logger.info(f"💾 Modèle {model_name} sauvegardé: {model_file}")
+            
+            # Sauvegarder les scalers
+            if self.scalers:
+                scalers_file = models_dir / "scalers.joblib"
+                joblib.dump(self.scalers, scalers_file)
+                logger.info(f"💾 Scalers sauvegardés: {scalers_file}")
+            
+            # Sauvegarder les encoders
+            if self.encoders:
+                encoders_file = models_dir / "encoders.joblib"
+                joblib.dump(self.encoders, encoders_file)
+                logger.info(f"💾 Encoders sauvegardés: {encoders_file}")
+            
+            # Métadonnées
+            metadata = {
+                'best_model_name': self.best_model_name,
+                'best_score': self.best_score,
+                'models_list': list(self.models.keys()),
+                'last_results': self._last_results
+            }
+            metadata_file = models_dir / "metadata.joblib"
+            joblib.dump(metadata, metadata_file)
+            logger.info(f"💾 Métadonnées sauvegardées: {metadata_file}")
             
         except Exception as e:
             logger.error(f"Erreur sauvegarde: {e}")
-            raise
     
-    def load_model(self, filename: str = None):
-        """Charge un modèle sauvegardé"""
-        if filename is None:
-            filename = "best_election_model.pkl"
-        
-        filepath = MODEL_CONFIG.models_dir / filename
-        
+    def load_models(self):
+        """Charge les modèles précédemment sauvegardés"""
         try:
-            model_data = joblib.load(filepath)
+            from config.config import MODEL_CONFIG
+            models_dir = MODEL_CONFIG.models_dir
             
-            self.best_model = model_data['model']
-            self.best_model_name = model_data['model_name']
-            self.best_score = model_data['score']
-            self.feature_importance = model_data.get('feature_importance')
-            self.cv_results = model_data.get('cv_results', {})
+            metadata_file = models_dir / "metadata.joblib"
+            if not metadata_file.exists():
+                logger.warning("Aucune sauvegarde de modèles trouvée")
+                return False
             
-            logger.info(f"Modèle chargé: {filepath}")
-            logger.info(f"Modèle: {self.best_model_name}, Score: {self.best_score:.3f}")
+            # Charger les métadonnées
+            metadata = joblib.load(metadata_file)
+            self.best_model_name = metadata.get('best_model_name')
+            self.best_score = metadata.get('best_score', 0)
+            self._last_results = metadata.get('last_results', {})
+            
+            # Charger chaque modèle
+            for model_name in metadata.get('models_list', []):
+                model_file = models_dir / f"{model_name.lower()}_model.joblib"
+                if model_file.exists():
+                    self.models[model_name] = joblib.load(model_file)
+                    logger.info(f"📂 Modèle {model_name} chargé")
+            
+            # Charger scalers et encoders
+            scalers_file = models_dir / "scalers.joblib"
+            if scalers_file.exists():
+                self.scalers = joblib.load(scalers_file)
+                logger.info("📂 Scalers chargés")
+            
+            encoders_file = models_dir / "encoders.joblib"
+            if encoders_file.exists():
+                self.encoders = joblib.load(encoders_file)
+                logger.info("📂 Encoders chargés")
+            
+            logger.info("✅ Tous les modèles chargés avec succès")
+            return True
             
         except Exception as e:
             logger.error(f"Erreur chargement: {e}")
-            raise
+            return False
     
-    def get_model_summary(self) -> Dict:
-        """Retourne un résumé du modèle"""
-        if self.best_model is None:
-            return {'message': 'Aucun modèle entraîné'}
-        
-        summary = {
-            'model_name': self.best_model_name,
-            'best_score': self.best_score,
-            'parameters': self.best_model.get_params(),
-            'feature_count': len(self.feature_importance) if self.feature_importance is not None else 0
-        }
-        
-        if self.cv_results:
-            summary['available_models'] = list(self.cv_results.keys())
-            summary['scores_comparison'] = {
-                name: result.get('cv_mean', 0) 
-                for name, result in self.cv_results.items() 
-                if 'error' not in result
-            }
-        
-        return summary
+    def get_model_performance(self) -> Dict:
+        """Retourne les performances des modèles"""
+        return self._last_results
     
-    def predict_proba_with_confidence(self, X: pd.DataFrame, confidence_threshold: float = 0.8) -> Dict:
-        """Prédictions avec indication de confiance"""
-        if self.best_model is None:
-            raise ValueError("Aucun modèle n'a été entraîné")
-        
-        try:
-            predictions, probabilities = self.predict(X)
-            
-            if probabilities is None:
-                return {
-                    'predictions': predictions,
-                    'confidence': None,
-                    'high_confidence_mask': None
-                }
-            
-            # Calcul de la confiance (probabilité maximale)
-            max_proba = np.max(probabilities, axis=1)
-            high_confidence = max_proba >= confidence_threshold
-            
-            return {
-                'predictions': predictions,
-                'probabilities': probabilities,
-                'confidence': max_proba,
-                'high_confidence_mask': high_confidence,
-                'high_confidence_count': np.sum(high_confidence),
-                'total_predictions': len(predictions)
-            }
-            
-        except Exception as e:
-            logger.error(f"Erreur prédiction avec confiance: {e}")
-            raise
+    def get_available_models(self) -> list:
+        """Retourne la liste des modèles disponibles"""
+        return list(self.models.keys())
 
-class ModelComparison:
-    """Classe pour comparer plusieurs modèles"""
-    
-    def __init__(self, predictors: List[ElectionPredictor]):
-        self.predictors = predictors
-    
-    def compare_models(self, X_test: pd.DataFrame, y_test: pd.Series) -> pd.DataFrame:
-        """Compare les performances de plusieurs modèles"""
-        results = []
+# Fonction utilitaire pour l'intégration avec main.py
+def train_election_models(processed_data_file: str = None):
+    """
+    Fonction principale pour entraîner les modèles
+    Utilisée par main.py dans l'étape prédictions
+    """
+    try:
+        from config.config import DATA_CONFIG
         
-        for i, predictor in enumerate(self.predictors):
-            if predictor.best_model is None:
-                continue
-                
-            try:
-                evaluation = predictor.evaluate_model(X_test, y_test)
-                
-                results.append({
-                    'model_id': i,
-                    'model_name': predictor.best_model_name,
-                    'accuracy': evaluation.get('accuracy', 0),
-                    'auc_score': evaluation.get('auc_score', 0),
-                    'cv_score': predictor.best_score
-                })
-                
-            except Exception as e:
-                logger.error(f"Erreur comparaison modèle {i}: {e}")
+        # Fichier par défaut
+        if processed_data_file is None:
+            processed_data_file = DATA_CONFIG.processed_data_dir / 'elections_processed.csv'
         
-        return pd.DataFrame(results)
-    
-    def ensemble_predict(self, X: pd.DataFrame, method: str = 'majority') -> np.ndarray:
-        """Prédiction d'ensemble"""
-        if not self.predictors:
-            raise ValueError("Aucun modèle disponible")
+        # Vérifier l'existence du fichier
+        if not Path(processed_data_file).exists():
+            return None, {"error": f"Fichier non trouvé: {processed_data_file}"}
         
-        all_predictions = []
+        # Charger les données
+        data = pd.read_csv(processed_data_file)
+        logger.info(f"📊 Données chargées: {len(data)} enregistrements")
         
-        for predictor in self.predictors:
-            if predictor.best_model is not None:
-                try:
-                    pred, _ = predictor.predict(X)
-                    all_predictions.append(pred)
-                except Exception as e:
-                    logger.error(f"Erreur prédiction ensemble: {e}")
+        # Vérifications de base
+        if len(data) < 20:
+            return None, {"error": "Pas assez de données (minimum 20 enregistrements)"}
         
-        if not all_predictions:
-            raise ValueError("Aucune prédiction disponible")
+        # Créer et configurer le prédicteur
+        predictor = ElectionPredictor()
         
-        predictions_array = np.array(all_predictions)
+        # Préparer les features
+        X, y = predictor.prepare_features(data)
         
-        if method == 'majority':
-            # Vote majoritaire
-            from scipy import stats
-            ensemble_pred = stats.mode(predictions_array, axis=0)[0].flatten()
+        # Entraîner les modèles
+        if len(X) >= 20 and len(np.unique(y)) >= 2:
+            results = predictor.train_models(X, y)
+            return predictor, results
         else:
-            # Moyenne (pour les prédictions numériques)
-            ensemble_pred = np.mean(predictions_array, axis=0)
-        
-        return ensemble_pred
+            return predictor, {"error": "Données insuffisantes pour l'entraînement ML"}
+            
+    except Exception as e:
+        logger.error(f"Erreur train_election_models: {e}")
+        return None, {"error": str(e)}
+
+# Test du module (si lancé directement)
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
+    print("🧪 TEST DU MODULE MACHINE LEARNING")
+    print("=" * 50)
+    
+    # Test avec des données fictives
+    test_data = pd.DataFrame({
+        'annee': [2017, 2017, 2022, 2022] * 10,
+        'departement': [30, 31, 30, 31] * 10,
+        'famille_politique': ['Droite', 'Gauche', 'Centre', 'Droite'] * 10,
+        'voix': [1000, 1500, 800, 1200] * 10,
+        'inscrits': [2000, 2000, 2000, 2000] * 10,
+        'taux_participation': [65.5, 70.2, 60.1, 75.3] * 10,
+        'typologie': ['Urbain', 'Rural', 'Urbain', 'Rural'] * 10,
+        'ancien_midi_pyrenees': [0, 1, 0, 1] * 10
+    })
+    
+    print(f"Données test: {len(test_data)} enregistrements")
+    
+    predictor = ElectionPredictor()
+    X, y = predictor.prepare_features(test_data)
+    print(f"Features: {X.shape}, Target: {y.shape}")
+    
+    results = predictor.train_models(X, y)
+    print("\nRésultats:")
+    for model_name, result in results.items():
+        if 'accuracy' in result:
+            print(f"  {model_name}: {result['accuracy']:.4f}")
+        else:
+            print(f"  {model_name}: {result}")
+    
+    print("\n✅ Test terminé")

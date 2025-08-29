@@ -1,0 +1,1316 @@
+2025-08-29 22:58:53,059 - __main__ - INFO - ============================================================
+2025-08-29 22:58:53,069 - __main__ - INFO - ============================================================
+2025-08-29 22:58:53,219 - __main__ - INFO - 
+========================================
+2025-08-29 22:58:53,219 - __main__ - INFO - ========================================
+2025-08-29 22:58:53,300 - src.data_collection.db_collector - INFO -    id: INTEGER
+2025-08-29 22:58:53,300 - src.data_collection.db_collector - INFO -    ann�e: INTEGER
+2025-08-29 22:58:53,300 - src.data_collection.db_collector - INFO -    tour: INTEGER
+2025-08-29 22:58:53,301 - src.data_collection.db_collector - INFO -    departement: INTEGER
+2025-08-29 22:58:53,301 - src.data_collection.db_collector - INFO -    inscrits: INTEGER
+2025-08-29 22:58:53,301 - src.data_collection.db_collector - INFO -    votants: INTEGER
+2025-08-29 22:58:53,301 - src.data_collection.db_collector - INFO -    abstentions: INTEGER
+2025-08-29 22:58:53,301 - src.data_collection.db_collector - INFO -    exprimes: INTEGER
+2025-08-29 22:58:53,301 - src.data_collection.db_collector - INFO -    nuance: VARCHAR(10) COLLATE "utf8mb4_unicode_ci"
+2025-08-29 22:58:53,301 - src.data_collection.db_collector - INFO -    voix: INTEGER
+2025-08-29 22:58:53,349 - __main__ - INFO -    2022 - Tour 1
+2025-08-29 22:58:53,350 - __main__ - INFO -    2022 - Tour 2
+2025-08-29 22:58:53,350 - __main__ - INFO -    2017 - Tour 1
+2025-08-29 22:58:53,350 - __main__ - INFO -    2017 - Tour 2
+2025-08-29 22:58:53,350 - __main__ - INFO -    2012 - Tour 2
+2025-08-29 22:58:53,350 - __main__ - INFO -    2007 - Tour 1
+2025-08-29 22:58:53,350 - __main__ - INFO -    2007 - Tour 2
+2025-08-29 22:58:53,350 - __main__ - INFO -    2002 - Tour 1
+2025-08-29 22:58:53,350 - __main__ - INFO -    2002 - Tour 2
+2025-08-29 22:58:53,351 - __main__ - INFO -    1997 - Tour 1
+2025-08-29 22:58:53,351 - __main__ - INFO -    1997 - Tour 2
+2025-08-29 22:58:53,351 - __main__ - INFO -    1993 - Tour 1
+2025-08-29 22:58:53,351 - __main__ - INFO -    1993 - Tour 2
+2025-08-29 22:58:53,353 - __main__ - INFO - 
+========================================
+2025-08-29 22:58:53,353 - __main__ - INFO - ========================================
+2025-08-29 22:58:53,833 - __main__ - INFO - 
+========================================
+2025-08-29 22:58:53,834 - __main__ - INFO - ========================================
+2025-08-29 22:58:53,836 - __main__ - INFO - 
+========================================
+2025-08-29 22:58:53,837 - __main__ - INFO - ========================================
+2025-08-29 22:58:53,839 - __main__ - INFO - 
+========================================
+2025-08-29 22:58:53,840 - __main__ - INFO - ========================================
+2025-08-29 22:58:53,842 - __main__ - INFO - 
+============================================================
+2025-08-29 22:58:53,843 - __main__ - INFO - ============================================================
+2025-08-29 22:59:54,697 - __main__ - INFO - ============================================================
+2025-08-29 22:59:54,698 - __main__ - INFO - ============================================================
+2025-08-29 22:59:54,848 - __main__ - INFO - 
+========================================
+2025-08-29 22:59:54,849 - __main__ - INFO - ========================================
+2025-08-29 22:59:54,935 - src.data_collection.db_collector - INFO -    id: INTEGER
+2025-08-29 22:59:54,935 - src.data_collection.db_collector - INFO -    ann�e: INTEGER
+2025-08-29 22:59:54,935 - src.data_collection.db_collector - INFO -    tour: INTEGER
+2025-08-29 22:59:54,935 - src.data_collection.db_collector - INFO -    departement: INTEGER
+2025-08-29 22:59:54,935 - src.data_collection.db_collector - INFO -    inscrits: INTEGER
+2025-08-29 22:59:54,935 - src.data_collection.db_collector - INFO -    votants: INTEGER
+2025-08-29 22:59:54,935 - src.data_collection.db_collector - INFO -    abstentions: INTEGER
+2025-08-29 22:59:54,935 - src.data_collection.db_collector - INFO -    exprimes: INTEGER
+2025-08-29 22:59:54,935 - src.data_collection.db_collector - INFO -    nuance: VARCHAR(10) COLLATE "utf8mb4_unicode_ci"
+2025-08-29 22:59:54,936 - src.data_collection.db_collector - INFO -    voix: INTEGER
+2025-08-29 22:59:54,984 - __main__ - INFO -    2022 - Tour 1
+2025-08-29 22:59:54,984 - __main__ - INFO -    2022 - Tour 2
+2025-08-29 22:59:54,984 - __main__ - INFO -    2017 - Tour 1
+2025-08-29 22:59:54,984 - __main__ - INFO -    2017 - Tour 2
+2025-08-29 22:59:54,984 - __main__ - INFO -    2012 - Tour 2
+2025-08-29 22:59:54,984 - __main__ - INFO -    2007 - Tour 1
+2025-08-29 22:59:54,984 - __main__ - INFO -    2007 - Tour 2
+2025-08-29 22:59:54,984 - __main__ - INFO -    2002 - Tour 1
+2025-08-29 22:59:54,984 - __main__ - INFO -    2002 - Tour 2
+2025-08-29 22:59:54,985 - __main__ - INFO -    1997 - Tour 1
+2025-08-29 22:59:54,985 - __main__ - INFO -    1997 - Tour 2
+2025-08-29 22:59:54,985 - __main__ - INFO -    1993 - Tour 1
+2025-08-29 22:59:54,985 - __main__ - INFO -    1993 - Tour 2
+2025-08-29 22:59:54,987 - __main__ - INFO - 
+========================================
+2025-08-29 22:59:54,988 - __main__ - INFO - ========================================
+2025-08-29 22:59:55,513 - __main__ - INFO - 
+========================================
+2025-08-29 22:59:55,514 - __main__ - INFO - ========================================
+2025-08-29 22:59:55,517 - __main__ - INFO - 
+========================================
+2025-08-29 22:59:55,517 - __main__ - INFO - ========================================
+2025-08-29 22:59:55,520 - __main__ - INFO - 
+========================================
+2025-08-29 22:59:55,520 - __main__ - INFO - ========================================
+2025-08-29 22:59:55,523 - __main__ - INFO - 
+============================================================
+2025-08-29 22:59:55,523 - __main__ - INFO - ============================================================
+2025-08-29 23:04:37,554 - __main__ - INFO - ============================================================
+2025-08-29 23:04:37,554 - __main__ - INFO - ANALYSE ELECTORALE OCCITANIE - MySQL Edition
+2025-08-29 23:04:37,554 - __main__ - INFO - ============================================================
+2025-08-29 23:04:37,554 - __main__ - INFO - Utilisateur: mgaisnon
+2025-08-29 23:04:37,554 - __main__ - INFO - Date: 2025-08-29 23:01:16
+2025-08-29 23:04:37,700 - __main__ - INFO - Configuration et modules chargés
+2025-08-29 23:04:37,701 - __main__ - INFO - Base MySQL: bddelections sur localhost
+2025-08-29 23:04:37,701 - __main__ - INFO - Départements Occitanie: 13
+2025-08-29 23:04:37,701 - __main__ - INFO - 
+========================================
+2025-08-29 23:04:37,701 - __main__ - INFO - ÉTAPE 1: COLLECTE DES DONNÉES MySQL
+2025-08-29 23:04:37,701 - __main__ - INFO - ========================================
+2025-08-29 23:04:37,701 - __main__ - INFO - Connexion à la base MySQL...
+2025-08-29 23:04:37,701 - src.data_collection.db_collector - INFO - Connexion à votre base MySQL existante...
+2025-08-29 23:04:37,701 - src.data_collection.db_collector - INFO -    Host: localhost:3306
+2025-08-29 23:04:37,701 - src.data_collection.db_collector - INFO -    Base: bddelections
+2025-08-29 23:04:37,701 - src.data_collection.db_collector - INFO -    Utilisateur: root
+2025-08-29 23:04:37,721 - src.data_collection.db_collector - INFO - Connexion MySQL réussie !
+2025-08-29 23:04:37,742 - src.data_collection.db_collector - INFO - Détection automatique de la structure...
+2025-08-29 23:04:37,768 - src.data_collection.db_collector - INFO - Tables trouvées: ['resultatslegi']
+2025-08-29 23:04:37,769 - src.data_collection.db_collector - INFO - Table d'élections détectée: resultatslegi
+2025-08-29 23:04:37,773 - src.data_collection.db_collector - INFO - Structure de resultatslegi:
+2025-08-29 23:04:37,773 - src.data_collection.db_collector - INFO -    id: INTEGER
+2025-08-29 23:04:37,773 - src.data_collection.db_collector - INFO -    année: INTEGER
+2025-08-29 23:04:37,774 - src.data_collection.db_collector - INFO -    tour: INTEGER
+2025-08-29 23:04:37,774 - src.data_collection.db_collector - INFO -    departement: INTEGER
+2025-08-29 23:04:37,774 - src.data_collection.db_collector - INFO -    inscrits: INTEGER
+2025-08-29 23:04:37,774 - src.data_collection.db_collector - INFO -    votants: INTEGER
+2025-08-29 23:04:37,774 - src.data_collection.db_collector - INFO -    abstentions: INTEGER
+2025-08-29 23:04:37,774 - src.data_collection.db_collector - INFO -    exprimes: INTEGER
+2025-08-29 23:04:37,774 - src.data_collection.db_collector - INFO -    nuance: VARCHAR(10) COLLATE "utf8mb4_unicode_ci"
+2025-08-29 23:04:37,774 - src.data_collection.db_collector - INFO -    voix: INTEGER
+2025-08-29 23:04:37,774 - src.data_collection.db_collector - INFO - Mapping des colonnes: {'annee': 'année', 'tour': 'tour', 'departement': 'departement', 'nuance': 'nuance', 'voix': 'voix', 'inscrits': 'inscrits', 'votants': 'votants', 'abstentions': 'abstentions', 'exprimes': 'exprimes'}
+2025-08-29 23:04:37,775 - src.data_collection.db_collector - INFO - 1978 enregistrements dans la table
+2025-08-29 23:04:37,776 - src.data_collection.db_collector - INFO - 484 enregistrements pour l'Occitanie (échantillon)
+2025-08-29 23:04:37,776 - __main__ - INFO - Table utilisée: resultatslegi
+2025-08-29 23:04:37,776 - __main__ - INFO - Colonnes détectées: 10
+2025-08-29 23:04:37,776 - __main__ - INFO - Mapping: {'annee': 'année', 'tour': 'tour', 'departement': 'departement', 'nuance': 'nuance', 'voix': 'voix', 'inscrits': 'inscrits', 'votants': 'votants', 'abstentions': 'abstentions', 'exprimes': 'exprimes'}
+2025-08-29 23:04:37,776 - __main__ - INFO - Récupération des données d'Occitanie...
+2025-08-29 23:04:37,776 - src.data_collection.db_collector - INFO - Exécution de la requête sur votre base...
+2025-08-29 23:04:37,802 - src.data_collection.db_collector - INFO - 1835 enregistrements chargés depuis votre base MySQL
+2025-08-29 23:04:37,802 - src.data_collection.db_collector - INFO -    Années: [1993, 1997, 2002, 2007, 2012, 2017, 2022]
+2025-08-29 23:04:37,802 - src.data_collection.db_collector - INFO -    Départements: 12
+2025-08-29 23:04:37,803 - src.data_collection.db_collector - INFO -    Nuances: 47
+2025-08-29 23:04:37,803 - __main__ - INFO - 1835 enregistrements récupérés
+2025-08-29 23:04:37,803 - __main__ - INFO -    Années: [1993, 1997, 2002, 2007, 2012, 2017, 2022]
+2025-08-29 23:04:37,803 - __main__ - INFO -    Départements: 12
+2025-08-29 23:04:37,803 - __main__ - INFO -    Nuances: 47
+2025-08-29 23:04:37,807 - __main__ - INFO - Données sauvegardées: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\data\raw\elections_occitanie_mysql.csv
+2025-08-29 23:04:37,809 - src.data_collection.db_collector - INFO - 13 élections trouvées dans votre base
+2025-08-29 23:04:37,809 - __main__ - INFO - Élections disponibles: 13
+2025-08-29 23:04:37,810 - __main__ - INFO -    2022 - Tour 1
+2025-08-29 23:04:37,810 - __main__ - INFO -    2022 - Tour 2
+2025-08-29 23:04:37,810 - __main__ - INFO -    2017 - Tour 1
+2025-08-29 23:04:37,810 - __main__ - INFO -    2017 - Tour 2
+2025-08-29 23:04:37,810 - __main__ - INFO -    2012 - Tour 2
+2025-08-29 23:04:37,810 - __main__ - INFO -    2007 - Tour 1
+2025-08-29 23:04:37,810 - __main__ - INFO -    2007 - Tour 2
+2025-08-29 23:04:37,810 - __main__ - INFO -    2002 - Tour 1
+2025-08-29 23:04:37,810 - __main__ - INFO -    2002 - Tour 2
+2025-08-29 23:04:37,811 - __main__ - INFO -    1997 - Tour 1
+2025-08-29 23:04:37,811 - __main__ - INFO -    1997 - Tour 2
+2025-08-29 23:04:37,811 - __main__ - INFO -    1993 - Tour 1
+2025-08-29 23:04:37,811 - __main__ - INFO -    1993 - Tour 2
+2025-08-29 23:04:37,811 - src.data_collection.db_collector - INFO - Connexion MySQL fermée
+2025-08-29 23:04:37,811 - src.data_collection.db_collector - INFO - Engine SQLAlchemy fermé
+2025-08-29 23:04:37,811 - __main__ - INFO - 
+========================================
+2025-08-29 23:04:37,812 - __main__ - INFO - ÉTAPE 2: TRAITEMENT DES DONNÉES
+2025-08-29 23:04:37,812 - __main__ - INFO - ========================================
+2025-08-29 23:04:37,812 - __main__ - INFO - Traitement des données...
+2025-08-29 23:04:38,294 - __main__ - INFO - Processeur de données initialisé
+2025-08-29 23:04:38,303 - __main__ - INFO - Données chargées: 1835 enregistrements
+2025-08-29 23:04:38,303 - __main__ - ERROR - Erreur traitement: 'ElectionDataProcessor' object has no attribute 'preprocess_election_data'
+2025-08-29 23:04:38,303 - __main__ - INFO - 
+========================================
+2025-08-29 23:04:38,304 - __main__ - INFO - ÉTAPE 3: ANALYSE DES DONNÉES
+2025-08-29 23:04:38,304 - __main__ - INFO - ========================================
+2025-08-29 23:04:38,304 - __main__ - INFO - Analyse des données...
+2025-08-29 23:04:38,304 - __main__ - WARNING - Fichier de données traitées non trouvé: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\data\processed\elections_processed.csv
+2025-08-29 23:04:38,304 - __main__ - INFO - Lancez d'abord: python main.py --process
+2025-08-29 23:04:38,304 - __main__ - INFO - 
+========================================
+2025-08-29 23:04:38,304 - __main__ - INFO - ÉTAPE 4: MODÈLES PRÉDICTIFS
+2025-08-29 23:04:38,304 - __main__ - INFO - ========================================
+2025-08-29 23:04:38,304 - __main__ - INFO - Modèles prédictifs...
+2025-08-29 23:04:38,304 - __main__ - INFO - Module ML en cours de développement pour vos données MySQL
+2025-08-29 23:04:38,305 - __main__ - INFO - Étape prédictions simulée
+2025-08-29 23:04:38,305 - __main__ - INFO - 
+========================================
+2025-08-29 23:04:38,305 - __main__ - INFO - ÉTAPE 5: VISUALISATIONS
+2025-08-29 23:04:38,305 - __main__ - INFO - ========================================
+2025-08-29 23:04:38,305 - __main__ - INFO - Génération des visualisations...
+2025-08-29 23:04:38,305 - __main__ - INFO - Module visualisation en cours de développement
+2025-08-29 23:04:38,305 - __main__ - INFO - Étape visualisations simulée
+2025-08-29 23:04:38,305 - __main__ - INFO - 
+============================================================
+2025-08-29 23:04:38,305 - __main__ - INFO - PIPELINE TERMINÉ AVEC SUCCÈS !
+2025-08-29 23:04:38,305 - __main__ - INFO - ============================================================
+2025-08-29 23:04:38,305 - __main__ - INFO - Vous pouvez maintenant lancer: streamlit run app.py
+2025-08-29 23:11:37,376 - __main__ - INFO - ============================================================
+2025-08-29 23:11:37,376 - __main__ - INFO - ANALYSE ELECTORALE OCCITANIE - MySQL Edition
+2025-08-29 23:11:37,376 - __main__ - INFO - ============================================================
+2025-08-29 23:11:37,376 - __main__ - INFO - Utilisateur: mgaisnon
+2025-08-29 23:11:37,376 - __main__ - INFO - Date: 2025-08-29 23:01:16
+2025-08-29 23:11:37,515 - __main__ - INFO - Configuration et modules chargés
+2025-08-29 23:11:37,515 - __main__ - INFO - Base MySQL: bddelections sur localhost
+2025-08-29 23:11:37,515 - __main__ - INFO - Départements Occitanie: 13
+2025-08-29 23:11:37,516 - __main__ - INFO - 
+========================================
+2025-08-29 23:11:37,516 - __main__ - INFO - ÉTAPE 1: COLLECTE DES DONNÉES MySQL
+2025-08-29 23:11:37,516 - __main__ - INFO - ========================================
+2025-08-29 23:11:37,516 - __main__ - INFO - Connexion à la base MySQL...
+2025-08-29 23:11:37,516 - src.data_collection.db_collector - INFO - Connexion à votre base MySQL existante...
+2025-08-29 23:11:37,516 - src.data_collection.db_collector - INFO -    Host: localhost:3306
+2025-08-29 23:11:37,516 - src.data_collection.db_collector - INFO -    Base: bddelections
+2025-08-29 23:11:37,516 - src.data_collection.db_collector - INFO -    Utilisateur: root
+2025-08-29 23:11:37,544 - src.data_collection.db_collector - INFO - Connexion MySQL réussie !
+2025-08-29 23:11:37,565 - src.data_collection.db_collector - INFO - Détection automatique de la structure...
+2025-08-29 23:11:37,591 - src.data_collection.db_collector - INFO - Tables trouvées: ['resultatslegi']
+2025-08-29 23:11:37,591 - src.data_collection.db_collector - INFO - Table d'élections détectée: resultatslegi
+2025-08-29 23:11:37,596 - src.data_collection.db_collector - INFO - Structure de resultatslegi:
+2025-08-29 23:11:37,596 - src.data_collection.db_collector - INFO -    id: INTEGER
+2025-08-29 23:11:37,596 - src.data_collection.db_collector - INFO -    année: INTEGER
+2025-08-29 23:11:37,596 - src.data_collection.db_collector - INFO -    tour: INTEGER
+2025-08-29 23:11:37,596 - src.data_collection.db_collector - INFO -    departement: INTEGER
+2025-08-29 23:11:37,596 - src.data_collection.db_collector - INFO -    inscrits: INTEGER
+2025-08-29 23:11:37,596 - src.data_collection.db_collector - INFO -    votants: INTEGER
+2025-08-29 23:11:37,596 - src.data_collection.db_collector - INFO -    abstentions: INTEGER
+2025-08-29 23:11:37,597 - src.data_collection.db_collector - INFO -    exprimes: INTEGER
+2025-08-29 23:11:37,597 - src.data_collection.db_collector - INFO -    nuance: VARCHAR(10) COLLATE "utf8mb4_unicode_ci"
+2025-08-29 23:11:37,597 - src.data_collection.db_collector - INFO -    voix: INTEGER
+2025-08-29 23:11:37,597 - src.data_collection.db_collector - INFO - Mapping des colonnes: {'annee': 'année', 'tour': 'tour', 'departement': 'departement', 'nuance': 'nuance', 'voix': 'voix', 'inscrits': 'inscrits', 'votants': 'votants', 'abstentions': 'abstentions', 'exprimes': 'exprimes'}
+2025-08-29 23:11:37,597 - src.data_collection.db_collector - INFO - 1978 enregistrements dans la table
+2025-08-29 23:11:37,598 - src.data_collection.db_collector - INFO - 484 enregistrements pour l'Occitanie (échantillon)
+2025-08-29 23:11:37,598 - __main__ - INFO - Table utilisée: resultatslegi
+2025-08-29 23:11:37,598 - __main__ - INFO - Colonnes détectées: 10
+2025-08-29 23:11:37,598 - __main__ - INFO - Mapping: {'annee': 'année', 'tour': 'tour', 'departement': 'departement', 'nuance': 'nuance', 'voix': 'voix', 'inscrits': 'inscrits', 'votants': 'votants', 'abstentions': 'abstentions', 'exprimes': 'exprimes'}
+2025-08-29 23:11:37,599 - __main__ - INFO - Récupération des données d'Occitanie...
+2025-08-29 23:11:37,599 - src.data_collection.db_collector - INFO - Exécution de la requête sur votre base...
+2025-08-29 23:11:37,625 - src.data_collection.db_collector - INFO - 1835 enregistrements chargés depuis votre base MySQL
+2025-08-29 23:11:37,625 - src.data_collection.db_collector - INFO -    Années: [1993, 1997, 2002, 2007, 2012, 2017, 2022]
+2025-08-29 23:11:37,626 - src.data_collection.db_collector - INFO -    Départements: 12
+2025-08-29 23:11:37,626 - src.data_collection.db_collector - INFO -    Nuances: 47
+2025-08-29 23:11:37,626 - __main__ - INFO - 1835 enregistrements récupérés
+2025-08-29 23:11:37,626 - __main__ - INFO -    Années: [1993, 1997, 2002, 2007, 2012, 2017, 2022]
+2025-08-29 23:11:37,626 - __main__ - INFO -    Départements: 12
+2025-08-29 23:11:37,626 - __main__ - INFO -    Nuances: 47
+2025-08-29 23:11:37,631 - __main__ - INFO - Données sauvegardées: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\data\raw\elections_occitanie_mysql.csv
+2025-08-29 23:11:37,632 - src.data_collection.db_collector - INFO - 13 élections trouvées dans votre base
+2025-08-29 23:11:37,632 - __main__ - INFO - Élections disponibles: 13
+2025-08-29 23:11:37,633 - __main__ - INFO -    2022 - Tour 1
+2025-08-29 23:11:37,633 - __main__ - INFO -    2022 - Tour 2
+2025-08-29 23:11:37,633 - __main__ - INFO -    2017 - Tour 1
+2025-08-29 23:11:37,633 - __main__ - INFO -    2017 - Tour 2
+2025-08-29 23:11:37,633 - __main__ - INFO -    2012 - Tour 2
+2025-08-29 23:11:37,633 - __main__ - INFO -    2007 - Tour 1
+2025-08-29 23:11:37,633 - __main__ - INFO -    2007 - Tour 2
+2025-08-29 23:11:37,634 - __main__ - INFO -    2002 - Tour 1
+2025-08-29 23:11:37,634 - __main__ - INFO -    2002 - Tour 2
+2025-08-29 23:11:37,634 - __main__ - INFO -    1997 - Tour 1
+2025-08-29 23:11:37,634 - __main__ - INFO -    1997 - Tour 2
+2025-08-29 23:11:37,634 - __main__ - INFO -    1993 - Tour 1
+2025-08-29 23:11:37,634 - __main__ - INFO -    1993 - Tour 2
+2025-08-29 23:11:37,634 - src.data_collection.db_collector - INFO - Connexion MySQL fermée
+2025-08-29 23:11:37,635 - src.data_collection.db_collector - INFO - Engine SQLAlchemy fermé
+2025-08-29 23:11:37,635 - __main__ - INFO - 
+========================================
+2025-08-29 23:11:37,635 - __main__ - INFO - ÉTAPE 2: TRAITEMENT DES DONNÉES
+2025-08-29 23:11:37,635 - __main__ - INFO - ========================================
+2025-08-29 23:11:37,635 - __main__ - INFO - Traitement des données...
+2025-08-29 23:11:37,638 - src.data_processing.election_processor - INFO - ElectionDataProcessor initialisé
+2025-08-29 23:11:37,639 - __main__ - INFO - Processeur de données initialisé
+2025-08-29 23:11:37,648 - __main__ - INFO - Données chargées: 1835 enregistrements
+2025-08-29 23:11:37,649 - src.data_processing.election_processor - INFO - Début du traitement de 1835 enregistrements bruts
+2025-08-29 23:11:37,651 - src.data_processing.election_processor - INFO - Après nettoyage des colonnes: 1835 enregistrements
+2025-08-29 23:11:37,654 - src.data_processing.election_processor - INFO - Validation: 1835 -> 1835 enregistrements
+2025-08-29 23:11:37,654 - src.data_processing.election_processor - INFO - Après validation: 1835 enregistrements
+2025-08-29 23:11:37,659 - src.data_processing.election_processor - INFO - Après enrichissement: 1835 enregistrements
+2025-08-29 23:11:37,660 - src.data_processing.election_processor - INFO - Après calculs: 1835 enregistrements
+2025-08-29 23:11:37,661 - src.data_processing.election_processor - INFO - Suppression doublons: 1835 -> 1835
+2025-08-29 23:11:37,663 - src.data_processing.election_processor - INFO - Traitement terminé: 1835 enregistrements finaux
+2025-08-29 23:11:37,671 - __main__ - INFO - Données traitées sauvegardées: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\data\processed\elections_processed.csv
+2025-08-29 23:11:37,671 - __main__ - INFO - 
+========================================
+2025-08-29 23:11:37,671 - __main__ - INFO - ÉTAPE 3: ANALYSE DES DONNÉES
+2025-08-29 23:11:37,671 - __main__ - INFO - ========================================
+2025-08-29 23:11:37,671 - __main__ - INFO - Analyse des données...
+2025-08-29 23:11:37,682 - __main__ - INFO - Analyse sur 1835 enregistrements
+2025-08-29 23:11:37,683 - __main__ - INFO - Top 5 départements par enregistrements:
+2025-08-29 23:11:37,683 - __main__ - ERROR - Erreur analyse: name 'OCCITANIE_CONFIG' is not defined
+2025-08-29 23:11:37,683 - __main__ - INFO - 
+========================================
+2025-08-29 23:11:37,683 - __main__ - INFO - ÉTAPE 4: MODÈLES PRÉDICTIFS
+2025-08-29 23:11:37,683 - __main__ - INFO - ========================================
+2025-08-29 23:11:37,683 - __main__ - INFO - Modèles prédictifs...
+2025-08-29 23:11:37,683 - __main__ - INFO - Module ML en cours de développement pour vos données MySQL
+2025-08-29 23:11:37,683 - __main__ - INFO - Étape prédictions simulée
+2025-08-29 23:11:37,683 - __main__ - INFO - 
+========================================
+2025-08-29 23:11:37,683 - __main__ - INFO - ÉTAPE 5: VISUALISATIONS
+2025-08-29 23:11:37,683 - __main__ - INFO - ========================================
+2025-08-29 23:11:37,684 - __main__ - INFO - Génération des visualisations...
+2025-08-29 23:11:37,684 - __main__ - INFO - Module visualisation en cours de développement
+2025-08-29 23:11:37,684 - __main__ - INFO - Étape visualisations simulée
+2025-08-29 23:11:37,684 - __main__ - INFO - 
+============================================================
+2025-08-29 23:11:37,684 - __main__ - INFO - PIPELINE TERMINÉ AVEC SUCCÈS !
+2025-08-29 23:11:37,684 - __main__ - INFO - ============================================================
+2025-08-29 23:11:37,684 - __main__ - INFO - Vous pouvez maintenant lancer: streamlit run app.py
+2025-08-29 23:14:11,482 - __main__ - INFO - ============================================================
+2025-08-29 23:14:11,482 - __main__ - INFO - ANALYSE ELECTORALE OCCITANIE - MySQL Edition
+2025-08-29 23:14:11,482 - __main__ - INFO - ============================================================
+2025-08-29 23:14:11,482 - __main__ - INFO - Utilisateur: mgaisnon
+2025-08-29 23:14:11,482 - __main__ - INFO - Date: 2025-08-29 23:11:53
+2025-08-29 23:14:11,620 - __main__ - INFO - Configuration et modules chargés
+2025-08-29 23:14:11,620 - __main__ - INFO - Base MySQL: bddelections sur localhost
+2025-08-29 23:14:11,621 - __main__ - INFO - Départements Occitanie: 13
+2025-08-29 23:14:11,621 - __main__ - INFO - 
+========================================
+2025-08-29 23:14:11,621 - __main__ - INFO - ÉTAPE 1: COLLECTE DES DONNÉES MySQL
+2025-08-29 23:14:11,621 - __main__ - INFO - ========================================
+2025-08-29 23:14:11,621 - __main__ - INFO - Connexion à la base MySQL...
+2025-08-29 23:14:11,621 - src.data_collection.db_collector - INFO - Connexion à votre base MySQL existante...
+2025-08-29 23:14:11,621 - src.data_collection.db_collector - INFO -    Host: localhost:3306
+2025-08-29 23:14:11,621 - src.data_collection.db_collector - INFO -    Base: bddelections
+2025-08-29 23:14:11,621 - src.data_collection.db_collector - INFO -    Utilisateur: root
+2025-08-29 23:14:11,639 - src.data_collection.db_collector - INFO - Connexion MySQL réussie !
+2025-08-29 23:14:11,659 - src.data_collection.db_collector - INFO - Détection automatique de la structure...
+2025-08-29 23:14:11,686 - src.data_collection.db_collector - INFO - Tables trouvées: ['resultatslegi']
+2025-08-29 23:14:11,686 - src.data_collection.db_collector - INFO - Table d'élections détectée: resultatslegi
+2025-08-29 23:14:11,690 - src.data_collection.db_collector - INFO - Structure de resultatslegi:
+2025-08-29 23:14:11,691 - src.data_collection.db_collector - INFO -    id: INTEGER
+2025-08-29 23:14:11,691 - src.data_collection.db_collector - INFO -    année: INTEGER
+2025-08-29 23:14:11,691 - src.data_collection.db_collector - INFO -    tour: INTEGER
+2025-08-29 23:14:11,691 - src.data_collection.db_collector - INFO -    departement: INTEGER
+2025-08-29 23:14:11,691 - src.data_collection.db_collector - INFO -    inscrits: INTEGER
+2025-08-29 23:14:11,691 - src.data_collection.db_collector - INFO -    votants: INTEGER
+2025-08-29 23:14:11,691 - src.data_collection.db_collector - INFO -    abstentions: INTEGER
+2025-08-29 23:14:11,691 - src.data_collection.db_collector - INFO -    exprimes: INTEGER
+2025-08-29 23:14:11,691 - src.data_collection.db_collector - INFO -    nuance: VARCHAR(10) COLLATE "utf8mb4_unicode_ci"
+2025-08-29 23:14:11,692 - src.data_collection.db_collector - INFO -    voix: INTEGER
+2025-08-29 23:14:11,692 - src.data_collection.db_collector - INFO - Mapping des colonnes: {'annee': 'année', 'tour': 'tour', 'departement': 'departement', 'nuance': 'nuance', 'voix': 'voix', 'inscrits': 'inscrits', 'votants': 'votants', 'abstentions': 'abstentions', 'exprimes': 'exprimes'}
+2025-08-29 23:14:11,692 - src.data_collection.db_collector - INFO - 1978 enregistrements dans la table
+2025-08-29 23:14:11,693 - src.data_collection.db_collector - INFO - 484 enregistrements pour l'Occitanie (échantillon)
+2025-08-29 23:14:11,693 - __main__ - INFO - Table utilisée: resultatslegi
+2025-08-29 23:14:11,693 - __main__ - INFO - Colonnes détectées: 10
+2025-08-29 23:14:11,693 - __main__ - INFO - Mapping: {'annee': 'année', 'tour': 'tour', 'departement': 'departement', 'nuance': 'nuance', 'voix': 'voix', 'inscrits': 'inscrits', 'votants': 'votants', 'abstentions': 'abstentions', 'exprimes': 'exprimes'}
+2025-08-29 23:14:11,693 - __main__ - INFO - Récupération des données d'Occitanie...
+2025-08-29 23:14:11,693 - src.data_collection.db_collector - INFO - Exécution de la requête sur votre base...
+2025-08-29 23:14:11,720 - src.data_collection.db_collector - INFO - 1835 enregistrements chargés depuis votre base MySQL
+2025-08-29 23:14:11,720 - src.data_collection.db_collector - INFO -    Années: [1993, 1997, 2002, 2007, 2012, 2017, 2022]
+2025-08-29 23:14:11,720 - src.data_collection.db_collector - INFO -    Départements: 12
+2025-08-29 23:14:11,720 - src.data_collection.db_collector - INFO -    Nuances: 47
+2025-08-29 23:14:11,720 - __main__ - INFO - 1835 enregistrements récupérés
+2025-08-29 23:14:11,720 - __main__ - INFO -    Années: [1993, 1997, 2002, 2007, 2012, 2017, 2022]
+2025-08-29 23:14:11,720 - __main__ - INFO -    Départements: 12
+2025-08-29 23:14:11,721 - __main__ - INFO -    Nuances: 47
+2025-08-29 23:14:11,725 - __main__ - INFO - Données sauvegardées: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\data\raw\elections_occitanie_mysql.csv
+2025-08-29 23:14:11,726 - src.data_collection.db_collector - INFO - 13 élections trouvées dans votre base
+2025-08-29 23:14:11,727 - __main__ - INFO - Élections disponibles: 13
+2025-08-29 23:14:11,727 - __main__ - INFO -    2022 - Tour 1
+2025-08-29 23:14:11,727 - __main__ - INFO -    2022 - Tour 2
+2025-08-29 23:14:11,727 - __main__ - INFO -    2017 - Tour 1
+2025-08-29 23:14:11,727 - __main__ - INFO -    2017 - Tour 2
+2025-08-29 23:14:11,727 - __main__ - INFO -    2012 - Tour 2
+2025-08-29 23:14:11,727 - __main__ - INFO -    2007 - Tour 1
+2025-08-29 23:14:11,727 - __main__ - INFO -    2007 - Tour 2
+2025-08-29 23:14:11,727 - __main__ - INFO -    2002 - Tour 1
+2025-08-29 23:14:11,728 - __main__ - INFO -    2002 - Tour 2
+2025-08-29 23:14:11,728 - __main__ - INFO -    1997 - Tour 1
+2025-08-29 23:14:11,728 - __main__ - INFO -    1997 - Tour 2
+2025-08-29 23:14:11,728 - __main__ - INFO -    1993 - Tour 1
+2025-08-29 23:14:11,728 - __main__ - INFO -    1993 - Tour 2
+2025-08-29 23:14:11,728 - src.data_collection.db_collector - INFO - Connexion MySQL fermée
+2025-08-29 23:14:11,729 - src.data_collection.db_collector - INFO - Engine SQLAlchemy fermé
+2025-08-29 23:14:11,729 - __main__ - INFO - 
+========================================
+2025-08-29 23:14:11,729 - __main__ - INFO - ÉTAPE 2: TRAITEMENT DES DONNÉES
+2025-08-29 23:14:11,729 - __main__ - INFO - ========================================
+2025-08-29 23:14:11,729 - __main__ - INFO - Traitement des données...
+2025-08-29 23:14:11,730 - src.data_processing.election_processor - INFO - ElectionDataProcessor initialisé
+2025-08-29 23:14:11,730 - __main__ - INFO - Processeur de données initialisé
+2025-08-29 23:14:11,739 - __main__ - INFO - Données chargées: 1835 enregistrements
+2025-08-29 23:14:11,739 - src.data_processing.election_processor - INFO - Début du traitement de 1835 enregistrements bruts
+2025-08-29 23:14:11,742 - src.data_processing.election_processor - INFO - Après nettoyage des colonnes: 1835 enregistrements
+2025-08-29 23:14:11,745 - src.data_processing.election_processor - INFO - Validation: 1835 -> 1835 enregistrements
+2025-08-29 23:14:11,745 - src.data_processing.election_processor - INFO - Après validation: 1835 enregistrements
+2025-08-29 23:14:11,749 - src.data_processing.election_processor - INFO - Après enrichissement: 1835 enregistrements
+2025-08-29 23:14:11,750 - src.data_processing.election_processor - INFO - Après calculs: 1835 enregistrements
+2025-08-29 23:14:11,751 - src.data_processing.election_processor - INFO - Suppression doublons: 1835 -> 1835
+2025-08-29 23:14:11,753 - src.data_processing.election_processor - INFO - Traitement terminé: 1835 enregistrements finaux
+2025-08-29 23:14:11,760 - __main__ - INFO - Données traitées sauvegardées: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\data\processed\elections_processed.csv
+2025-08-29 23:14:11,760 - __main__ - INFO - 
+========================================
+2025-08-29 23:14:11,760 - __main__ - INFO - ÉTAPE 3: ANALYSE DES DONNÉES
+2025-08-29 23:14:11,760 - __main__ - INFO - ========================================
+2025-08-29 23:14:11,760 - __main__ - INFO - Analyse des données...
+2025-08-29 23:14:11,771 - __main__ - INFO - Analyse sur 1835 enregistrements
+2025-08-29 23:14:11,772 - __main__ - INFO - Top 5 départements par enregistrements:
+2025-08-29 23:14:11,772 - __main__ - INFO -    30 (Dept 30): 162
+2025-08-29 23:14:11,772 - __main__ - INFO -    34 (Dept 34): 162
+2025-08-29 23:14:11,772 - __main__ - INFO -    31 (Dept 31): 160
+2025-08-29 23:14:11,772 - __main__ - INFO -    66 (Dept 66): 156
+2025-08-29 23:14:11,773 - __main__ - INFO -    82 (Dept 82): 154
+2025-08-29 23:14:11,773 - __main__ - INFO - Top 5 nuances par enregistrements:
+2025-08-29 23:14:11,773 - __main__ - INFO -    SOC: 115
+2025-08-29 23:14:11,773 - __main__ - INFO -    DVD: 115
+2025-08-29 23:14:11,773 - __main__ - INFO -    DVG: 107
+2025-08-29 23:14:11,773 - __main__ - INFO -    DIV: 107
+2025-08-29 23:14:11,773 - __main__ - INFO -    ECO: 106
+2025-08-29 23:14:11,774 - __main__ - INFO - Top 5 familles politiques:
+2025-08-29 23:14:11,774 - __main__ - INFO -    Autres: 1200
+2025-08-29 23:14:11,774 - __main__ - INFO -    Droite: 257
+2025-08-29 23:14:11,774 - __main__ - INFO -    Extrême droite: 160
+2025-08-29 23:14:11,774 - __main__ - INFO -    Gauche: 131
+2025-08-29 23:14:11,774 - __main__ - INFO -    Écologie: 72
+2025-08-29 23:14:11,774 - __main__ - INFO - Taux de participation moyen: 65.19%
+2025-08-29 23:14:11,775 - __main__ - INFO - Répartition urbain/rural:
+2025-08-29 23:14:11,775 - __main__ - INFO -    Rural: 1351
+2025-08-29 23:14:11,775 - __main__ - INFO -    Urbain: 484
+2025-08-29 23:14:11,775 - __main__ - INFO - Analyse terminée
+2025-08-29 23:14:11,775 - __main__ - INFO - 
+========================================
+2025-08-29 23:14:11,775 - __main__ - INFO - ÉTAPE 4: MODÈLES PRÉDICTIFS
+2025-08-29 23:14:11,775 - __main__ - INFO - ========================================
+2025-08-29 23:14:11,775 - __main__ - INFO - Modèles prédictifs...
+2025-08-29 23:14:11,775 - __main__ - INFO - Module ML en cours de développement pour vos données MySQL
+2025-08-29 23:14:11,775 - __main__ - INFO - Étape prédictions simulée
+2025-08-29 23:14:11,775 - __main__ - INFO - 
+========================================
+2025-08-29 23:14:11,776 - __main__ - INFO - ÉTAPE 5: VISUALISATIONS
+2025-08-29 23:14:11,776 - __main__ - INFO - ========================================
+2025-08-29 23:14:11,776 - __main__ - INFO - Génération des visualisations...
+2025-08-29 23:14:11,776 - __main__ - INFO - Module visualisation en cours de développement
+2025-08-29 23:14:11,776 - __main__ - INFO - Étape visualisations simulée
+2025-08-29 23:14:11,776 - __main__ - INFO - 
+============================================================
+2025-08-29 23:14:11,776 - __main__ - INFO - PIPELINE TERMINÉ AVEC SUCCÈS !
+2025-08-29 23:14:11,776 - __main__ - INFO - ============================================================
+2025-08-29 23:14:11,776 - __main__ - INFO - Vous pouvez maintenant lancer: streamlit run app.py
+2025-08-29 23:16:36,199 - __main__ - INFO - ============================================================
+2025-08-29 23:16:36,199 - __main__ - INFO - ANALYSE ELECTORALE OCCITANIE - MySQL Edition
+2025-08-29 23:16:36,199 - __main__ - INFO - ============================================================
+2025-08-29 23:16:36,199 - __main__ - INFO - Utilisateur: mgaisnon
+2025-08-29 23:16:36,200 - __main__ - INFO - Date: 2025-08-29 23:14:34
+2025-08-29 23:16:36,335 - __main__ - INFO - Configuration et modules chargés
+2025-08-29 23:16:36,335 - __main__ - INFO - Base MySQL: bddelections sur localhost
+2025-08-29 23:16:36,336 - __main__ - INFO - Départements Occitanie: 13
+2025-08-29 23:16:36,336 - __main__ - INFO - 
+========================================
+2025-08-29 23:16:36,336 - __main__ - INFO - ÉTAPE 1: COLLECTE DES DONNÉES MySQL
+2025-08-29 23:16:36,336 - __main__ - INFO - ========================================
+2025-08-29 23:16:36,336 - __main__ - INFO - Connexion à la base MySQL...
+2025-08-29 23:16:36,336 - src.data_collection.db_collector - INFO - Connexion à votre base MySQL existante...
+2025-08-29 23:16:36,336 - src.data_collection.db_collector - INFO -    Host: localhost:3306
+2025-08-29 23:16:36,336 - src.data_collection.db_collector - INFO -    Base: bddelections
+2025-08-29 23:16:36,336 - src.data_collection.db_collector - INFO -    Utilisateur: root
+2025-08-29 23:16:36,363 - src.data_collection.db_collector - INFO - Connexion MySQL réussie !
+2025-08-29 23:16:36,385 - src.data_collection.db_collector - INFO - Détection automatique de la structure...
+2025-08-29 23:16:36,410 - src.data_collection.db_collector - INFO - Tables trouvées: ['resultatslegi']
+2025-08-29 23:16:36,411 - src.data_collection.db_collector - INFO - Table d'élections détectée: resultatslegi
+2025-08-29 23:16:36,415 - src.data_collection.db_collector - INFO - Structure de resultatslegi:
+2025-08-29 23:16:36,415 - src.data_collection.db_collector - INFO -    id: INTEGER
+2025-08-29 23:16:36,415 - src.data_collection.db_collector - INFO -    année: INTEGER
+2025-08-29 23:16:36,415 - src.data_collection.db_collector - INFO -    tour: INTEGER
+2025-08-29 23:16:36,416 - src.data_collection.db_collector - INFO -    departement: INTEGER
+2025-08-29 23:16:36,416 - src.data_collection.db_collector - INFO -    inscrits: INTEGER
+2025-08-29 23:16:36,416 - src.data_collection.db_collector - INFO -    votants: INTEGER
+2025-08-29 23:16:36,416 - src.data_collection.db_collector - INFO -    abstentions: INTEGER
+2025-08-29 23:16:36,416 - src.data_collection.db_collector - INFO -    exprimes: INTEGER
+2025-08-29 23:16:36,416 - src.data_collection.db_collector - INFO -    nuance: VARCHAR(10) COLLATE "utf8mb4_unicode_ci"
+2025-08-29 23:16:36,416 - src.data_collection.db_collector - INFO -    voix: INTEGER
+2025-08-29 23:16:36,416 - src.data_collection.db_collector - INFO - Mapping des colonnes: {'annee': 'année', 'tour': 'tour', 'departement': 'departement', 'nuance': 'nuance', 'voix': 'voix', 'inscrits': 'inscrits', 'votants': 'votants', 'abstentions': 'abstentions', 'exprimes': 'exprimes'}
+2025-08-29 23:16:36,417 - src.data_collection.db_collector - INFO - 1978 enregistrements dans la table
+2025-08-29 23:16:36,417 - src.data_collection.db_collector - INFO - 484 enregistrements pour l'Occitanie (échantillon)
+2025-08-29 23:16:36,418 - __main__ - INFO - Table utilisée: resultatslegi
+2025-08-29 23:16:36,418 - __main__ - INFO - Colonnes détectées: 10
+2025-08-29 23:16:36,418 - __main__ - INFO - Mapping: {'annee': 'année', 'tour': 'tour', 'departement': 'departement', 'nuance': 'nuance', 'voix': 'voix', 'inscrits': 'inscrits', 'votants': 'votants', 'abstentions': 'abstentions', 'exprimes': 'exprimes'}
+2025-08-29 23:16:36,418 - __main__ - INFO - Récupération des données d'Occitanie...
+2025-08-29 23:16:36,418 - src.data_collection.db_collector - INFO - Exécution de la requête sur votre base...
+2025-08-29 23:16:36,444 - src.data_collection.db_collector - INFO - 1835 enregistrements chargés depuis votre base MySQL
+2025-08-29 23:16:36,444 - src.data_collection.db_collector - INFO -    Années: [1993, 1997, 2002, 2007, 2012, 2017, 2022]
+2025-08-29 23:16:36,445 - src.data_collection.db_collector - INFO -    Départements: 12
+2025-08-29 23:16:36,445 - src.data_collection.db_collector - INFO -    Nuances: 47
+2025-08-29 23:16:36,445 - __main__ - INFO - 1835 enregistrements récupérés
+2025-08-29 23:16:36,445 - __main__ - INFO -    Années: [1993, 1997, 2002, 2007, 2012, 2017, 2022]
+2025-08-29 23:16:36,445 - __main__ - INFO -    Départements: 12
+2025-08-29 23:16:36,446 - __main__ - INFO -    Nuances: 47
+2025-08-29 23:16:36,450 - __main__ - INFO - Données sauvegardées: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\data\raw\elections_occitanie_mysql.csv
+2025-08-29 23:16:36,452 - src.data_collection.db_collector - INFO - 13 élections trouvées dans votre base
+2025-08-29 23:16:36,452 - __main__ - INFO - Élections disponibles: 13
+2025-08-29 23:16:36,452 - __main__ - INFO -    2022 - Tour 1
+2025-08-29 23:16:36,452 - __main__ - INFO -    2022 - Tour 2
+2025-08-29 23:16:36,452 - __main__ - INFO -    2017 - Tour 1
+2025-08-29 23:16:36,452 - __main__ - INFO -    2017 - Tour 2
+2025-08-29 23:16:36,452 - __main__ - INFO -    2012 - Tour 2
+2025-08-29 23:16:36,452 - __main__ - INFO -    2007 - Tour 1
+2025-08-29 23:16:36,453 - __main__ - INFO -    2007 - Tour 2
+2025-08-29 23:16:36,453 - __main__ - INFO -    2002 - Tour 1
+2025-08-29 23:16:36,453 - __main__ - INFO -    2002 - Tour 2
+2025-08-29 23:16:36,453 - __main__ - INFO -    1997 - Tour 1
+2025-08-29 23:16:36,453 - __main__ - INFO -    1997 - Tour 2
+2025-08-29 23:16:36,453 - __main__ - INFO -    1993 - Tour 1
+2025-08-29 23:16:36,453 - __main__ - INFO -    1993 - Tour 2
+2025-08-29 23:16:36,453 - src.data_collection.db_collector - INFO - Connexion MySQL fermée
+2025-08-29 23:16:36,454 - src.data_collection.db_collector - INFO - Engine SQLAlchemy fermé
+2025-08-29 23:16:36,454 - __main__ - INFO - 
+========================================
+2025-08-29 23:16:36,454 - __main__ - INFO - ÉTAPE 2: TRAITEMENT DES DONNÉES
+2025-08-29 23:16:36,454 - __main__ - INFO - ========================================
+2025-08-29 23:16:36,454 - __main__ - INFO - Traitement des données...
+2025-08-29 23:16:36,455 - src.data_processing.election_processor - INFO - ElectionDataProcessor initialisé
+2025-08-29 23:16:36,455 - __main__ - INFO - Processeur de données initialisé
+2025-08-29 23:16:36,465 - __main__ - INFO - Données chargées: 1835 enregistrements
+2025-08-29 23:16:36,465 - src.data_processing.election_processor - INFO - Début du traitement de 1835 enregistrements bruts
+2025-08-29 23:16:36,467 - src.data_processing.election_processor - INFO - Après nettoyage des colonnes: 1835 enregistrements
+2025-08-29 23:16:36,470 - src.data_processing.election_processor - INFO - Validation: 1835 -> 1835 enregistrements
+2025-08-29 23:16:36,470 - src.data_processing.election_processor - INFO - Après validation: 1835 enregistrements
+2025-08-29 23:16:36,475 - src.data_processing.election_processor - INFO - Après enrichissement: 1835 enregistrements
+2025-08-29 23:16:36,476 - src.data_processing.election_processor - INFO - Après calculs: 1835 enregistrements
+2025-08-29 23:16:36,477 - src.data_processing.election_processor - INFO - Suppression doublons: 1835 -> 1835
+2025-08-29 23:16:36,479 - src.data_processing.election_processor - INFO - Traitement terminé: 1835 enregistrements finaux
+2025-08-29 23:16:36,485 - __main__ - INFO - Données traitées sauvegardées: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\data\processed\elections_processed.csv
+2025-08-29 23:16:36,485 - __main__ - INFO - 
+========================================
+2025-08-29 23:16:36,485 - __main__ - INFO - ÉTAPE 3: ANALYSE DES DONNÉES
+2025-08-29 23:16:36,485 - __main__ - INFO - ========================================
+2025-08-29 23:16:36,485 - __main__ - INFO - Analyse des données...
+2025-08-29 23:16:36,495 - __main__ - INFO - Analyse sur 1835 enregistrements
+2025-08-29 23:16:36,496 - __main__ - INFO - Top 5 départements par enregistrements:
+2025-08-29 23:16:36,496 - __main__ - INFO -    30 (Gard): 162
+2025-08-29 23:16:36,496 - __main__ - INFO -    34 (Hérault): 162
+2025-08-29 23:16:36,496 - __main__ - INFO -    31 (Haute-Garonne): 160
+2025-08-29 23:16:36,496 - __main__ - INFO -    66 (Pyrénées-Orientales): 156
+2025-08-29 23:16:36,497 - __main__ - INFO -    82 (Tarn-et-Garonne): 154
+2025-08-29 23:16:36,497 - __main__ - INFO - Top 5 nuances par enregistrements:
+2025-08-29 23:16:36,497 - __main__ - INFO -    SOC: 115
+2025-08-29 23:16:36,497 - __main__ - INFO -    DVD: 115
+2025-08-29 23:16:36,497 - __main__ - INFO -    DVG: 107
+2025-08-29 23:16:36,497 - __main__ - INFO -    DIV: 107
+2025-08-29 23:16:36,497 - __main__ - INFO -    ECO: 106
+2025-08-29 23:16:36,498 - __main__ - INFO - Top 5 familles politiques:
+2025-08-29 23:16:36,498 - __main__ - INFO -    Autres: 1200
+2025-08-29 23:16:36,498 - __main__ - INFO -    Droite: 257
+2025-08-29 23:16:36,498 - __main__ - INFO -    Extrême droite: 160
+2025-08-29 23:16:36,498 - __main__ - INFO -    Gauche: 131
+2025-08-29 23:16:36,498 - __main__ - INFO -    Écologie: 72
+2025-08-29 23:16:36,498 - __main__ - INFO - Taux de participation moyen: 65.19%
+2025-08-29 23:16:36,498 - __main__ - INFO - Répartition urbain/rural:
+2025-08-29 23:16:36,499 - __main__ - INFO -    Rural: 1351
+2025-08-29 23:16:36,499 - __main__ - INFO -    Urbain: 484
+2025-08-29 23:16:36,499 - __main__ - INFO - Répartition par ancienne région:
+2025-08-29 23:16:36,499 - __main__ - INFO -    Ancien Midi-Pyrénées: 1063
+2025-08-29 23:16:36,499 - __main__ - INFO -    Ancien Languedoc-Roussillon: 772
+2025-08-29 23:16:36,499 - __main__ - INFO - Répartition par année:
+2025-08-29 23:16:36,499 - __main__ - INFO -    1993: 146 enregistrements
+2025-08-29 23:16:36,499 - __main__ - INFO -    1997: 252 enregistrements
+2025-08-29 23:16:36,500 - __main__ - INFO -    2002: 504 enregistrements
+2025-08-29 23:16:36,500 - __main__ - INFO -    2007: 384 enregistrements
+2025-08-29 23:16:36,500 - __main__ - INFO -    2012: 192 enregistrements
+2025-08-29 23:16:36,500 - __main__ - INFO -    2017: 173 enregistrements
+2025-08-29 23:16:36,500 - __main__ - INFO -    2022: 184 enregistrements
+2025-08-29 23:16:36,500 - __main__ - INFO - Analyse terminée avec succès
+2025-08-29 23:16:36,500 - __main__ - INFO - 
+========================================
+2025-08-29 23:16:36,501 - __main__ - INFO - ÉTAPE 4: MODÈLES PRÉDICTIFS
+2025-08-29 23:16:36,501 - __main__ - INFO - ========================================
+2025-08-29 23:16:36,501 - __main__ - INFO - Modèles prédictifs...
+2025-08-29 23:16:36,501 - __main__ - INFO - Module ML en cours de développement pour vos données MySQL
+2025-08-29 23:16:36,501 - __main__ - INFO - Étape prédictions simulée
+2025-08-29 23:16:36,501 - __main__ - INFO - 
+========================================
+2025-08-29 23:16:36,501 - __main__ - INFO - ÉTAPE 5: VISUALISATIONS
+2025-08-29 23:16:36,501 - __main__ - INFO - ========================================
+2025-08-29 23:16:36,501 - __main__ - INFO - Génération des visualisations...
+2025-08-29 23:16:36,501 - __main__ - INFO - Module visualisation en cours de développement
+2025-08-29 23:16:36,501 - __main__ - INFO - Étape visualisations simulée
+2025-08-29 23:16:36,501 - __main__ - INFO - 
+============================================================
+2025-08-29 23:16:36,501 - __main__ - INFO - PIPELINE TERMINÉ AVEC SUCCÈS !
+2025-08-29 23:16:36,501 - __main__ - INFO - ============================================================
+2025-08-29 23:16:36,502 - __main__ - INFO - Vous pouvez maintenant lancer: streamlit run app.py
+2025-08-29 23:17:50,220 - __main__ - INFO - ============================================================
+2025-08-29 23:17:50,221 - __main__ - INFO - ANALYSE ELECTORALE OCCITANIE - MySQL Edition
+2025-08-29 23:17:50,221 - __main__ - INFO - ============================================================
+2025-08-29 23:17:50,221 - __main__ - INFO - Utilisateur: mgaisnon
+2025-08-29 23:17:50,221 - __main__ - INFO - Date: 2025-08-29 23:14:34
+2025-08-29 23:17:50,358 - __main__ - INFO - Configuration et modules chargés
+2025-08-29 23:17:50,358 - __main__ - INFO - Base MySQL: bddelections sur localhost
+2025-08-29 23:17:50,358 - __main__ - INFO - Départements Occitanie: 13
+2025-08-29 23:17:50,358 - __main__ - INFO - 
+========================================
+2025-08-29 23:17:50,358 - __main__ - INFO - ÉTAPE 4: MODÈLES PRÉDICTIFS
+2025-08-29 23:17:50,358 - __main__ - INFO - ========================================
+2025-08-29 23:17:50,359 - __main__ - INFO - Modèles prédictifs...
+2025-08-29 23:17:50,359 - __main__ - INFO - Module ML en cours de développement pour vos données MySQL
+2025-08-29 23:17:50,359 - __main__ - INFO - Étape prédictions simulée
+2025-08-29 23:17:50,359 - __main__ - INFO - 
+============================================================
+2025-08-29 23:17:50,359 - __main__ - INFO - PIPELINE TERMINÉ AVEC SUCCÈS !
+2025-08-29 23:17:50,359 - __main__ - INFO - ============================================================
+2025-08-29 23:17:50,359 - __main__ - INFO - Vous pouvez maintenant lancer: streamlit run app.py
+2025-08-29 23:23:48,723 - __main__ - INFO - ============================================================
+2025-08-29 23:23:48,723 - __main__ - INFO - ANALYSE ELECTORALE OCCITANIE - MySQL Edition
+2025-08-29 23:23:48,723 - __main__ - INFO - ============================================================
+2025-08-29 23:23:48,723 - __main__ - INFO - Utilisateur: mgaisnon
+2025-08-29 23:23:48,723 - __main__ - INFO - Date: 2025-08-29 23:14:34
+2025-08-29 23:23:48,865 - __main__ - INFO - Configuration et modules chargés
+2025-08-29 23:23:48,865 - __main__ - INFO - Base MySQL: bddelections sur localhost
+2025-08-29 23:23:48,865 - __main__ - INFO - Départements Occitanie: 13
+2025-08-29 23:23:48,865 - __main__ - INFO - 
+========================================
+2025-08-29 23:23:48,865 - __main__ - INFO - ÉTAPE 1: COLLECTE DES DONNÉES MySQL
+2025-08-29 23:23:48,866 - __main__ - INFO - ========================================
+2025-08-29 23:23:48,866 - __main__ - INFO - Connexion à la base MySQL...
+2025-08-29 23:23:48,866 - src.data_collection.db_collector - INFO - Connexion à votre base MySQL existante...
+2025-08-29 23:23:48,866 - src.data_collection.db_collector - INFO -    Host: localhost:3306
+2025-08-29 23:23:48,866 - src.data_collection.db_collector - INFO -    Base: bddelections
+2025-08-29 23:23:48,866 - src.data_collection.db_collector - INFO -    Utilisateur: root
+2025-08-29 23:23:48,872 - src.data_collection.db_collector - INFO - Connexion MySQL réussie !
+2025-08-29 23:23:48,892 - src.data_collection.db_collector - INFO - Détection automatique de la structure...
+2025-08-29 23:23:48,912 - src.data_collection.db_collector - INFO - Tables trouvées: ['resultatslegi']
+2025-08-29 23:23:48,912 - src.data_collection.db_collector - INFO - Table d'élections détectée: resultatslegi
+2025-08-29 23:23:48,917 - src.data_collection.db_collector - INFO - Structure de resultatslegi:
+2025-08-29 23:23:48,917 - src.data_collection.db_collector - INFO -    id: INTEGER
+2025-08-29 23:23:48,917 - src.data_collection.db_collector - INFO -    année: INTEGER
+2025-08-29 23:23:48,917 - src.data_collection.db_collector - INFO -    tour: INTEGER
+2025-08-29 23:23:48,917 - src.data_collection.db_collector - INFO -    departement: INTEGER
+2025-08-29 23:23:48,917 - src.data_collection.db_collector - INFO -    inscrits: INTEGER
+2025-08-29 23:23:48,917 - src.data_collection.db_collector - INFO -    votants: INTEGER
+2025-08-29 23:23:48,917 - src.data_collection.db_collector - INFO -    abstentions: INTEGER
+2025-08-29 23:23:48,918 - src.data_collection.db_collector - INFO -    exprimes: INTEGER
+2025-08-29 23:23:48,918 - src.data_collection.db_collector - INFO -    nuance: VARCHAR(10) COLLATE "utf8mb4_unicode_ci"
+2025-08-29 23:23:48,918 - src.data_collection.db_collector - INFO -    voix: INTEGER
+2025-08-29 23:23:48,918 - src.data_collection.db_collector - INFO - Mapping des colonnes: {'annee': 'année', 'tour': 'tour', 'departement': 'departement', 'nuance': 'nuance', 'voix': 'voix', 'inscrits': 'inscrits', 'votants': 'votants', 'abstentions': 'abstentions', 'exprimes': 'exprimes'}
+2025-08-29 23:23:48,919 - src.data_collection.db_collector - INFO - 1978 enregistrements dans la table
+2025-08-29 23:23:48,919 - src.data_collection.db_collector - INFO - 484 enregistrements pour l'Occitanie (échantillon)
+2025-08-29 23:23:48,919 - __main__ - INFO - Table utilisée: resultatslegi
+2025-08-29 23:23:48,919 - __main__ - INFO - Colonnes détectées: 10
+2025-08-29 23:23:48,919 - __main__ - INFO - Mapping: {'annee': 'année', 'tour': 'tour', 'departement': 'departement', 'nuance': 'nuance', 'voix': 'voix', 'inscrits': 'inscrits', 'votants': 'votants', 'abstentions': 'abstentions', 'exprimes': 'exprimes'}
+2025-08-29 23:23:48,919 - __main__ - INFO - Récupération des données d'Occitanie...
+2025-08-29 23:23:48,920 - src.data_collection.db_collector - INFO - Exécution de la requête sur votre base...
+2025-08-29 23:23:48,945 - src.data_collection.db_collector - INFO - 1835 enregistrements chargés depuis votre base MySQL
+2025-08-29 23:23:48,945 - src.data_collection.db_collector - INFO -    Années: [1993, 1997, 2002, 2007, 2012, 2017, 2022]
+2025-08-29 23:23:48,946 - src.data_collection.db_collector - INFO -    Départements: 12
+2025-08-29 23:23:48,946 - src.data_collection.db_collector - INFO -    Nuances: 47
+2025-08-29 23:23:48,946 - __main__ - INFO - 1835 enregistrements récupérés
+2025-08-29 23:23:48,946 - __main__ - INFO -    Années: [1993, 1997, 2002, 2007, 2012, 2017, 2022]
+2025-08-29 23:23:48,946 - __main__ - INFO -    Départements: 12
+2025-08-29 23:23:48,946 - __main__ - INFO -    Nuances: 47
+2025-08-29 23:23:48,951 - __main__ - INFO - Données sauvegardées: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\data\raw\elections_occitanie_mysql.csv
+2025-08-29 23:23:48,952 - src.data_collection.db_collector - INFO - 13 élections trouvées dans votre base
+2025-08-29 23:23:48,952 - __main__ - INFO - Élections disponibles: 13
+2025-08-29 23:23:48,953 - __main__ - INFO -    2022 - Tour 1
+2025-08-29 23:23:48,953 - __main__ - INFO -    2022 - Tour 2
+2025-08-29 23:23:48,953 - __main__ - INFO -    2017 - Tour 1
+2025-08-29 23:23:48,953 - __main__ - INFO -    2017 - Tour 2
+2025-08-29 23:23:48,953 - __main__ - INFO -    2012 - Tour 2
+2025-08-29 23:23:48,953 - __main__ - INFO -    2007 - Tour 1
+2025-08-29 23:23:48,953 - __main__ - INFO -    2007 - Tour 2
+2025-08-29 23:23:48,954 - __main__ - INFO -    2002 - Tour 1
+2025-08-29 23:23:48,954 - __main__ - INFO -    2002 - Tour 2
+2025-08-29 23:23:48,954 - __main__ - INFO -    1997 - Tour 1
+2025-08-29 23:23:48,954 - __main__ - INFO -    1997 - Tour 2
+2025-08-29 23:23:48,954 - __main__ - INFO -    1993 - Tour 1
+2025-08-29 23:23:48,954 - __main__ - INFO -    1993 - Tour 2
+2025-08-29 23:23:48,954 - src.data_collection.db_collector - INFO - Connexion MySQL fermée
+2025-08-29 23:23:48,955 - src.data_collection.db_collector - INFO - Engine SQLAlchemy fermé
+2025-08-29 23:23:48,955 - __main__ - INFO - 
+========================================
+2025-08-29 23:23:48,955 - __main__ - INFO - ÉTAPE 2: TRAITEMENT DES DONNÉES
+2025-08-29 23:23:48,955 - __main__ - INFO - ========================================
+2025-08-29 23:23:48,955 - __main__ - INFO - Traitement des données...
+2025-08-29 23:23:48,956 - src.data_processing.election_processor - INFO - ElectionDataProcessor initialisé
+2025-08-29 23:23:48,957 - __main__ - INFO - Processeur de données initialisé
+2025-08-29 23:23:48,966 - __main__ - INFO - Données chargées: 1835 enregistrements
+2025-08-29 23:23:48,966 - src.data_processing.election_processor - INFO - Début du traitement de 1835 enregistrements bruts
+2025-08-29 23:23:48,969 - src.data_processing.election_processor - INFO - Après nettoyage des colonnes: 1835 enregistrements
+2025-08-29 23:23:48,971 - src.data_processing.election_processor - INFO - Validation: 1835 -> 1835 enregistrements
+2025-08-29 23:23:48,971 - src.data_processing.election_processor - INFO - Après validation: 1835 enregistrements
+2025-08-29 23:23:48,975 - src.data_processing.election_processor - INFO - Après enrichissement: 1835 enregistrements
+2025-08-29 23:23:48,976 - src.data_processing.election_processor - INFO - Après calculs: 1835 enregistrements
+2025-08-29 23:23:48,978 - src.data_processing.election_processor - INFO - Suppression doublons: 1835 -> 1835
+2025-08-29 23:23:48,979 - src.data_processing.election_processor - INFO - Traitement terminé: 1835 enregistrements finaux
+2025-08-29 23:23:48,985 - __main__ - INFO - Données traitées sauvegardées: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\data\processed\elections_processed.csv
+2025-08-29 23:23:48,985 - __main__ - INFO - 
+========================================
+2025-08-29 23:23:48,986 - __main__ - INFO - ÉTAPE 3: ANALYSE DES DONNÉES
+2025-08-29 23:23:48,986 - __main__ - INFO - ========================================
+2025-08-29 23:23:48,986 - __main__ - INFO - Analyse des données...
+2025-08-29 23:23:48,996 - __main__ - INFO - Analyse sur 1835 enregistrements
+2025-08-29 23:23:48,997 - __main__ - INFO - Top 5 départements par enregistrements:
+2025-08-29 23:23:48,997 - __main__ - INFO -    30 (Gard): 162
+2025-08-29 23:23:48,997 - __main__ - INFO -    34 (Hérault): 162
+2025-08-29 23:23:48,997 - __main__ - INFO -    31 (Haute-Garonne): 160
+2025-08-29 23:23:48,997 - __main__ - INFO -    66 (Pyrénées-Orientales): 156
+2025-08-29 23:23:48,997 - __main__ - INFO -    82 (Tarn-et-Garonne): 154
+2025-08-29 23:23:48,998 - __main__ - INFO - Top 5 nuances par enregistrements:
+2025-08-29 23:23:48,998 - __main__ - INFO -    SOC: 115
+2025-08-29 23:23:48,998 - __main__ - INFO -    DVD: 115
+2025-08-29 23:23:48,998 - __main__ - INFO -    DVG: 107
+2025-08-29 23:23:48,998 - __main__ - INFO -    DIV: 107
+2025-08-29 23:23:48,998 - __main__ - INFO -    ECO: 106
+2025-08-29 23:23:48,998 - __main__ - INFO - Top 5 familles politiques:
+2025-08-29 23:23:48,999 - __main__ - INFO -    Autres: 1200
+2025-08-29 23:23:48,999 - __main__ - INFO -    Droite: 257
+2025-08-29 23:23:48,999 - __main__ - INFO -    Extrême droite: 160
+2025-08-29 23:23:48,999 - __main__ - INFO -    Gauche: 131
+2025-08-29 23:23:48,999 - __main__ - INFO -    Écologie: 72
+2025-08-29 23:23:48,999 - __main__ - INFO - Taux de participation moyen: 65.19%
+2025-08-29 23:23:48,999 - __main__ - INFO - Répartition urbain/rural:
+2025-08-29 23:23:49,000 - __main__ - INFO -    Rural: 1351
+2025-08-29 23:23:49,000 - __main__ - INFO -    Urbain: 484
+2025-08-29 23:23:49,000 - __main__ - INFO - Répartition par ancienne région:
+2025-08-29 23:23:49,000 - __main__ - INFO -    Ancien Midi-Pyrénées: 1063
+2025-08-29 23:23:49,000 - __main__ - INFO -    Ancien Languedoc-Roussillon: 772
+2025-08-29 23:23:49,000 - __main__ - INFO - Répartition par année:
+2025-08-29 23:23:49,000 - __main__ - INFO -    1993: 146 enregistrements
+2025-08-29 23:23:49,001 - __main__ - INFO -    1997: 252 enregistrements
+2025-08-29 23:23:49,001 - __main__ - INFO -    2002: 504 enregistrements
+2025-08-29 23:23:49,001 - __main__ - INFO -    2007: 384 enregistrements
+2025-08-29 23:23:49,001 - __main__ - INFO -    2012: 192 enregistrements
+2025-08-29 23:23:49,001 - __main__ - INFO -    2017: 173 enregistrements
+2025-08-29 23:23:49,001 - __main__ - INFO -    2022: 184 enregistrements
+2025-08-29 23:23:49,001 - __main__ - INFO - Analyse terminée avec succès
+2025-08-29 23:23:49,001 - __main__ - INFO - 
+========================================
+2025-08-29 23:23:49,001 - __main__ - INFO - ÉTAPE 4: MODÈLES PRÉDICTIFS
+2025-08-29 23:23:49,001 - __main__ - INFO - ========================================
+2025-08-29 23:23:49,001 - __main__ - INFO - Modèles prédictifs...
+2025-08-29 23:23:49,001 - __main__ - INFO - Module ML en cours de développement pour vos données MySQL
+2025-08-29 23:23:49,001 - __main__ - INFO - Étape prédictions simulée
+2025-08-29 23:23:49,001 - __main__ - INFO - 
+========================================
+2025-08-29 23:23:49,002 - __main__ - INFO - ÉTAPE 5: VISUALISATIONS
+2025-08-29 23:23:49,002 - __main__ - INFO - ========================================
+2025-08-29 23:23:49,002 - __main__ - INFO - Génération des visualisations...
+2025-08-29 23:23:49,002 - __main__ - INFO - Module visualisation en cours de développement
+2025-08-29 23:23:49,002 - __main__ - INFO - Étape visualisations simulée
+2025-08-29 23:23:49,002 - __main__ - INFO - 
+============================================================
+2025-08-29 23:23:49,002 - __main__ - INFO - PIPELINE TERMINÉ AVEC SUCCÈS !
+2025-08-29 23:23:49,002 - __main__ - INFO - ============================================================
+2025-08-29 23:23:49,002 - __main__ - INFO - Vous pouvez maintenant lancer: streamlit run app.py
+2025-08-29 23:26:41,220 - __main__ - INFO - ============================================================
+2025-08-29 23:26:41,220 - __main__ - INFO - ANALYSE ELECTORALE OCCITANIE - MySQL Edition
+2025-08-29 23:26:41,220 - __main__ - INFO - ============================================================
+2025-08-29 23:26:41,220 - __main__ - INFO - Utilisateur: mgaisnon
+2025-08-29 23:26:41,221 - __main__ - INFO - Date: 2025-08-29 23:14:34
+2025-08-29 23:26:41,358 - __main__ - INFO - Configuration et modules chargés
+2025-08-29 23:26:41,359 - __main__ - INFO - Base MySQL: bddelections sur localhost
+2025-08-29 23:26:41,359 - __main__ - INFO - Départements Occitanie: 13
+2025-08-29 23:26:41,359 - __main__ - INFO - 
+========================================
+2025-08-29 23:26:41,359 - __main__ - INFO - ÉTAPE 4: MODÈLES PRÉDICTIFS
+2025-08-29 23:26:41,359 - __main__ - INFO - ========================================
+2025-08-29 23:26:41,359 - __main__ - INFO - Modèles prédictifs...
+2025-08-29 23:26:41,359 - __main__ - INFO - Module ML en cours de développement pour vos données MySQL
+2025-08-29 23:26:41,359 - __main__ - INFO - Étape prédictions simulée
+2025-08-29 23:26:41,359 - __main__ - INFO - 
+============================================================
+2025-08-29 23:26:41,359 - __main__ - INFO - PIPELINE TERMINÉ AVEC SUCCÈS !
+2025-08-29 23:26:41,359 - __main__ - INFO - ============================================================
+2025-08-29 23:26:41,359 - __main__ - INFO - Vous pouvez maintenant lancer: streamlit run app.py
+2025-08-29 23:28:27,593 - __main__ - INFO - ============================================================
+2025-08-29 23:28:27,593 - __main__ - INFO - ANALYSE ELECTORALE OCCITANIE - MySQL Edition
+2025-08-29 23:28:27,593 - __main__ - INFO - ============================================================
+2025-08-29 23:28:27,593 - __main__ - INFO - Utilisateur: mgaisnon
+2025-08-29 23:28:27,593 - __main__ - INFO - Date: 2025-08-29 23:14:34
+2025-08-29 23:28:27,731 - __main__ - INFO - Configuration et modules chargés
+2025-08-29 23:28:27,731 - __main__ - INFO - Base MySQL: bddelections sur localhost
+2025-08-29 23:28:27,731 - __main__ - INFO - Départements Occitanie: 13
+2025-08-29 23:28:27,731 - __main__ - INFO - 
+========================================
+2025-08-29 23:28:27,731 - __main__ - INFO - ÉTAPE 1: COLLECTE DES DONNÉES MySQL
+2025-08-29 23:28:27,731 - __main__ - INFO - ========================================
+2025-08-29 23:28:27,732 - __main__ - INFO - Connexion à la base MySQL...
+2025-08-29 23:28:27,732 - src.data_collection.db_collector - INFO - Connexion à votre base MySQL existante...
+2025-08-29 23:28:27,732 - src.data_collection.db_collector - INFO -    Host: localhost:3306
+2025-08-29 23:28:27,732 - src.data_collection.db_collector - INFO -    Base: bddelections
+2025-08-29 23:28:27,732 - src.data_collection.db_collector - INFO -    Utilisateur: root
+2025-08-29 23:28:27,758 - src.data_collection.db_collector - INFO - Connexion MySQL réussie !
+2025-08-29 23:28:27,779 - src.data_collection.db_collector - INFO - Détection automatique de la structure...
+2025-08-29 23:28:27,806 - src.data_collection.db_collector - INFO - Tables trouvées: ['resultatslegi']
+2025-08-29 23:28:27,806 - src.data_collection.db_collector - INFO - Table d'élections détectée: resultatslegi
+2025-08-29 23:28:27,810 - src.data_collection.db_collector - INFO - Structure de resultatslegi:
+2025-08-29 23:28:27,810 - src.data_collection.db_collector - INFO -    id: INTEGER
+2025-08-29 23:28:27,811 - src.data_collection.db_collector - INFO -    année: INTEGER
+2025-08-29 23:28:27,811 - src.data_collection.db_collector - INFO -    tour: INTEGER
+2025-08-29 23:28:27,811 - src.data_collection.db_collector - INFO -    departement: INTEGER
+2025-08-29 23:28:27,811 - src.data_collection.db_collector - INFO -    inscrits: INTEGER
+2025-08-29 23:28:27,812 - src.data_collection.db_collector - INFO -    votants: INTEGER
+2025-08-29 23:28:27,812 - src.data_collection.db_collector - INFO -    abstentions: INTEGER
+2025-08-29 23:28:27,812 - src.data_collection.db_collector - INFO -    exprimes: INTEGER
+2025-08-29 23:28:27,812 - src.data_collection.db_collector - INFO -    nuance: VARCHAR(10) COLLATE "utf8mb4_unicode_ci"
+2025-08-29 23:28:27,812 - src.data_collection.db_collector - INFO -    voix: INTEGER
+2025-08-29 23:28:27,812 - src.data_collection.db_collector - INFO - Mapping des colonnes: {'annee': 'année', 'tour': 'tour', 'departement': 'departement', 'nuance': 'nuance', 'voix': 'voix', 'inscrits': 'inscrits', 'votants': 'votants', 'abstentions': 'abstentions', 'exprimes': 'exprimes'}
+2025-08-29 23:28:27,813 - src.data_collection.db_collector - INFO - 1978 enregistrements dans la table
+2025-08-29 23:28:27,813 - src.data_collection.db_collector - INFO - 484 enregistrements pour l'Occitanie (échantillon)
+2025-08-29 23:28:27,813 - __main__ - INFO - Table utilisée: resultatslegi
+2025-08-29 23:28:27,813 - __main__ - INFO - Colonnes détectées: 10
+2025-08-29 23:28:27,813 - __main__ - INFO - Mapping: {'annee': 'année', 'tour': 'tour', 'departement': 'departement', 'nuance': 'nuance', 'voix': 'voix', 'inscrits': 'inscrits', 'votants': 'votants', 'abstentions': 'abstentions', 'exprimes': 'exprimes'}
+2025-08-29 23:28:27,813 - __main__ - INFO - Récupération des données d'Occitanie...
+2025-08-29 23:28:27,813 - src.data_collection.db_collector - INFO - Exécution de la requête sur votre base...
+2025-08-29 23:28:27,839 - src.data_collection.db_collector - INFO - 1835 enregistrements chargés depuis votre base MySQL
+2025-08-29 23:28:27,840 - src.data_collection.db_collector - INFO -    Années: [1993, 1997, 2002, 2007, 2012, 2017, 2022]
+2025-08-29 23:28:27,840 - src.data_collection.db_collector - INFO -    Départements: 12
+2025-08-29 23:28:27,840 - src.data_collection.db_collector - INFO -    Nuances: 47
+2025-08-29 23:28:27,840 - __main__ - INFO - 1835 enregistrements récupérés
+2025-08-29 23:28:27,840 - __main__ - INFO -    Années: [1993, 1997, 2002, 2007, 2012, 2017, 2022]
+2025-08-29 23:28:27,841 - __main__ - INFO -    Départements: 12
+2025-08-29 23:28:27,841 - __main__ - INFO -    Nuances: 47
+2025-08-29 23:28:27,845 - __main__ - INFO - Données sauvegardées: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\data\raw\elections_occitanie_mysql.csv
+2025-08-29 23:28:27,847 - src.data_collection.db_collector - INFO - 13 élections trouvées dans votre base
+2025-08-29 23:28:27,847 - __main__ - INFO - Élections disponibles: 13
+2025-08-29 23:28:27,847 - __main__ - INFO -    2022 - Tour 1
+2025-08-29 23:28:27,847 - __main__ - INFO -    2022 - Tour 2
+2025-08-29 23:28:27,847 - __main__ - INFO -    2017 - Tour 1
+2025-08-29 23:28:27,847 - __main__ - INFO -    2017 - Tour 2
+2025-08-29 23:28:27,847 - __main__ - INFO -    2012 - Tour 2
+2025-08-29 23:28:27,848 - __main__ - INFO -    2007 - Tour 1
+2025-08-29 23:28:27,848 - __main__ - INFO -    2007 - Tour 2
+2025-08-29 23:28:27,848 - __main__ - INFO -    2002 - Tour 1
+2025-08-29 23:28:27,848 - __main__ - INFO -    2002 - Tour 2
+2025-08-29 23:28:27,848 - __main__ - INFO -    1997 - Tour 1
+2025-08-29 23:28:27,848 - __main__ - INFO -    1997 - Tour 2
+2025-08-29 23:28:27,848 - __main__ - INFO -    1993 - Tour 1
+2025-08-29 23:28:27,848 - __main__ - INFO -    1993 - Tour 2
+2025-08-29 23:28:27,849 - src.data_collection.db_collector - INFO - Connexion MySQL fermée
+2025-08-29 23:28:27,849 - src.data_collection.db_collector - INFO - Engine SQLAlchemy fermé
+2025-08-29 23:28:27,849 - __main__ - INFO - 
+========================================
+2025-08-29 23:28:27,849 - __main__ - INFO - ÉTAPE 2: TRAITEMENT DES DONNÉES
+2025-08-29 23:28:27,849 - __main__ - INFO - ========================================
+2025-08-29 23:28:27,849 - __main__ - INFO - Traitement des données...
+2025-08-29 23:28:27,851 - src.data_processing.election_processor - INFO - ElectionDataProcessor initialisé
+2025-08-29 23:28:27,851 - __main__ - INFO - Processeur de données initialisé
+2025-08-29 23:28:27,860 - __main__ - INFO - Données chargées: 1835 enregistrements
+2025-08-29 23:28:27,860 - src.data_processing.election_processor - INFO - Début du traitement de 1835 enregistrements bruts
+2025-08-29 23:28:27,863 - src.data_processing.election_processor - INFO - Après nettoyage des colonnes: 1835 enregistrements
+2025-08-29 23:28:27,865 - src.data_processing.election_processor - INFO - Validation: 1835 -> 1835 enregistrements
+2025-08-29 23:28:27,865 - src.data_processing.election_processor - INFO - Après validation: 1835 enregistrements
+2025-08-29 23:28:27,871 - src.data_processing.election_processor - INFO - Après enrichissement: 1835 enregistrements
+2025-08-29 23:28:27,872 - src.data_processing.election_processor - INFO - Après calculs: 1835 enregistrements
+2025-08-29 23:28:27,873 - src.data_processing.election_processor - INFO - Suppression doublons: 1835 -> 1835
+2025-08-29 23:28:27,875 - src.data_processing.election_processor - INFO - Traitement terminé: 1835 enregistrements finaux
+2025-08-29 23:28:27,882 - __main__ - INFO - Données traitées sauvegardées: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\data\processed\elections_processed.csv
+2025-08-29 23:28:27,882 - __main__ - INFO - 
+========================================
+2025-08-29 23:28:27,882 - __main__ - INFO - ÉTAPE 3: ANALYSE DES DONNÉES
+2025-08-29 23:28:27,882 - __main__ - INFO - ========================================
+2025-08-29 23:28:27,882 - __main__ - INFO - Analyse des données...
+2025-08-29 23:28:27,893 - __main__ - INFO - Analyse sur 1835 enregistrements
+2025-08-29 23:28:27,894 - __main__ - INFO - Top 5 départements par enregistrements:
+2025-08-29 23:28:27,894 - __main__ - INFO -    30 (Gard): 162
+2025-08-29 23:28:27,894 - __main__ - INFO -    34 (Hérault): 162
+2025-08-29 23:28:27,894 - __main__ - INFO -    31 (Haute-Garonne): 160
+2025-08-29 23:28:27,894 - __main__ - INFO -    66 (Pyrénées-Orientales): 156
+2025-08-29 23:28:27,894 - __main__ - INFO -    82 (Tarn-et-Garonne): 154
+2025-08-29 23:28:27,894 - __main__ - INFO - Top 5 nuances par enregistrements:
+2025-08-29 23:28:27,894 - __main__ - INFO -    SOC: 115
+2025-08-29 23:28:27,894 - __main__ - INFO -    DVD: 115
+2025-08-29 23:28:27,894 - __main__ - INFO -    DVG: 107
+2025-08-29 23:28:27,894 - __main__ - INFO -    DIV: 107
+2025-08-29 23:28:27,894 - __main__ - INFO -    ECO: 106
+2025-08-29 23:28:27,895 - __main__ - INFO - Top 5 familles politiques:
+2025-08-29 23:28:27,895 - __main__ - INFO -    Autres: 1200
+2025-08-29 23:28:27,895 - __main__ - INFO -    Droite: 257
+2025-08-29 23:28:27,895 - __main__ - INFO -    Extrême droite: 160
+2025-08-29 23:28:27,895 - __main__ - INFO -    Gauche: 131
+2025-08-29 23:28:27,895 - __main__ - INFO -    Écologie: 72
+2025-08-29 23:28:27,896 - __main__ - INFO - Taux de participation moyen: 65.19%
+2025-08-29 23:28:27,896 - __main__ - INFO - Répartition urbain/rural:
+2025-08-29 23:28:27,896 - __main__ - INFO -    Rural: 1351
+2025-08-29 23:28:27,896 - __main__ - INFO -    Urbain: 484
+2025-08-29 23:28:27,896 - __main__ - INFO - Répartition par ancienne région:
+2025-08-29 23:28:27,897 - __main__ - INFO -    Ancien Midi-Pyrénées: 1063
+2025-08-29 23:28:27,897 - __main__ - INFO -    Ancien Languedoc-Roussillon: 772
+2025-08-29 23:28:27,897 - __main__ - INFO - Répartition par année:
+2025-08-29 23:28:27,897 - __main__ - INFO -    1993: 146 enregistrements
+2025-08-29 23:28:27,897 - __main__ - INFO -    1997: 252 enregistrements
+2025-08-29 23:28:27,897 - __main__ - INFO -    2002: 504 enregistrements
+2025-08-29 23:28:27,897 - __main__ - INFO -    2007: 384 enregistrements
+2025-08-29 23:28:27,897 - __main__ - INFO -    2012: 192 enregistrements
+2025-08-29 23:28:27,897 - __main__ - INFO -    2017: 173 enregistrements
+2025-08-29 23:28:27,897 - __main__ - INFO -    2022: 184 enregistrements
+2025-08-29 23:28:27,898 - __main__ - INFO - Analyse terminée avec succès
+2025-08-29 23:28:27,898 - __main__ - INFO - 
+========================================
+2025-08-29 23:28:27,898 - __main__ - INFO - ÉTAPE 4: MODÈLES PRÉDICTIFS
+2025-08-29 23:28:27,898 - __main__ - INFO - ========================================
+2025-08-29 23:28:27,898 - __main__ - INFO - Modèles prédictifs...
+2025-08-29 23:28:28,459 - __main__ - ERROR - Module ML non trouvé: cannot import name 'train_election_models' from 'src.models.election_models' (C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\src\models\election_models.py)
+2025-08-29 23:28:28,459 - __main__ - INFO - Créez d'abord src/models/election_models.py
+2025-08-29 23:28:28,459 - __main__ - INFO - 
+========================================
+2025-08-29 23:28:28,459 - __main__ - INFO - ÉTAPE 5: VISUALISATIONS
+2025-08-29 23:28:28,460 - __main__ - INFO - ========================================
+2025-08-29 23:28:28,460 - __main__ - ERROR - Erreur générale: name 'visualize_data' is not defined
+2025-08-29 23:28:28,460 - __main__ - ERROR - Traceback (most recent call last):
+  File "C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\main.py", line 88, in main
+    visualize_data()
+NameError: name 'visualize_data' is not defined
+
+2025-08-29 23:32:05,419 - __main__ - INFO - ============================================================
+2025-08-29 23:32:05,419 - __main__ - INFO - ANALYSE ELECTORALE OCCITANIE - MySQL Edition
+2025-08-29 23:32:05,419 - __main__ - INFO - ============================================================
+2025-08-29 23:32:05,420 - __main__ - INFO - Utilisateur: mgaisnon
+2025-08-29 23:32:05,420 - __main__ - INFO - Date: 2025-08-29 23:14:34
+2025-08-29 23:32:05,554 - __main__ - INFO - Configuration et modules chargés
+2025-08-29 23:32:05,554 - __main__ - INFO - Base MySQL: bddelections sur localhost
+2025-08-29 23:32:05,554 - __main__ - INFO - Départements Occitanie: 13
+2025-08-29 23:32:05,554 - __main__ - INFO - 
+========================================
+2025-08-29 23:32:05,554 - __main__ - INFO - ÉTAPE 1: COLLECTE DES DONNÉES MySQL
+2025-08-29 23:32:05,554 - __main__ - INFO - ========================================
+2025-08-29 23:32:05,554 - __main__ - INFO - Connexion à la base MySQL...
+2025-08-29 23:32:05,554 - src.data_collection.db_collector - INFO - Connexion à votre base MySQL existante...
+2025-08-29 23:32:05,554 - src.data_collection.db_collector - INFO -    Host: localhost:3306
+2025-08-29 23:32:05,555 - src.data_collection.db_collector - INFO -    Base: bddelections
+2025-08-29 23:32:05,555 - src.data_collection.db_collector - INFO -    Utilisateur: root
+2025-08-29 23:32:05,561 - src.data_collection.db_collector - INFO - Connexion MySQL réussie !
+2025-08-29 23:32:05,580 - src.data_collection.db_collector - INFO - Détection automatique de la structure...
+2025-08-29 23:32:05,603 - src.data_collection.db_collector - INFO - Tables trouvées: ['resultatslegi']
+2025-08-29 23:32:05,603 - src.data_collection.db_collector - INFO - Table d'élections détectée: resultatslegi
+2025-08-29 23:32:05,608 - src.data_collection.db_collector - INFO - Structure de resultatslegi:
+2025-08-29 23:32:05,608 - src.data_collection.db_collector - INFO -    id: INTEGER
+2025-08-29 23:32:05,608 - src.data_collection.db_collector - INFO -    année: INTEGER
+2025-08-29 23:32:05,608 - src.data_collection.db_collector - INFO -    tour: INTEGER
+2025-08-29 23:32:05,608 - src.data_collection.db_collector - INFO -    departement: INTEGER
+2025-08-29 23:32:05,608 - src.data_collection.db_collector - INFO -    inscrits: INTEGER
+2025-08-29 23:32:05,608 - src.data_collection.db_collector - INFO -    votants: INTEGER
+2025-08-29 23:32:05,609 - src.data_collection.db_collector - INFO -    abstentions: INTEGER
+2025-08-29 23:32:05,609 - src.data_collection.db_collector - INFO -    exprimes: INTEGER
+2025-08-29 23:32:05,609 - src.data_collection.db_collector - INFO -    nuance: VARCHAR(10) COLLATE "utf8mb4_unicode_ci"
+2025-08-29 23:32:05,609 - src.data_collection.db_collector - INFO -    voix: INTEGER
+2025-08-29 23:32:05,609 - src.data_collection.db_collector - INFO - Mapping des colonnes: {'annee': 'année', 'tour': 'tour', 'departement': 'departement', 'nuance': 'nuance', 'voix': 'voix', 'inscrits': 'inscrits', 'votants': 'votants', 'abstentions': 'abstentions', 'exprimes': 'exprimes'}
+2025-08-29 23:32:05,610 - src.data_collection.db_collector - INFO - 1978 enregistrements dans la table
+2025-08-29 23:32:05,610 - src.data_collection.db_collector - INFO - 484 enregistrements pour l'Occitanie (échantillon)
+2025-08-29 23:32:05,610 - __main__ - INFO - Table utilisée: resultatslegi
+2025-08-29 23:32:05,611 - __main__ - INFO - Colonnes détectées: 10
+2025-08-29 23:32:05,611 - __main__ - INFO - Mapping: {'annee': 'année', 'tour': 'tour', 'departement': 'departement', 'nuance': 'nuance', 'voix': 'voix', 'inscrits': 'inscrits', 'votants': 'votants', 'abstentions': 'abstentions', 'exprimes': 'exprimes'}
+2025-08-29 23:32:05,611 - __main__ - INFO - Récupération des données d'Occitanie...
+2025-08-29 23:32:05,611 - src.data_collection.db_collector - INFO - Exécution de la requête sur votre base...
+2025-08-29 23:32:05,636 - src.data_collection.db_collector - INFO - 1835 enregistrements chargés depuis votre base MySQL
+2025-08-29 23:32:05,636 - src.data_collection.db_collector - INFO -    Années: [1993, 1997, 2002, 2007, 2012, 2017, 2022]
+2025-08-29 23:32:05,637 - src.data_collection.db_collector - INFO -    Départements: 12
+2025-08-29 23:32:05,637 - src.data_collection.db_collector - INFO -    Nuances: 47
+2025-08-29 23:32:05,637 - __main__ - INFO - 1835 enregistrements récupérés
+2025-08-29 23:32:05,637 - __main__ - INFO -    Années: [1993, 1997, 2002, 2007, 2012, 2017, 2022]
+2025-08-29 23:32:05,637 - __main__ - INFO -    Départements: 12
+2025-08-29 23:32:05,637 - __main__ - INFO -    Nuances: 47
+2025-08-29 23:32:05,641 - __main__ - INFO - Données sauvegardées: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\data\raw\elections_occitanie_mysql.csv
+2025-08-29 23:32:05,643 - src.data_collection.db_collector - INFO - 13 élections trouvées dans votre base
+2025-08-29 23:32:05,643 - __main__ - INFO - Élections disponibles: 13
+2025-08-29 23:32:05,643 - __main__ - INFO -    2022 - Tour 1
+2025-08-29 23:32:05,644 - __main__ - INFO -    2022 - Tour 2
+2025-08-29 23:32:05,644 - __main__ - INFO -    2017 - Tour 1
+2025-08-29 23:32:05,644 - __main__ - INFO -    2017 - Tour 2
+2025-08-29 23:32:05,644 - __main__ - INFO -    2012 - Tour 2
+2025-08-29 23:32:05,644 - __main__ - INFO -    2007 - Tour 1
+2025-08-29 23:32:05,644 - __main__ - INFO -    2007 - Tour 2
+2025-08-29 23:32:05,644 - __main__ - INFO -    2002 - Tour 1
+2025-08-29 23:32:05,644 - __main__ - INFO -    2002 - Tour 2
+2025-08-29 23:32:05,645 - __main__ - INFO -    1997 - Tour 1
+2025-08-29 23:32:05,645 - __main__ - INFO -    1997 - Tour 2
+2025-08-29 23:32:05,645 - __main__ - INFO -    1993 - Tour 1
+2025-08-29 23:32:05,645 - __main__ - INFO -    1993 - Tour 2
+2025-08-29 23:32:05,645 - src.data_collection.db_collector - INFO - Connexion MySQL fermée
+2025-08-29 23:32:05,646 - src.data_collection.db_collector - INFO - Engine SQLAlchemy fermé
+2025-08-29 23:32:05,646 - __main__ - INFO - 
+========================================
+2025-08-29 23:32:05,646 - __main__ - INFO - ÉTAPE 2: TRAITEMENT DES DONNÉES
+2025-08-29 23:32:05,646 - __main__ - INFO - ========================================
+2025-08-29 23:32:05,646 - __main__ - INFO - Traitement des données...
+2025-08-29 23:32:05,657 - src.data_processing.election_processor - INFO - ElectionDataProcessor initialisé
+2025-08-29 23:32:05,657 - __main__ - INFO - Processeur de données initialisé
+2025-08-29 23:32:05,665 - __main__ - INFO - Données chargées: 1835 enregistrements
+2025-08-29 23:32:05,665 - src.data_processing.election_processor - INFO - Début du traitement de 1835 enregistrements bruts
+2025-08-29 23:32:05,668 - src.data_processing.election_processor - INFO - Après nettoyage des colonnes: 1835 enregistrements
+2025-08-29 23:32:05,671 - src.data_processing.election_processor - INFO - Validation: 1835 -> 1835 enregistrements
+2025-08-29 23:32:05,671 - src.data_processing.election_processor - INFO - Après validation: 1835 enregistrements
+2025-08-29 23:32:05,675 - src.data_processing.election_processor - INFO - Après enrichissement: 1835 enregistrements
+2025-08-29 23:32:05,676 - src.data_processing.election_processor - INFO - Après calculs: 1835 enregistrements
+2025-08-29 23:32:05,677 - src.data_processing.election_processor - INFO - Suppression doublons: 1835 -> 1835
+2025-08-29 23:32:05,679 - src.data_processing.election_processor - INFO - Traitement terminé: 1835 enregistrements finaux
+2025-08-29 23:32:05,685 - __main__ - INFO - Données traitées sauvegardées: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\data\processed\elections_processed.csv
+2025-08-29 23:32:05,686 - __main__ - INFO - 
+========================================
+2025-08-29 23:32:05,686 - __main__ - INFO - ÉTAPE 3: ANALYSE DES DONNÉES
+2025-08-29 23:32:05,686 - __main__ - INFO - ========================================
+2025-08-29 23:32:05,686 - __main__ - INFO - Analyse des données...
+2025-08-29 23:32:05,696 - __main__ - INFO - Analyse sur 1835 enregistrements
+2025-08-29 23:32:05,697 - __main__ - INFO - Top 5 départements par enregistrements:
+2025-08-29 23:32:05,697 - __main__ - INFO -    30 (Gard): 162
+2025-08-29 23:32:05,697 - __main__ - INFO -    34 (Hérault): 162
+2025-08-29 23:32:05,697 - __main__ - INFO -    31 (Haute-Garonne): 160
+2025-08-29 23:32:05,697 - __main__ - INFO -    66 (Pyrénées-Orientales): 156
+2025-08-29 23:32:05,697 - __main__ - INFO -    82 (Tarn-et-Garonne): 154
+2025-08-29 23:32:05,697 - __main__ - INFO - Top 5 nuances par enregistrements:
+2025-08-29 23:32:05,698 - __main__ - INFO -    SOC: 115
+2025-08-29 23:32:05,698 - __main__ - INFO -    DVD: 115
+2025-08-29 23:32:05,698 - __main__ - INFO -    DVG: 107
+2025-08-29 23:32:05,698 - __main__ - INFO -    DIV: 107
+2025-08-29 23:32:05,698 - __main__ - INFO -    ECO: 106
+2025-08-29 23:32:05,698 - __main__ - INFO - Top 5 familles politiques:
+2025-08-29 23:32:05,698 - __main__ - INFO -    Autres: 1200
+2025-08-29 23:32:05,698 - __main__ - INFO -    Droite: 257
+2025-08-29 23:32:05,699 - __main__ - INFO -    Extrême droite: 160
+2025-08-29 23:32:05,699 - __main__ - INFO -    Gauche: 131
+2025-08-29 23:32:05,699 - __main__ - INFO -    Écologie: 72
+2025-08-29 23:32:05,699 - __main__ - INFO - Taux de participation moyen: 65.19%
+2025-08-29 23:32:05,699 - __main__ - INFO - Répartition urbain/rural:
+2025-08-29 23:32:05,699 - __main__ - INFO -    Rural: 1351
+2025-08-29 23:32:05,699 - __main__ - INFO -    Urbain: 484
+2025-08-29 23:32:05,700 - __main__ - INFO - Répartition par ancienne région:
+2025-08-29 23:32:05,700 - __main__ - INFO -    Ancien Midi-Pyrénées: 1063
+2025-08-29 23:32:05,700 - __main__ - INFO -    Ancien Languedoc-Roussillon: 772
+2025-08-29 23:32:05,700 - __main__ - INFO - Répartition par année:
+2025-08-29 23:32:05,700 - __main__ - INFO -    1993: 146 enregistrements
+2025-08-29 23:32:05,700 - __main__ - INFO -    1997: 252 enregistrements
+2025-08-29 23:32:05,700 - __main__ - INFO -    2002: 504 enregistrements
+2025-08-29 23:32:05,700 - __main__ - INFO -    2007: 384 enregistrements
+2025-08-29 23:32:05,701 - __main__ - INFO -    2012: 192 enregistrements
+2025-08-29 23:32:05,701 - __main__ - INFO -    2017: 173 enregistrements
+2025-08-29 23:32:05,701 - __main__ - INFO -    2022: 184 enregistrements
+2025-08-29 23:32:05,701 - __main__ - INFO - Analyse terminée avec succès
+2025-08-29 23:32:05,701 - __main__ - INFO - 
+========================================
+2025-08-29 23:32:05,701 - __main__ - INFO - ÉTAPE 4: MODÈLES PRÉDICTIFS
+2025-08-29 23:32:05,701 - __main__ - INFO - ========================================
+2025-08-29 23:32:05,701 - __main__ - INFO - Modèles prédictifs...
+2025-08-29 23:32:06,255 - __main__ - ERROR - Module ML non trouvé: cannot import name 'train_election_models' from 'src.models.election_models' (C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\src\models\election_models.py)
+2025-08-29 23:32:06,255 - __main__ - INFO - Créez d'abord src/models/election_models.py
+2025-08-29 23:32:06,255 - __main__ - INFO - 
+========================================
+2025-08-29 23:32:06,255 - __main__ - INFO - ÉTAPE 5: VISUALISATIONS
+2025-08-29 23:32:06,255 - __main__ - INFO - ========================================
+2025-08-29 23:32:06,255 - __main__ - INFO - Génération des visualisations...
+2025-08-29 23:32:06,258 - __main__ - INFO - Données pour visualisation: 1835 enregistrements
+2025-08-29 23:32:06,259 - __main__ - INFO - Top 3 familles politiques pour viz:
+2025-08-29 23:32:06,259 - __main__ - INFO -   Autres: 1200
+2025-08-29 23:32:06,259 - __main__ - INFO -   Droite: 257
+2025-08-29 23:32:06,259 - __main__ - INFO -   Extrême droite: 160
+2025-08-29 23:32:06,259 - __main__ - INFO - Participation moyenne pour viz: 65.19%
+2025-08-29 23:32:06,259 - __main__ - INFO - Données prêtes pour Streamlit
+2025-08-29 23:32:06,260 - __main__ - INFO - Visualisations disponibles dans l'interface web
+2025-08-29 23:32:06,260 - __main__ - INFO - Étape visualisations terminée
+2025-08-29 23:32:06,260 - __main__ - INFO - 
+============================================================
+2025-08-29 23:32:06,260 - __main__ - INFO - PIPELINE TERMINÉ AVEC SUCCÈS !
+2025-08-29 23:32:06,260 - __main__ - INFO - ============================================================
+2025-08-29 23:32:06,260 - __main__ - INFO - Vous pouvez maintenant lancer: streamlit run app.py
+2025-08-29 23:37:30,940 - __main__ - INFO - ============================================================
+2025-08-29 23:37:30,940 - __main__ - INFO - ANALYSE ELECTORALE OCCITANIE - MySQL Edition
+2025-08-29 23:37:30,941 - __main__ - INFO - ============================================================
+2025-08-29 23:37:30,941 - __main__ - INFO - Utilisateur: mgaisnon
+2025-08-29 23:37:30,941 - __main__ - INFO - Date: 2025-08-29 23:14:34
+2025-08-29 23:37:31,074 - __main__ - INFO - Configuration et modules chargés
+2025-08-29 23:37:31,074 - __main__ - INFO - Base MySQL: bddelections sur localhost
+2025-08-29 23:37:31,074 - __main__ - INFO - Départements Occitanie: 13
+2025-08-29 23:37:31,074 - __main__ - INFO - 
+========================================
+2025-08-29 23:37:31,074 - __main__ - INFO - ÉTAPE 4: MODÈLES PRÉDICTIFS
+2025-08-29 23:37:31,074 - __main__ - INFO - ========================================
+2025-08-29 23:37:31,074 - __main__ - INFO - Modèles prédictifs...
+2025-08-29 23:37:31,659 - src.models.election_models - INFO - 📊 Données chargées: 1835 enregistrements
+2025-08-29 23:37:31,660 - src.models.election_models - INFO - ElectionPredictor initialisé
+2025-08-29 23:37:31,660 - src.models.election_models - INFO - Préparation des features pour 1835 enregistrements
+2025-08-29 23:37:31,660 - src.models.election_models - INFO - Target: famille_politique
+2025-08-29 23:37:31,664 - src.models.election_models - INFO - Features créées: ['annee', 'decennie', 'depuis_2000', 'departement_encoded', 'is_urbain', 'ancien_midi_pyrenees', 'taux_participation', 'taux_abstention', 'voix', 'inscrits', 'votants', 'influence', 'participation_haute', 'participation_faible', 'tour']
+2025-08-29 23:37:31,665 - src.models.election_models - INFO - Nombre de classes target: 6
+2025-08-29 23:37:31,665 - src.models.election_models - INFO - Échantillons finaux: 1835
+2025-08-29 23:37:31,665 - src.models.election_models - INFO - 🤖 Début de l'entraînement des modèles ML
+2025-08-29 23:37:31,665 - src.models.election_models - INFO - Données: 1835 échantillons, 15 features, 6 classes
+2025-08-29 23:37:31,666 - src.models.election_models - INFO - Train: 1651, Test: 184
+2025-08-29 23:37:31,666 - src.models.election_models - INFO - ⚡ Entraînement RandomForest...
+2025-08-29 23:37:31,793 - src.models.election_models - INFO - ✅ RandomForest: Accuracy = 0.6033
+2025-08-29 23:37:31,793 - src.models.election_models - INFO - ⚡ Entraînement LogisticRegression...
+2025-08-29 23:37:31,818 - src.models.election_models - INFO - ✅ LogisticRegression: Accuracy = 0.6359
+2025-08-29 23:37:31,837 - src.models.election_models - INFO - 💾 Modèle RandomForest sauvegardé: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\models\randomforest_model.joblib
+2025-08-29 23:37:31,839 - src.models.election_models - INFO - 💾 Modèle LogisticRegression sauvegardé: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\models\logisticregression_model.joblib
+2025-08-29 23:37:31,839 - src.models.election_models - INFO - 💾 Scalers sauvegardés: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\models\scalers.joblib
+2025-08-29 23:37:31,840 - src.models.election_models - INFO - 💾 Encoders sauvegardés: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\models\encoders.joblib
+2025-08-29 23:37:31,840 - src.models.election_models - INFO - 💾 Métadonnées sauvegardées: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\models\metadata.joblib
+2025-08-29 23:37:31,841 - src.models.election_models - INFO - 🏆 Meilleur modèle: LogisticRegression (accuracy: 0.6359)
+2025-08-29 23:37:31,841 - __main__ - INFO - Entraînement ML réussi !
+2025-08-29 23:37:31,841 - __main__ - INFO -   RandomForest: Accuracy = 0.6033
+2025-08-29 23:37:31,841 - __main__ - INFO -     Données train: 1651
+2025-08-29 23:37:31,841 - __main__ - INFO -     Données test: 184
+2025-08-29 23:37:31,841 - __main__ - INFO -     Features: 15
+2025-08-29 23:37:31,841 - __main__ - INFO -   LogisticRegression: Accuracy = 0.6359
+2025-08-29 23:37:31,841 - __main__ - INFO -     Données train: 1651
+2025-08-29 23:37:31,841 - __main__ - INFO -     Données test: 184
+2025-08-29 23:37:31,841 - __main__ - INFO -     Features: 15
+2025-08-29 23:37:31,841 - __main__ - INFO - Meilleur modèle: LogisticRegression
+2025-08-29 23:37:31,841 - __main__ - INFO - Modèles sauvegardés dans ./models/
+2025-08-29 23:37:31,842 - __main__ - INFO - 
+============================================================
+2025-08-29 23:37:31,842 - __main__ - INFO - PIPELINE TERMINÉ AVEC SUCCÈS !
+2025-08-29 23:37:31,842 - __main__ - INFO - ============================================================
+2025-08-29 23:37:31,842 - __main__ - INFO - Vous pouvez maintenant lancer: streamlit run app.py
+2025-08-29 23:38:25,049 - __main__ - INFO - ============================================================
+2025-08-29 23:38:25,049 - __main__ - INFO - ANALYSE ELECTORALE OCCITANIE - MySQL Edition
+2025-08-29 23:38:25,049 - __main__ - INFO - ============================================================
+2025-08-29 23:38:25,049 - __main__ - INFO - Utilisateur: mgaisnon
+2025-08-29 23:38:25,049 - __main__ - INFO - Date: 2025-08-29 23:14:34
+2025-08-29 23:38:25,189 - __main__ - INFO - Configuration et modules chargés
+2025-08-29 23:38:25,190 - __main__ - INFO - Base MySQL: bddelections sur localhost
+2025-08-29 23:38:25,190 - __main__ - INFO - Départements Occitanie: 13
+2025-08-29 23:38:25,190 - __main__ - INFO - 
+========================================
+2025-08-29 23:38:25,190 - __main__ - INFO - ÉTAPE 4: MODÈLES PRÉDICTIFS
+2025-08-29 23:38:25,190 - __main__ - INFO - ========================================
+2025-08-29 23:38:25,190 - __main__ - INFO - Modèles prédictifs...
+2025-08-29 23:38:25,771 - src.models.election_models - INFO - 📊 Données chargées: 1835 enregistrements
+2025-08-29 23:38:25,771 - src.models.election_models - INFO - ElectionPredictor initialisé
+2025-08-29 23:38:25,771 - src.models.election_models - INFO - Préparation des features pour 1835 enregistrements
+2025-08-29 23:38:25,772 - src.models.election_models - INFO - Target: famille_politique
+2025-08-29 23:38:25,776 - src.models.election_models - INFO - Features créées: ['annee', 'decennie', 'depuis_2000', 'departement_encoded', 'is_urbain', 'ancien_midi_pyrenees', 'taux_participation', 'taux_abstention', 'voix', 'inscrits', 'votants', 'influence', 'participation_haute', 'participation_faible', 'tour']
+2025-08-29 23:38:25,776 - src.models.election_models - INFO - Nombre de classes target: 6
+2025-08-29 23:38:25,776 - src.models.election_models - INFO - Échantillons finaux: 1835
+2025-08-29 23:38:25,776 - src.models.election_models - INFO - 🤖 Début de l'entraînement des modèles ML
+2025-08-29 23:38:25,776 - src.models.election_models - INFO - Données: 1835 échantillons, 15 features, 6 classes
+2025-08-29 23:38:25,778 - src.models.election_models - INFO - Train: 1651, Test: 184
+2025-08-29 23:38:25,778 - src.models.election_models - INFO - ⚡ Entraînement RandomForest...
+2025-08-29 23:38:25,892 - src.models.election_models - INFO - ✅ RandomForest: Accuracy = 0.6033
+2025-08-29 23:38:25,892 - src.models.election_models - INFO - ⚡ Entraînement LogisticRegression...
+2025-08-29 23:38:25,917 - src.models.election_models - INFO - ✅ LogisticRegression: Accuracy = 0.6359
+2025-08-29 23:38:25,935 - src.models.election_models - INFO - 💾 Modèle RandomForest sauvegardé: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\models\randomforest_model.joblib
+2025-08-29 23:38:25,936 - src.models.election_models - INFO - 💾 Modèle LogisticRegression sauvegardé: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\models\logisticregression_model.joblib
+2025-08-29 23:38:25,937 - src.models.election_models - INFO - 💾 Scalers sauvegardés: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\models\scalers.joblib
+2025-08-29 23:38:25,938 - src.models.election_models - INFO - 💾 Encoders sauvegardés: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\models\encoders.joblib
+2025-08-29 23:38:25,938 - src.models.election_models - INFO - 💾 Métadonnées sauvegardées: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\models\metadata.joblib
+2025-08-29 23:38:25,938 - src.models.election_models - INFO - 🏆 Meilleur modèle: LogisticRegression (accuracy: 0.6359)
+2025-08-29 23:38:25,939 - __main__ - INFO - Entraînement ML réussi !
+2025-08-29 23:38:25,939 - __main__ - INFO -   RandomForest: Accuracy = 0.6033
+2025-08-29 23:38:25,939 - __main__ - INFO -     Données train: 1651
+2025-08-29 23:38:25,939 - __main__ - INFO -     Données test: 184
+2025-08-29 23:38:25,939 - __main__ - INFO -     Features: 15
+2025-08-29 23:38:25,939 - __main__ - INFO -   LogisticRegression: Accuracy = 0.6359
+2025-08-29 23:38:25,939 - __main__ - INFO -     Données train: 1651
+2025-08-29 23:38:25,939 - __main__ - INFO -     Données test: 184
+2025-08-29 23:38:25,939 - __main__ - INFO -     Features: 15
+2025-08-29 23:38:25,939 - __main__ - INFO - Meilleur modèle: LogisticRegression
+2025-08-29 23:38:25,939 - __main__ - INFO - Modèles sauvegardés dans ./models/
+2025-08-29 23:38:25,940 - __main__ - INFO - 
+============================================================
+2025-08-29 23:38:25,940 - __main__ - INFO - PIPELINE TERMINÉ AVEC SUCCÈS !
+2025-08-29 23:38:25,940 - __main__ - INFO - ============================================================
+2025-08-29 23:38:25,940 - __main__ - INFO - Vous pouvez maintenant lancer: streamlit run app.py
+2025-08-29 23:38:33,770 - __main__ - INFO - ============================================================
+2025-08-29 23:38:33,770 - __main__ - INFO - ANALYSE ELECTORALE OCCITANIE - MySQL Edition
+2025-08-29 23:38:33,770 - __main__ - INFO - ============================================================
+2025-08-29 23:38:33,770 - __main__ - INFO - Utilisateur: mgaisnon
+2025-08-29 23:38:33,770 - __main__ - INFO - Date: 2025-08-29 23:14:34
+2025-08-29 23:38:33,904 - __main__ - INFO - Configuration et modules chargés
+2025-08-29 23:38:33,904 - __main__ - INFO - Base MySQL: bddelections sur localhost
+2025-08-29 23:38:33,904 - __main__ - INFO - Départements Occitanie: 13
+2025-08-29 23:38:33,904 - __main__ - INFO - 
+========================================
+2025-08-29 23:38:33,904 - __main__ - INFO - ÉTAPE 1: COLLECTE DES DONNÉES MySQL
+2025-08-29 23:38:33,904 - __main__ - INFO - ========================================
+2025-08-29 23:38:33,904 - __main__ - INFO - Connexion à la base MySQL...
+2025-08-29 23:38:33,904 - src.data_collection.db_collector - INFO - Connexion à votre base MySQL existante...
+2025-08-29 23:38:33,904 - src.data_collection.db_collector - INFO -    Host: localhost:3306
+2025-08-29 23:38:33,904 - src.data_collection.db_collector - INFO -    Base: bddelections
+2025-08-29 23:38:33,904 - src.data_collection.db_collector - INFO -    Utilisateur: root
+2025-08-29 23:38:33,924 - src.data_collection.db_collector - INFO - Connexion MySQL réussie !
+2025-08-29 23:38:33,944 - src.data_collection.db_collector - INFO - Détection automatique de la structure...
+2025-08-29 23:38:33,947 - src.data_collection.db_collector - INFO - Tables trouvées: ['resultatslegi']
+2025-08-29 23:38:33,947 - src.data_collection.db_collector - INFO - Table d'élections détectée: resultatslegi
+2025-08-29 23:38:33,952 - src.data_collection.db_collector - INFO - Structure de resultatslegi:
+2025-08-29 23:38:33,952 - src.data_collection.db_collector - INFO -    id: INTEGER
+2025-08-29 23:38:33,952 - src.data_collection.db_collector - INFO -    année: INTEGER
+2025-08-29 23:38:33,952 - src.data_collection.db_collector - INFO -    tour: INTEGER
+2025-08-29 23:38:33,953 - src.data_collection.db_collector - INFO -    departement: INTEGER
+2025-08-29 23:38:33,953 - src.data_collection.db_collector - INFO -    inscrits: INTEGER
+2025-08-29 23:38:33,953 - src.data_collection.db_collector - INFO -    votants: INTEGER
+2025-08-29 23:38:33,953 - src.data_collection.db_collector - INFO -    abstentions: INTEGER
+2025-08-29 23:38:33,953 - src.data_collection.db_collector - INFO -    exprimes: INTEGER
+2025-08-29 23:38:33,953 - src.data_collection.db_collector - INFO -    nuance: VARCHAR(10) COLLATE "utf8mb4_unicode_ci"
+2025-08-29 23:38:33,953 - src.data_collection.db_collector - INFO -    voix: INTEGER
+2025-08-29 23:38:33,953 - src.data_collection.db_collector - INFO - Mapping des colonnes: {'annee': 'année', 'tour': 'tour', 'departement': 'departement', 'nuance': 'nuance', 'voix': 'voix', 'inscrits': 'inscrits', 'votants': 'votants', 'abstentions': 'abstentions', 'exprimes': 'exprimes'}
+2025-08-29 23:38:33,954 - src.data_collection.db_collector - INFO - 1978 enregistrements dans la table
+2025-08-29 23:38:33,955 - src.data_collection.db_collector - INFO - 484 enregistrements pour l'Occitanie (échantillon)
+2025-08-29 23:38:33,955 - __main__ - INFO - Table utilisée: resultatslegi
+2025-08-29 23:38:33,955 - __main__ - INFO - Colonnes détectées: 10
+2025-08-29 23:38:33,955 - __main__ - INFO - Mapping: {'annee': 'année', 'tour': 'tour', 'departement': 'departement', 'nuance': 'nuance', 'voix': 'voix', 'inscrits': 'inscrits', 'votants': 'votants', 'abstentions': 'abstentions', 'exprimes': 'exprimes'}
+2025-08-29 23:38:33,955 - __main__ - INFO - Récupération des données d'Occitanie...
+2025-08-29 23:38:33,955 - src.data_collection.db_collector - INFO - Exécution de la requête sur votre base...
+2025-08-29 23:38:33,981 - src.data_collection.db_collector - INFO - 1835 enregistrements chargés depuis votre base MySQL
+2025-08-29 23:38:33,981 - src.data_collection.db_collector - INFO -    Années: [1993, 1997, 2002, 2007, 2012, 2017, 2022]
+2025-08-29 23:38:33,981 - src.data_collection.db_collector - INFO -    Départements: 12
+2025-08-29 23:38:33,981 - src.data_collection.db_collector - INFO -    Nuances: 47
+2025-08-29 23:38:33,981 - __main__ - INFO - 1835 enregistrements récupérés
+2025-08-29 23:38:33,981 - __main__ - INFO -    Années: [1993, 1997, 2002, 2007, 2012, 2017, 2022]
+2025-08-29 23:38:33,981 - __main__ - INFO -    Départements: 12
+2025-08-29 23:38:33,982 - __main__ - INFO -    Nuances: 47
+2025-08-29 23:38:33,986 - __main__ - INFO - Données sauvegardées: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\data\raw\elections_occitanie_mysql.csv
+2025-08-29 23:38:33,988 - src.data_collection.db_collector - INFO - 13 élections trouvées dans votre base
+2025-08-29 23:38:33,988 - __main__ - INFO - Élections disponibles: 13
+2025-08-29 23:38:33,988 - __main__ - INFO -    2022 - Tour 1
+2025-08-29 23:38:33,988 - __main__ - INFO -    2022 - Tour 2
+2025-08-29 23:38:33,988 - __main__ - INFO -    2017 - Tour 1
+2025-08-29 23:38:33,989 - __main__ - INFO -    2017 - Tour 2
+2025-08-29 23:38:33,989 - __main__ - INFO -    2012 - Tour 2
+2025-08-29 23:38:33,989 - __main__ - INFO -    2007 - Tour 1
+2025-08-29 23:38:33,989 - __main__ - INFO -    2007 - Tour 2
+2025-08-29 23:38:33,989 - __main__ - INFO -    2002 - Tour 1
+2025-08-29 23:38:33,989 - __main__ - INFO -    2002 - Tour 2
+2025-08-29 23:38:33,989 - __main__ - INFO -    1997 - Tour 1
+2025-08-29 23:38:33,989 - __main__ - INFO -    1997 - Tour 2
+2025-08-29 23:38:33,989 - __main__ - INFO -    1993 - Tour 1
+2025-08-29 23:38:33,989 - __main__ - INFO -    1993 - Tour 2
+2025-08-29 23:38:33,990 - src.data_collection.db_collector - INFO - Connexion MySQL fermée
+2025-08-29 23:38:33,990 - src.data_collection.db_collector - INFO - Engine SQLAlchemy fermé
+2025-08-29 23:38:33,990 - __main__ - INFO - 
+========================================
+2025-08-29 23:38:33,990 - __main__ - INFO - ÉTAPE 2: TRAITEMENT DES DONNÉES
+2025-08-29 23:38:33,990 - __main__ - INFO - ========================================
+2025-08-29 23:38:33,990 - __main__ - INFO - Traitement des données...
+2025-08-29 23:38:33,991 - src.data_processing.election_processor - INFO - ElectionDataProcessor initialisé
+2025-08-29 23:38:33,991 - __main__ - INFO - Processeur de données initialisé
+2025-08-29 23:38:34,001 - __main__ - INFO - Données chargées: 1835 enregistrements
+2025-08-29 23:38:34,001 - src.data_processing.election_processor - INFO - Début du traitement de 1835 enregistrements bruts
+2025-08-29 23:38:34,004 - src.data_processing.election_processor - INFO - Après nettoyage des colonnes: 1835 enregistrements
+2025-08-29 23:38:34,006 - src.data_processing.election_processor - INFO - Validation: 1835 -> 1835 enregistrements
+2025-08-29 23:38:34,006 - src.data_processing.election_processor - INFO - Après validation: 1835 enregistrements
+2025-08-29 23:38:34,010 - src.data_processing.election_processor - INFO - Après enrichissement: 1835 enregistrements
+2025-08-29 23:38:34,011 - src.data_processing.election_processor - INFO - Après calculs: 1835 enregistrements
+2025-08-29 23:38:34,012 - src.data_processing.election_processor - INFO - Suppression doublons: 1835 -> 1835
+2025-08-29 23:38:34,014 - src.data_processing.election_processor - INFO - Traitement terminé: 1835 enregistrements finaux
+2025-08-29 23:38:34,021 - __main__ - INFO - Données traitées sauvegardées: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\data\processed\elections_processed.csv
+2025-08-29 23:38:34,021 - __main__ - INFO - 
+========================================
+2025-08-29 23:38:34,021 - __main__ - INFO - ÉTAPE 3: ANALYSE DES DONNÉES
+2025-08-29 23:38:34,021 - __main__ - INFO - ========================================
+2025-08-29 23:38:34,021 - __main__ - INFO - Analyse des données...
+2025-08-29 23:38:34,031 - __main__ - INFO - Analyse sur 1835 enregistrements
+2025-08-29 23:38:34,032 - __main__ - INFO - Top 5 départements par enregistrements:
+2025-08-29 23:38:34,032 - __main__ - INFO -    30 (Gard): 162
+2025-08-29 23:38:34,032 - __main__ - INFO -    34 (Hérault): 162
+2025-08-29 23:38:34,032 - __main__ - INFO -    31 (Haute-Garonne): 160
+2025-08-29 23:38:34,032 - __main__ - INFO -    66 (Pyrénées-Orientales): 156
+2025-08-29 23:38:34,032 - __main__ - INFO -    82 (Tarn-et-Garonne): 154
+2025-08-29 23:38:34,033 - __main__ - INFO - Top 5 nuances par enregistrements:
+2025-08-29 23:38:34,033 - __main__ - INFO -    SOC: 115
+2025-08-29 23:38:34,033 - __main__ - INFO -    DVD: 115
+2025-08-29 23:38:34,033 - __main__ - INFO -    DVG: 107
+2025-08-29 23:38:34,033 - __main__ - INFO -    DIV: 107
+2025-08-29 23:38:34,033 - __main__ - INFO -    ECO: 106
+2025-08-29 23:38:34,034 - __main__ - INFO - Top 5 familles politiques:
+2025-08-29 23:38:34,034 - __main__ - INFO -    Autres: 1200
+2025-08-29 23:38:34,034 - __main__ - INFO -    Droite: 257
+2025-08-29 23:38:34,034 - __main__ - INFO -    Extrême droite: 160
+2025-08-29 23:38:34,034 - __main__ - INFO -    Gauche: 131
+2025-08-29 23:38:34,034 - __main__ - INFO -    Écologie: 72
+2025-08-29 23:38:34,034 - __main__ - INFO - Taux de participation moyen: 65.19%
+2025-08-29 23:38:34,034 - __main__ - INFO - Répartition urbain/rural:
+2025-08-29 23:38:34,035 - __main__ - INFO -    Rural: 1351
+2025-08-29 23:38:34,035 - __main__ - INFO -    Urbain: 484
+2025-08-29 23:38:34,035 - __main__ - INFO - Répartition par ancienne région:
+2025-08-29 23:38:34,035 - __main__ - INFO -    Ancien Midi-Pyrénées: 1063
+2025-08-29 23:38:34,035 - __main__ - INFO -    Ancien Languedoc-Roussillon: 772
+2025-08-29 23:38:34,035 - __main__ - INFO - Répartition par année:
+2025-08-29 23:38:34,035 - __main__ - INFO -    1993: 146 enregistrements
+2025-08-29 23:38:34,036 - __main__ - INFO -    1997: 252 enregistrements
+2025-08-29 23:38:34,036 - __main__ - INFO -    2002: 504 enregistrements
+2025-08-29 23:38:34,036 - __main__ - INFO -    2007: 384 enregistrements
+2025-08-29 23:38:34,036 - __main__ - INFO -    2012: 192 enregistrements
+2025-08-29 23:38:34,036 - __main__ - INFO -    2017: 173 enregistrements
+2025-08-29 23:38:34,036 - __main__ - INFO -    2022: 184 enregistrements
+2025-08-29 23:38:34,036 - __main__ - INFO - Analyse terminée avec succès
+2025-08-29 23:38:34,036 - __main__ - INFO - 
+========================================
+2025-08-29 23:38:34,036 - __main__ - INFO - ÉTAPE 4: MODÈLES PRÉDICTIFS
+2025-08-29 23:38:34,036 - __main__ - INFO - ========================================
+2025-08-29 23:38:34,036 - __main__ - INFO - Modèles prédictifs...
+2025-08-29 23:38:34,613 - src.models.election_models - INFO - 📊 Données chargées: 1835 enregistrements
+2025-08-29 23:38:34,614 - src.models.election_models - INFO - ElectionPredictor initialisé
+2025-08-29 23:38:34,614 - src.models.election_models - INFO - Préparation des features pour 1835 enregistrements
+2025-08-29 23:38:34,614 - src.models.election_models - INFO - Target: famille_politique
+2025-08-29 23:38:34,618 - src.models.election_models - INFO - Features créées: ['annee', 'decennie', 'depuis_2000', 'departement_encoded', 'is_urbain', 'ancien_midi_pyrenees', 'taux_participation', 'taux_abstention', 'voix', 'inscrits', 'votants', 'influence', 'participation_haute', 'participation_faible', 'tour']
+2025-08-29 23:38:34,618 - src.models.election_models - INFO - Nombre de classes target: 6
+2025-08-29 23:38:34,618 - src.models.election_models - INFO - Échantillons finaux: 1835
+2025-08-29 23:38:34,618 - src.models.election_models - INFO - 🤖 Début de l'entraînement des modèles ML
+2025-08-29 23:38:34,618 - src.models.election_models - INFO - Données: 1835 échantillons, 15 features, 6 classes
+2025-08-29 23:38:34,619 - src.models.election_models - INFO - Train: 1651, Test: 184
+2025-08-29 23:38:34,619 - src.models.election_models - INFO - ⚡ Entraînement RandomForest...
+2025-08-29 23:38:34,732 - src.models.election_models - INFO - ✅ RandomForest: Accuracy = 0.6033
+2025-08-29 23:38:34,732 - src.models.election_models - INFO - ⚡ Entraînement LogisticRegression...
+2025-08-29 23:38:34,757 - src.models.election_models - INFO - ✅ LogisticRegression: Accuracy = 0.6359
+2025-08-29 23:38:34,777 - src.models.election_models - INFO - 💾 Modèle RandomForest sauvegardé: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\models\randomforest_model.joblib
+2025-08-29 23:38:34,778 - src.models.election_models - INFO - 💾 Modèle LogisticRegression sauvegardé: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\models\logisticregression_model.joblib
+2025-08-29 23:38:34,778 - src.models.election_models - INFO - 💾 Scalers sauvegardés: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\models\scalers.joblib
+2025-08-29 23:38:34,779 - src.models.election_models - INFO - 💾 Encoders sauvegardés: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\models\encoders.joblib
+2025-08-29 23:38:34,780 - src.models.election_models - INFO - 💾 Métadonnées sauvegardées: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\models\metadata.joblib
+2025-08-29 23:38:34,780 - src.models.election_models - INFO - 🏆 Meilleur modèle: LogisticRegression (accuracy: 0.6359)
+2025-08-29 23:38:34,780 - __main__ - INFO - Entraînement ML réussi !
+2025-08-29 23:38:34,780 - __main__ - INFO -   RandomForest: Accuracy = 0.6033
+2025-08-29 23:38:34,780 - __main__ - INFO -     Données train: 1651
+2025-08-29 23:38:34,780 - __main__ - INFO -     Données test: 184
+2025-08-29 23:38:34,780 - __main__ - INFO -     Features: 15
+2025-08-29 23:38:34,781 - __main__ - INFO -   LogisticRegression: Accuracy = 0.6359
+2025-08-29 23:38:34,781 - __main__ - INFO -     Données train: 1651
+2025-08-29 23:38:34,781 - __main__ - INFO -     Données test: 184
+2025-08-29 23:38:34,781 - __main__ - INFO -     Features: 15
+2025-08-29 23:38:34,781 - __main__ - INFO - Meilleur modèle: LogisticRegression
+2025-08-29 23:38:34,781 - __main__ - INFO - Modèles sauvegardés dans ./models/
+2025-08-29 23:38:34,782 - __main__ - INFO - 
+========================================
+2025-08-29 23:38:34,782 - __main__ - INFO - ÉTAPE 5: VISUALISATIONS
+2025-08-29 23:38:34,782 - __main__ - INFO - ========================================
+2025-08-29 23:38:34,782 - __main__ - INFO - Génération des visualisations...
+2025-08-29 23:38:34,785 - __main__ - INFO - Données pour visualisation: 1835 enregistrements
+2025-08-29 23:38:34,786 - __main__ - INFO - Top 3 familles politiques pour viz:
+2025-08-29 23:38:34,786 - __main__ - INFO -   Autres: 1200
+2025-08-29 23:38:34,786 - __main__ - INFO -   Droite: 257
+2025-08-29 23:38:34,786 - __main__ - INFO -   Extrême droite: 160
+2025-08-29 23:38:34,786 - __main__ - INFO - Participation moyenne pour viz: 65.19%
+2025-08-29 23:38:34,786 - __main__ - INFO - Données prêtes pour Streamlit
+2025-08-29 23:38:34,786 - __main__ - INFO - Visualisations disponibles dans l'interface web
+2025-08-29 23:38:34,787 - __main__ - INFO - Étape visualisations terminée
+2025-08-29 23:38:34,787 - __main__ - INFO - 
+============================================================
+2025-08-29 23:38:34,787 - __main__ - INFO - PIPELINE TERMINÉ AVEC SUCCÈS !
+2025-08-29 23:38:34,787 - __main__ - INFO - ============================================================
+2025-08-29 23:38:34,787 - __main__ - INFO - Vous pouvez maintenant lancer: streamlit run app.py

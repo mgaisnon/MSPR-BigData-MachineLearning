@@ -233,3 +233,316 @@ TypeError: unsupported format string passed to NoneType.__format__
 2025-08-29 22:16:51,885 - __main__ - INFO - ✅ PIPELINE TERMINÉ AVEC SUCCÈS
 2025-08-29 22:16:51,886 - __main__ - INFO - ============================================================
 2025-08-29 22:16:51,886 - __main__ - INFO - 🎉 Pipeline terminé pour l'utilisateur: mgaisnon
+2025-08-29 22:24:00,280 - __main__ - INFO - ============================================================
+2025-08-29 22:24:00,281 - __main__ - INFO - 🗳️ DÉMARRAGE DU PIPELINE ÉLECTIONS OCCITANIE
+2025-08-29 22:24:00,281 - __main__ - INFO - ============================================================
+2025-08-29 22:24:00,281 - __main__ - INFO - 👤 Utilisateur: Mathieu
+2025-08-29 22:24:00,281 - __main__ - INFO - 📅 Date: 2025-08-29 22:24:00
+2025-08-29 22:24:00,281 - __main__ - INFO - 📁 Répertoire vérifié/créé: data/raw
+2025-08-29 22:24:00,281 - __main__ - INFO - 📁 Répertoire vérifié/créé: data/processed
+2025-08-29 22:24:00,282 - __main__ - INFO - 📁 Répertoire vérifié/créé: models
+2025-08-29 22:24:00,282 - __main__ - INFO - 📁 Répertoire vérifié/créé: visualizations
+2025-08-29 22:24:00,282 - __main__ - INFO - 📁 Répertoire vérifié/créé: logs
+2025-08-29 22:24:00,282 - __main__ - INFO - 📂 Chargement des données existantes...
+2025-08-29 22:24:00,285 - __main__ - INFO - ✅ Données chargées: (472, 13)
+2025-08-29 22:24:00,285 - __main__ - INFO - ========================================
+2025-08-29 22:24:00,285 - __main__ - INFO - 🤖 ÉTAPE 2: ENTRAÎNEMENT DES MODÈLES
+2025-08-29 22:24:00,285 - __main__ - INFO - ========================================
+2025-08-29 22:24:00,301 - __main__ - INFO - 📊 Features préparées: (52, 9)
+2025-08-29 22:24:00,301 - __main__ - INFO - 🎯 Target préparée: (52,)
+2025-08-29 22:24:00,302 - __main__ - INFO - 📋 Colonnes features: ['taux_participation', 'taux_abstention', 'inscrits', 'votants', 'part_REN', 'part_RN', 'part_LFI', 'part_LR', 'part_PS']
+2025-08-29 22:24:00,302 - src.models.election_models - INFO - Initialisé 8 modèles
+2025-08-29 22:24:00,302 - __main__ - INFO - 🏭 Entraînement de 8 modèles...
+2025-08-29 22:24:00,303 - src.models.election_models - INFO - Entraînement sur 41 échantillons, test sur 11
+2025-08-29 22:24:00,303 - src.models.election_models - INFO - Entraînement du modèle: logistic_regression
+2025-08-29 22:24:00,318 - src.models.election_models - INFO - logistic_regression - Accuracy: 0.455, CV: 0.414±0.146
+2025-08-29 22:24:00,318 - src.models.election_models - INFO - Entraînement du modèle: random_forest
+2025-08-29 22:24:00,633 - src.models.election_models - INFO - random_forest - Accuracy: 0.455, CV: 0.558±0.133
+2025-08-29 22:24:00,634 - src.models.election_models - INFO - Entraînement du modèle: gradient_boosting
+2025-08-29 22:24:00,817 - src.models.election_models - INFO - gradient_boosting - Accuracy: 0.455, CV: 0.511±0.139
+2025-08-29 22:24:00,818 - src.models.election_models - INFO - Entraînement du modèle: xgboost
+2025-08-29 22:24:00,897 - src.models.election_models - INFO - xgboost - Accuracy: 0.455, CV: 0.417±0.173
+2025-08-29 22:24:00,897 - src.models.election_models - INFO - Entraînement du modèle: lightgbm
+2025-08-29 22:24:00,921 - src.models.election_models - INFO - lightgbm - Accuracy: 0.455, CV: 0.536±0.049
+2025-08-29 22:24:00,921 - src.models.election_models - INFO - Entraînement du modèle: svm
+2025-08-29 22:24:00,938 - src.models.election_models - INFO - svm - Accuracy: 0.455, CV: 0.586±0.146
+2025-08-29 22:24:00,938 - src.models.election_models - INFO - Entraînement du modèle: naive_bayes
+2025-08-29 22:24:00,952 - src.models.election_models - INFO - naive_bayes - Accuracy: 0.364, CV: 0.508±0.122
+2025-08-29 22:24:00,952 - src.models.election_models - INFO - Entraînement du modèle: knn
+2025-08-29 22:24:00,969 - src.models.election_models - INFO - knn - Accuracy: 0.273, CV: 0.586±0.146
+2025-08-29 22:24:00,969 - src.models.election_models - INFO - Meilleur modèle: svm (CV Score: 0.586)
+2025-08-29 22:24:00,970 - __main__ - INFO - ⚙️ Optimisation des hyperparamètres...
+2025-08-29 22:24:00,970 - src.models.election_models - INFO - Optimisation des hyperparamètres pour svm
+2025-08-29 22:24:02,824 - src.models.election_models - INFO - Score avant optimisation: 0.586
+2025-08-29 22:24:02,825 - src.models.election_models - INFO - Score après optimisation: 0.538
+2025-08-29 22:24:02,825 - src.models.election_models - WARNING - Pas d'importance des features disponible
+2025-08-29 22:24:02,854 - src.models.election_models - INFO - Modèle sauvegardé: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\models\best_election_model.pkl
+2025-08-29 22:24:02,854 - __main__ - INFO - 💾 Modèle sauvegardé: models/best_election_model.pkl
+2025-08-29 22:24:02,854 - __main__ - INFO - ============================================================
+2025-08-29 22:24:02,854 - __main__ - INFO - ✅ PIPELINE TERMINÉ AVEC SUCCÈS
+2025-08-29 22:24:02,854 - __main__ - INFO - ============================================================
+2025-08-29 22:24:02,855 - __main__ - INFO - 🎉 Pipeline terminé pour l'utilisateur: mgaisnon
+2025-08-29 22:24:06,237 - __main__ - INFO - ============================================================
+2025-08-29 22:24:06,237 - __main__ - INFO - 🗳️ DÉMARRAGE DU PIPELINE ÉLECTIONS OCCITANIE
+2025-08-29 22:24:06,237 - __main__ - INFO - ============================================================
+2025-08-29 22:24:06,238 - __main__ - INFO - 👤 Utilisateur: Mathieu
+2025-08-29 22:24:06,238 - __main__ - INFO - 📅 Date: 2025-08-29 22:24:06
+2025-08-29 22:24:06,238 - __main__ - INFO - 📁 Répertoire vérifié/créé: data/raw
+2025-08-29 22:24:06,238 - __main__ - INFO - 📁 Répertoire vérifié/créé: data/processed
+2025-08-29 22:24:06,238 - __main__ - INFO - 📁 Répertoire vérifié/créé: models
+2025-08-29 22:24:06,239 - __main__ - INFO - 📁 Répertoire vérifié/créé: visualizations
+2025-08-29 22:24:06,239 - __main__ - INFO - 📁 Répertoire vérifié/créé: logs
+2025-08-29 22:24:06,239 - __main__ - INFO - 📂 Chargement des données existantes...
+2025-08-29 22:24:06,242 - __main__ - INFO - ✅ Données chargées: (472, 13)
+2025-08-29 22:24:06,242 - __main__ - INFO - ========================================
+2025-08-29 22:24:06,242 - __main__ - INFO - 🤖 ÉTAPE 2: ENTRAÎNEMENT DES MODÈLES
+2025-08-29 22:24:06,242 - __main__ - INFO - ========================================
+2025-08-29 22:24:06,258 - __main__ - INFO - 📊 Features préparées: (52, 9)
+2025-08-29 22:24:06,258 - __main__ - INFO - 🎯 Target préparée: (52,)
+2025-08-29 22:24:06,258 - __main__ - INFO - 📋 Colonnes features: ['taux_participation', 'taux_abstention', 'inscrits', 'votants', 'part_REN', 'part_RN', 'part_LFI', 'part_LR', 'part_PS']
+2025-08-29 22:24:06,259 - src.models.election_models - INFO - Initialisé 8 modèles
+2025-08-29 22:24:06,259 - __main__ - INFO - 🏭 Entraînement de 8 modèles...
+2025-08-29 22:24:06,259 - src.models.election_models - INFO - Entraînement sur 41 échantillons, test sur 11
+2025-08-29 22:24:06,260 - src.models.election_models - INFO - Entraînement du modèle: logistic_regression
+2025-08-29 22:24:06,275 - src.models.election_models - INFO - logistic_regression - Accuracy: 0.455, CV: 0.414±0.146
+2025-08-29 22:24:06,275 - src.models.election_models - INFO - Entraînement du modèle: random_forest
+2025-08-29 22:24:06,586 - src.models.election_models - INFO - random_forest - Accuracy: 0.455, CV: 0.558±0.133
+2025-08-29 22:24:06,586 - src.models.election_models - INFO - Entraînement du modèle: gradient_boosting
+2025-08-29 22:24:06,772 - src.models.election_models - INFO - gradient_boosting - Accuracy: 0.455, CV: 0.511±0.139
+2025-08-29 22:24:06,772 - src.models.election_models - INFO - Entraînement du modèle: xgboost
+2025-08-29 22:24:06,853 - src.models.election_models - INFO - xgboost - Accuracy: 0.455, CV: 0.417±0.173
+2025-08-29 22:24:06,853 - src.models.election_models - INFO - Entraînement du modèle: lightgbm
+2025-08-29 22:24:06,877 - src.models.election_models - INFO - lightgbm - Accuracy: 0.455, CV: 0.536±0.049
+2025-08-29 22:24:06,877 - src.models.election_models - INFO - Entraînement du modèle: svm
+2025-08-29 22:24:06,894 - src.models.election_models - INFO - svm - Accuracy: 0.455, CV: 0.586±0.146
+2025-08-29 22:24:06,894 - src.models.election_models - INFO - Entraînement du modèle: naive_bayes
+2025-08-29 22:24:06,908 - src.models.election_models - INFO - naive_bayes - Accuracy: 0.364, CV: 0.508±0.122
+2025-08-29 22:24:06,908 - src.models.election_models - INFO - Entraînement du modèle: knn
+2025-08-29 22:24:06,923 - src.models.election_models - INFO - knn - Accuracy: 0.273, CV: 0.586±0.146
+2025-08-29 22:24:06,923 - src.models.election_models - INFO - Meilleur modèle: svm (CV Score: 0.586)
+2025-08-29 22:24:06,924 - __main__ - INFO - ⚙️ Optimisation des hyperparamètres...
+2025-08-29 22:24:06,924 - src.models.election_models - INFO - Optimisation des hyperparamètres pour svm
+2025-08-29 22:24:08,818 - src.models.election_models - INFO - Score avant optimisation: 0.586
+2025-08-29 22:24:08,818 - src.models.election_models - INFO - Score après optimisation: 0.538
+2025-08-29 22:24:08,818 - src.models.election_models - WARNING - Pas d'importance des features disponible
+2025-08-29 22:24:08,847 - src.models.election_models - INFO - Modèle sauvegardé: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\models\best_election_model.pkl
+2025-08-29 22:24:08,848 - __main__ - INFO - 💾 Modèle sauvegardé: models/best_election_model.pkl
+2025-08-29 22:24:08,848 - __main__ - INFO - ============================================================
+2025-08-29 22:24:08,848 - __main__ - INFO - ✅ PIPELINE TERMINÉ AVEC SUCCÈS
+2025-08-29 22:24:08,848 - __main__ - INFO - ============================================================
+2025-08-29 22:24:08,849 - __main__ - INFO - 🎉 Pipeline terminé pour l'utilisateur: mgaisnon
+2025-08-29 22:31:21,948 - __main__ - INFO - ============================================================
+2025-08-29 22:31:21,948 - __main__ - INFO - 🗳️ DÉMARRAGE DU PIPELINE ÉLECTIONS OCCITANIE
+2025-08-29 22:31:21,948 - __main__ - INFO - ============================================================
+2025-08-29 22:31:21,948 - __main__ - INFO - 👤 Utilisateur: Mathieu
+2025-08-29 22:31:21,948 - __main__ - INFO - 📅 Date: 2025-08-29 22:31:21
+2025-08-29 22:31:21,949 - __main__ - INFO - 📁 Répertoire vérifié/créé: data/raw
+2025-08-29 22:31:21,949 - __main__ - INFO - 📁 Répertoire vérifié/créé: data/processed
+2025-08-29 22:31:21,949 - __main__ - INFO - 📁 Répertoire vérifié/créé: models
+2025-08-29 22:31:21,949 - __main__ - INFO - 📁 Répertoire vérifié/créé: visualizations
+2025-08-29 22:31:21,949 - __main__ - INFO - 📁 Répertoire vérifié/créé: logs
+2025-08-29 22:31:21,950 - __main__ - INFO - 📂 Chargement des données existantes...
+2025-08-29 22:31:21,952 - __main__ - INFO - ✅ Données chargées: (472, 13)
+2025-08-29 22:31:21,952 - __main__ - INFO - ========================================
+2025-08-29 22:31:21,952 - __main__ - INFO - 🤖 ÉTAPE 2: ENTRAÎNEMENT DES MODÈLES
+2025-08-29 22:31:21,952 - __main__ - INFO - ========================================
+2025-08-29 22:31:21,968 - __main__ - INFO - 📊 Features préparées: (52, 9)
+2025-08-29 22:31:21,969 - __main__ - INFO - 🎯 Target préparée: (52,)
+2025-08-29 22:31:21,969 - __main__ - INFO - 📋 Colonnes features: ['taux_participation', 'taux_abstention', 'inscrits', 'votants', 'part_REN', 'part_RN', 'part_LFI', 'part_LR', 'part_PS']
+2025-08-29 22:31:21,969 - src.models.election_models - INFO - Initialisé 8 modèles
+2025-08-29 22:31:21,969 - __main__ - INFO - 🏭 Entraînement de 8 modèles...
+2025-08-29 22:31:21,970 - src.models.election_models - INFO - Entraînement sur 41 échantillons, test sur 11
+2025-08-29 22:31:21,970 - src.models.election_models - INFO - Entraînement du modèle: logistic_regression
+2025-08-29 22:31:21,985 - src.models.election_models - INFO - logistic_regression - Accuracy: 0.455, CV: 0.414±0.146
+2025-08-29 22:31:21,985 - src.models.election_models - INFO - Entraînement du modèle: random_forest
+2025-08-29 22:31:22,298 - src.models.election_models - INFO - random_forest - Accuracy: 0.455, CV: 0.558±0.133
+2025-08-29 22:31:22,299 - src.models.election_models - INFO - Entraînement du modèle: gradient_boosting
+2025-08-29 22:31:22,481 - src.models.election_models - INFO - gradient_boosting - Accuracy: 0.455, CV: 0.511±0.139
+2025-08-29 22:31:22,481 - src.models.election_models - INFO - Entraînement du modèle: xgboost
+2025-08-29 22:31:22,562 - src.models.election_models - INFO - xgboost - Accuracy: 0.455, CV: 0.417±0.173
+2025-08-29 22:31:22,562 - src.models.election_models - INFO - Entraînement du modèle: lightgbm
+2025-08-29 22:31:22,586 - src.models.election_models - INFO - lightgbm - Accuracy: 0.455, CV: 0.536±0.049
+2025-08-29 22:31:22,586 - src.models.election_models - INFO - Entraînement du modèle: svm
+2025-08-29 22:31:22,603 - src.models.election_models - INFO - svm - Accuracy: 0.455, CV: 0.586±0.146
+2025-08-29 22:31:22,603 - src.models.election_models - INFO - Entraînement du modèle: naive_bayes
+2025-08-29 22:31:22,617 - src.models.election_models - INFO - naive_bayes - Accuracy: 0.364, CV: 0.508±0.122
+2025-08-29 22:31:22,618 - src.models.election_models - INFO - Entraînement du modèle: knn
+2025-08-29 22:31:22,635 - src.models.election_models - INFO - knn - Accuracy: 0.273, CV: 0.586±0.146
+2025-08-29 22:31:22,635 - src.models.election_models - INFO - Meilleur modèle: svm (CV Score: 0.586)
+2025-08-29 22:31:22,636 - __main__ - INFO - ⚙️ Optimisation des hyperparamètres...
+2025-08-29 22:31:22,636 - src.models.election_models - INFO - Optimisation des hyperparamètres pour svm
+2025-08-29 22:31:24,509 - src.models.election_models - INFO - Score avant optimisation: 0.586
+2025-08-29 22:31:24,509 - src.models.election_models - INFO - Score après optimisation: 0.538
+2025-08-29 22:31:24,509 - src.models.election_models - WARNING - Pas d'importance des features disponible
+2025-08-29 22:31:24,538 - src.models.election_models - INFO - Modèle sauvegardé: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\models\best_election_model.pkl
+2025-08-29 22:31:24,538 - __main__ - INFO - 💾 Modèle sauvegardé: models/best_election_model.pkl
+2025-08-29 22:31:24,538 - __main__ - INFO - ============================================================
+2025-08-29 22:31:24,538 - __main__ - INFO - ✅ PIPELINE TERMINÉ AVEC SUCCÈS
+2025-08-29 22:31:24,538 - __main__ - INFO - ============================================================
+2025-08-29 22:31:24,539 - __main__ - INFO - 🎉 Pipeline terminé pour l'utilisateur: mgaisnon
+2025-08-29 22:31:30,781 - __main__ - INFO - 🚀 Exécution du pipeline complet
+2025-08-29 22:31:30,781 - __main__ - INFO - ============================================================
+2025-08-29 22:31:30,781 - __main__ - INFO - 🗳️ DÉMARRAGE DU PIPELINE ÉLECTIONS OCCITANIE
+2025-08-29 22:31:30,781 - __main__ - INFO - ============================================================
+2025-08-29 22:31:30,781 - __main__ - INFO - 👤 Utilisateur: Mathieu
+2025-08-29 22:31:30,782 - __main__ - INFO - 📅 Date: 2025-08-29 22:31:30
+2025-08-29 22:31:30,782 - __main__ - INFO - 📁 Répertoire vérifié/créé: data/raw
+2025-08-29 22:31:30,782 - __main__ - INFO - 📁 Répertoire vérifié/créé: data/processed
+2025-08-29 22:31:30,782 - __main__ - INFO - 📁 Répertoire vérifié/créé: models
+2025-08-29 22:31:30,783 - __main__ - INFO - 📁 Répertoire vérifié/créé: visualizations
+2025-08-29 22:31:30,783 - __main__ - INFO - 📁 Répertoire vérifié/créé: logs
+2025-08-29 22:31:30,783 - __main__ - INFO - ========================================
+2025-08-29 22:31:30,783 - __main__ - INFO - 📊 ÉTAPE 1: COLLECTE DES DONNÉES
+2025-08-29 22:31:30,783 - __main__ - INFO - ========================================
+2025-08-29 22:31:30,808 - src.data_collection.db_collector - ERROR - Erreur de connexion à la base: (pymysql.err.OperationalError) (1045, "Access denied for user 'root'@'localhost' (using password: NO)")
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-08-29 22:31:30,808 - src.data_collection.db_collector - INFO - Création de données d'exemple...
+2025-08-29 22:31:30,808 - src.data_collection.db_collector - INFO - Génération de données d'exemple
+2025-08-29 22:31:30,811 - src.data_collection.db_collector - INFO - Généré 458 enregistrements d'exemple
+2025-08-29 22:31:30,812 - src.data_collection.db_collector - ERROR - Erreur lors de la récupération: 'OptionEngine' object has no attribute 'execute'
+2025-08-29 22:31:30,813 - __main__ - INFO - ✅ Collecté 458 enregistrements
+2025-08-29 22:31:30,816 - __main__ - INFO - 💾 Données brutes sauvegardées: data\raw\election_data_raw.csv
+2025-08-29 22:31:30,816 - __main__ - INFO - 🔄 Traitement des données...
+2025-08-29 22:31:30,818 - __main__ - INFO - ✅ Données traitées: (458, 13)
+2025-08-29 22:31:30,819 - __main__ - INFO -    - Départements: 13
+2025-08-29 22:31:30,819 - __main__ - INFO -    - Années: [2017, 2022]
+2025-08-29 22:31:30,819 - __main__ - INFO -    - Nuances: 10
+2025-08-29 22:31:30,821 - __main__ - INFO - 💾 Données traitées sauvegardées: data\processed\election_data_processed.csv
+2025-08-29 22:31:30,821 - __main__ - INFO - ========================================
+2025-08-29 22:31:30,821 - __main__ - INFO - 🤖 ÉTAPE 2: ENTRAÎNEMENT DES MODÈLES
+2025-08-29 22:31:30,822 - __main__ - INFO - ========================================
+2025-08-29 22:31:30,837 - __main__ - INFO - 📊 Features préparées: (52, 9)
+2025-08-29 22:31:30,838 - __main__ - INFO - 🎯 Target préparée: (52,)
+2025-08-29 22:31:30,838 - __main__ - INFO - 📋 Colonnes features: ['taux_participation', 'taux_abstention', 'inscrits', 'votants', 'part_REN', 'part_RN', 'part_LFI', 'part_LR', 'part_PS']
+2025-08-29 22:31:30,838 - src.models.election_models - INFO - Initialisé 8 modèles
+2025-08-29 22:31:30,838 - __main__ - INFO - 🏭 Entraînement de 8 modèles...
+2025-08-29 22:31:30,839 - src.models.election_models - INFO - Entraînement sur 41 échantillons, test sur 11
+2025-08-29 22:31:30,839 - src.models.election_models - INFO - Entraînement du modèle: logistic_regression
+2025-08-29 22:31:30,857 - src.models.election_models - INFO - logistic_regression - Accuracy: 0.545, CV: 0.606±0.103
+2025-08-29 22:31:30,857 - src.models.election_models - INFO - Entraînement du modèle: random_forest
+2025-08-29 22:31:31,169 - src.models.election_models - INFO - random_forest - Accuracy: 0.727, CV: 0.578±0.207
+2025-08-29 22:31:31,169 - src.models.election_models - INFO - Entraînement du modèle: gradient_boosting
+2025-08-29 22:31:31,807 - src.models.election_models - INFO - gradient_boosting - Accuracy: 0.545, CV: 0.628±0.142
+2025-08-29 22:31:31,807 - src.models.election_models - INFO - Entraînement du modèle: xgboost
+2025-08-29 22:31:31,974 - src.models.election_models - INFO - xgboost - Accuracy: 0.455, CV: 0.653±0.170
+2025-08-29 22:31:31,974 - src.models.election_models - INFO - Entraînement du modèle: lightgbm
+2025-08-29 22:31:32,007 - src.models.election_models - INFO - lightgbm - Accuracy: 0.455, CV: 0.536±0.049
+2025-08-29 22:31:32,008 - src.models.election_models - INFO - Entraînement du modèle: svm
+2025-08-29 22:31:32,027 - src.models.election_models - INFO - svm - Accuracy: 0.545, CV: 0.606±0.103
+2025-08-29 22:31:32,027 - src.models.election_models - INFO - Entraînement du modèle: naive_bayes
+2025-08-29 22:31:32,039 - src.models.election_models - INFO - naive_bayes - Accuracy: 0.455, CV: 0.678±0.106
+2025-08-29 22:31:32,039 - src.models.election_models - INFO - Entraînement du modèle: knn
+2025-08-29 22:31:32,054 - src.models.election_models - INFO - knn - Accuracy: 0.364, CV: 0.506±0.185
+2025-08-29 22:31:32,054 - src.models.election_models - INFO - Meilleur modèle: naive_bayes (CV Score: 0.678)
+2025-08-29 22:31:32,054 - __main__ - INFO - ⚙️ Optimisation des hyperparamètres...
+2025-08-29 22:31:32,054 - src.models.election_models - WARNING - Pas d'optimisation définie pour naive_bayes
+2025-08-29 22:31:32,055 - __main__ - INFO - ℹ️ Optimisation non disponible pour ce modèle
+2025-08-29 22:31:32,055 - src.models.election_models - WARNING - Pas d'importance des features disponible
+2025-08-29 22:31:32,094 - src.models.election_models - INFO - Modèle sauvegardé: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\models\best_election_model.pkl
+2025-08-29 22:31:32,094 - __main__ - INFO - 💾 Modèle sauvegardé: models/best_election_model.pkl
+2025-08-29 22:31:32,095 - __main__ - INFO - ========================================
+2025-08-29 22:31:32,095 - __main__ - INFO - 📊 ÉTAPE 3: ANALYSES ET VISUALISATIONS
+2025-08-29 22:31:32,095 - __main__ - INFO - ========================================
+2025-08-29 22:31:32,095 - __main__ - INFO - 🔗 Création de l'analyse de corrélation...
+2025-08-29 22:31:32,838 - src.visualization.analyzer - INFO - Analyse de corrélation terminée
+2025-08-29 22:31:32,839 - __main__ - INFO - ✅ Analyse de corrélation créée: ['correlation_matrix.png', 'correlation_interactive.html']
+2025-08-29 22:31:32,839 - __main__ - INFO - 🗺️ Création de l'analyse géographique...
+2025-08-29 22:31:32,878 - src.visualization.analyzer - INFO - Analyse géographique terminée
+2025-08-29 22:31:32,878 - __main__ - INFO - ✅ Analyse géographique créée: ['geographic_analysis.html', 'occitanie_map.html']
+2025-08-29 22:31:32,879 - __main__ - INFO - 📈 Création de l'analyse temporelle...
+2025-08-29 22:31:32,950 - src.visualization.analyzer - INFO - Analyse temporelle terminée
+2025-08-29 22:31:32,951 - __main__ - INFO - ✅ Analyse temporelle créée: ['temporal_analysis.html', 'nuance_evolution.html']
+2025-08-29 22:31:32,951 - __main__ - INFO - 🎛️ Création du dashboard interactif...
+2025-08-29 22:31:33,002 - src.visualization.analyzer - INFO - Dashboard interactif créé
+2025-08-29 22:31:33,002 - __main__ - INFO - ✅ Dashboard interactif créé
+2025-08-29 22:31:33,002 - __main__ - INFO - 🎯 Création de l'analyse de performance...
+2025-08-29 22:31:33,045 - src.visualization.analyzer - INFO - Dashboard performance créé
+2025-08-29 22:31:33,045 - __main__ - INFO - ✅ Analyse de performance créée
+2025-08-29 22:31:33,045 - __main__ - INFO - 📋 Génération du rapport final...
+2025-08-29 22:31:33,046 - src.visualization.analyzer - INFO - Rapport généré: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\visualizations\rapport_complet.html
+2025-08-29 22:31:33,046 - __main__ - INFO - ============================================================
+2025-08-29 22:31:33,047 - __main__ - INFO - ✅ PIPELINE TERMINÉ AVEC SUCCÈS
+2025-08-29 22:31:33,047 - __main__ - INFO - ============================================================
+2025-08-29 22:31:33,047 - __main__ - INFO - 🎉 Pipeline terminé pour l'utilisateur: mgaisnon
+2025-08-29 22:43:18,042 - __main__ - INFO - 🚀 Exécution du pipeline complet
+2025-08-29 22:43:18,042 - __main__ - INFO - ============================================================
+2025-08-29 22:43:18,042 - __main__ - INFO - 🗳️ DÉMARRAGE DU PIPELINE ÉLECTIONS OCCITANIE
+2025-08-29 22:43:18,042 - __main__ - INFO - ============================================================
+2025-08-29 22:43:18,042 - __main__ - INFO - 👤 Utilisateur: Mathieu
+2025-08-29 22:43:18,042 - __main__ - INFO - 📅 Date: 2025-08-29 22:43:18
+2025-08-29 22:43:18,042 - __main__ - INFO - 📁 Répertoire vérifié/créé: data/raw
+2025-08-29 22:43:18,043 - __main__ - INFO - 📁 Répertoire vérifié/créé: data/processed
+2025-08-29 22:43:18,043 - __main__ - INFO - 📁 Répertoire vérifié/créé: models
+2025-08-29 22:43:18,043 - __main__ - INFO - 📁 Répertoire vérifié/créé: visualizations
+2025-08-29 22:43:18,043 - __main__ - INFO - 📁 Répertoire vérifié/créé: logs
+2025-08-29 22:43:18,043 - __main__ - INFO - ========================================
+2025-08-29 22:43:18,043 - __main__ - INFO - 📊 ÉTAPE 1: COLLECTE DES DONNÉES
+2025-08-29 22:43:18,043 - __main__ - INFO - ========================================
+2025-08-29 22:43:18,066 - src.data_collection.db_collector - INFO - Connexion à la base de données établie
+2025-08-29 22:43:18,067 - src.data_collection.db_collector - ERROR - Erreur lors de la récupération: 'OptionEngine' object has no attribute 'execute'
+2025-08-29 22:43:18,068 - __main__ - WARNING - ⚠️ Aucune donnée collectée, utilisation des données d'exemple
+2025-08-29 22:43:18,068 - src.data_collection.db_collector - INFO - Génération de données d'exemple
+2025-08-29 22:43:18,070 - src.data_collection.db_collector - INFO - Généré 441 enregistrements d'exemple
+2025-08-29 22:43:18,073 - __main__ - INFO - 💾 Données brutes sauvegardées: data\raw\election_data_raw.csv
+2025-08-29 22:43:18,073 - __main__ - INFO - 🔄 Traitement des données...
+2025-08-29 22:43:18,075 - __main__ - INFO - ✅ Données traitées: (441, 13)
+2025-08-29 22:43:18,075 - __main__ - INFO -    - Départements: 13
+2025-08-29 22:43:18,075 - __main__ - INFO -    - Années: [2017, 2022]
+2025-08-29 22:43:18,076 - __main__ - INFO -    - Nuances: 10
+2025-08-29 22:43:18,078 - __main__ - INFO - 💾 Données traitées sauvegardées: data\processed\election_data_processed.csv
+2025-08-29 22:43:18,078 - __main__ - INFO - ========================================
+2025-08-29 22:43:18,078 - __main__ - INFO - 🤖 ÉTAPE 2: ENTRAÎNEMENT DES MODÈLES
+2025-08-29 22:43:18,078 - __main__ - INFO - ========================================
+2025-08-29 22:43:18,094 - __main__ - INFO - 📊 Features préparées: (52, 9)
+2025-08-29 22:43:18,094 - __main__ - INFO - 🎯 Target préparée: (52,)
+2025-08-29 22:43:18,094 - __main__ - INFO - 📋 Colonnes features: ['taux_participation', 'taux_abstention', 'inscrits', 'votants', 'part_REN', 'part_RN', 'part_LFI', 'part_LR', 'part_PS']
+2025-08-29 22:43:18,094 - src.models.election_models - INFO - Initialisé 8 modèles
+2025-08-29 22:43:18,094 - __main__ - INFO - 🏭 Entraînement de 8 modèles...
+2025-08-29 22:43:18,095 - src.models.election_models - INFO - Entraînement sur 41 échantillons, test sur 11
+2025-08-29 22:43:18,095 - src.models.election_models - INFO - Entraînement du modèle: logistic_regression
+2025-08-29 22:43:18,111 - src.models.election_models - INFO - logistic_regression - Accuracy: 0.636, CV: 0.436±0.136
+2025-08-29 22:43:18,111 - src.models.election_models - INFO - Entraînement du modèle: random_forest
+2025-08-29 22:43:18,422 - src.models.election_models - INFO - random_forest - Accuracy: 0.364, CV: 0.681±0.190
+2025-08-29 22:43:18,422 - src.models.election_models - INFO - Entraînement du modèle: gradient_boosting
+2025-08-29 22:43:18,586 - src.models.election_models - INFO - gradient_boosting - Accuracy: 0.364, CV: 0.658±0.183
+2025-08-29 22:43:18,586 - src.models.election_models - INFO - Entraînement du modèle: xgboost
+2025-08-29 22:43:18,664 - src.models.election_models - INFO - xgboost - Accuracy: 0.364, CV: 0.656±0.100
+2025-08-29 22:43:18,664 - src.models.election_models - INFO - Entraînement du modèle: lightgbm
+2025-08-29 22:43:18,687 - src.models.election_models - INFO - lightgbm - Accuracy: 0.455, CV: 0.536±0.049
+2025-08-29 22:43:18,687 - src.models.election_models - INFO - Entraînement du modèle: svm
+2025-08-29 22:43:18,703 - src.models.election_models - INFO - svm - Accuracy: 0.364, CV: 0.658±0.122
+2025-08-29 22:43:18,703 - src.models.election_models - INFO - Entraînement du modèle: naive_bayes
+2025-08-29 22:43:18,718 - src.models.election_models - INFO - naive_bayes - Accuracy: 0.273, CV: 0.633±0.178
+2025-08-29 22:43:18,718 - src.models.election_models - INFO - Entraînement du modèle: knn
+2025-08-29 22:43:18,734 - src.models.election_models - INFO - knn - Accuracy: 0.273, CV: 0.683±0.125
+2025-08-29 22:43:18,734 - src.models.election_models - INFO - Meilleur modèle: knn (CV Score: 0.683)
+2025-08-29 22:43:18,734 - __main__ - INFO - ⚙️ Optimisation des hyperparamètres...
+2025-08-29 22:43:18,734 - src.models.election_models - WARNING - Pas d'optimisation définie pour knn
+2025-08-29 22:43:18,735 - __main__ - INFO - ℹ️ Optimisation non disponible pour ce modèle
+2025-08-29 22:43:18,735 - src.models.election_models - WARNING - Pas d'importance des features disponible
+2025-08-29 22:43:18,769 - src.models.election_models - INFO - Modèle sauvegardé: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\models\best_election_model.pkl
+2025-08-29 22:43:18,769 - __main__ - INFO - 💾 Modèle sauvegardé: models/best_election_model.pkl
+2025-08-29 22:43:18,769 - __main__ - INFO - ========================================
+2025-08-29 22:43:18,769 - __main__ - INFO - 📊 ÉTAPE 3: ANALYSES ET VISUALISATIONS
+2025-08-29 22:43:18,769 - __main__ - INFO - ========================================
+2025-08-29 22:43:18,770 - __main__ - INFO - 🔗 Création de l'analyse de corrélation...
+2025-08-29 22:43:19,467 - src.visualization.analyzer - INFO - Analyse de corrélation terminée
+2025-08-29 22:43:19,467 - __main__ - INFO - ✅ Analyse de corrélation créée: ['correlation_matrix.png', 'correlation_interactive.html']
+2025-08-29 22:43:19,467 - __main__ - INFO - 🗺️ Création de l'analyse géographique...
+2025-08-29 22:43:19,505 - src.visualization.analyzer - INFO - Analyse géographique terminée
+2025-08-29 22:43:19,505 - __main__ - INFO - ✅ Analyse géographique créée: ['geographic_analysis.html', 'occitanie_map.html']
+2025-08-29 22:43:19,505 - __main__ - INFO - 📈 Création de l'analyse temporelle...
+2025-08-29 22:43:19,576 - src.visualization.analyzer - INFO - Analyse temporelle terminée
+2025-08-29 22:43:19,576 - __main__ - INFO - ✅ Analyse temporelle créée: ['temporal_analysis.html', 'nuance_evolution.html']
+2025-08-29 22:43:19,576 - __main__ - INFO - 🎛️ Création du dashboard interactif...
+2025-08-29 22:43:19,629 - src.visualization.analyzer - INFO - Dashboard interactif créé
+2025-08-29 22:43:19,629 - __main__ - INFO - ✅ Dashboard interactif créé
+2025-08-29 22:43:19,629 - __main__ - INFO - 🎯 Création de l'analyse de performance...
+2025-08-29 22:43:19,673 - src.visualization.analyzer - INFO - Dashboard performance créé
+2025-08-29 22:43:19,673 - __main__ - INFO - ✅ Analyse de performance créée
+2025-08-29 22:43:19,673 - __main__ - INFO - 📋 Génération du rapport final...
+2025-08-29 22:43:19,674 - src.visualization.analyzer - INFO - Rapport généré: C:\Users\Mathieu\Desktop\ECOLE\EPSI\Cours\EISI 1\MSPRBLOC 3\MSPR-BigData-MachineLearning\visualizations\rapport_complet.html
+2025-08-29 22:43:19,675 - __main__ - INFO - ============================================================
+2025-08-29 22:43:19,675 - __main__ - INFO - ✅ PIPELINE TERMINÉ AVEC SUCCÈS
+2025-08-29 22:43:19,675 - __main__ - INFO - ============================================================
+2025-08-29 22:43:19,676 - __main__ - INFO - 🎉 Pipeline terminé pour l'utilisateur: mgaisnon
