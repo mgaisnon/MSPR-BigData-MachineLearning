@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_84af7ce596c75d0bb858ef01ec007f4c {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_84af7ce596c75d0bb858ef01ec007f4c" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_84af7ce596c75d0bb858ef01ec007f4c = L.map(
+                "map_84af7ce596c75d0bb858ef01ec007f4c",
+                {
+                    center: [43.5, 2.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 7,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_6f551e3cdabcc70bcbbfa96a9b5e5704 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_84af7ce596c75d0bb858ef01ec007f4c);
+        
+    
+            var circle_marker_ec2826514b9b120b1f82498d08233799 = L.circleMarker(
+                [42.96, 1.6],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 37.82735209862827, "stroke": true, "weight": 2}
+            ).addTo(map_84af7ce596c75d0bb858ef01ec007f4c);
+        
+    
+        var popup_43ee8df3fd86f3745b344344a5f31850 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_262b6fdb7becf4853977539c3575b0ca = $(`<div id="html_262b6fdb7becf4853977539c3575b0ca" style="width: 100.0%; height: 100.0%;">09 - Ariège<br>Participation: 75.7%<br>Voix: 401,300</div>`)[0];
+                popup_43ee8df3fd86f3745b344344a5f31850.setContent(html_262b6fdb7becf4853977539c3575b0ca);
+            
+        
+
+        circle_marker_ec2826514b9b120b1f82498d08233799.bindPopup(popup_43ee8df3fd86f3745b344344a5f31850)
+        ;
+
+        
+    
+    
+            var circle_marker_aab016ed24a2519149b89d75f0617318 = L.circleMarker(
+                [43.22, 2.35],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 38.04992822674429, "stroke": true, "weight": 2}
+            ).addTo(map_84af7ce596c75d0bb858ef01ec007f4c);
+        
+    
+        var popup_9a8f142dcd0278047208eddf2711593f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_47f93f8414510bf1aaf25b7b400fe061 = $(`<div id="html_47f93f8414510bf1aaf25b7b400fe061" style="width: 100.0%; height: 100.0%;">11 - Aude<br>Participation: 76.1%<br>Voix: 376,245</div>`)[0];
+                popup_9a8f142dcd0278047208eddf2711593f.setContent(html_47f93f8414510bf1aaf25b7b400fe061);
+            
+        
+
+        circle_marker_aab016ed24a2519149b89d75f0617318.bindPopup(popup_9a8f142dcd0278047208eddf2711593f)
+        ;
+
+        
+    
+    
+            var circle_marker_1c4a82c58fe2ff9f2f46173ef9f0e413 = L.circleMarker(
+                [44.35, 2.57],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35.19897105254214, "stroke": true, "weight": 2}
+            ).addTo(map_84af7ce596c75d0bb858ef01ec007f4c);
+        
+    
+        var popup_9d2fd3bd9bb2b1d3bbd7dbefc33c4439 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d7cbb2036cfe6799dbf9f8368c1e4d30 = $(`<div id="html_d7cbb2036cfe6799dbf9f8368c1e4d30" style="width: 100.0%; height: 100.0%;">12 - Aveyron<br>Participation: 70.4%<br>Voix: 355,869</div>`)[0];
+                popup_9d2fd3bd9bb2b1d3bbd7dbefc33c4439.setContent(html_d7cbb2036cfe6799dbf9f8368c1e4d30);
+            
+        
+
+        circle_marker_1c4a82c58fe2ff9f2f46173ef9f0e413.bindPopup(popup_9d2fd3bd9bb2b1d3bbd7dbefc33c4439)
+        ;
+
+        
+    
+    
+            var circle_marker_340132daebf0c607419356a4ef1dbea5 = L.circleMarker(
+                [43.84, 4.36],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 38.92725045842593, "stroke": true, "weight": 2}
+            ).addTo(map_84af7ce596c75d0bb858ef01ec007f4c);
+        
+    
+        var popup_eec7ae1a082788ee7d8b441e46cb0865 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c0450ecf3a4965a217a78e209d72ad3f = $(`<div id="html_c0450ecf3a4965a217a78e209d72ad3f" style="width: 100.0%; height: 100.0%;">30 - Gard<br>Participation: 77.9%<br>Voix: 442,940</div>`)[0];
+                popup_eec7ae1a082788ee7d8b441e46cb0865.setContent(html_c0450ecf3a4965a217a78e209d72ad3f);
+            
+        
+
+        circle_marker_340132daebf0c607419356a4ef1dbea5.bindPopup(popup_eec7ae1a082788ee7d8b441e46cb0865)
+        ;
+
+        
+    
+    
+            var circle_marker_6f5e208c19d884db4439ce19f04f75c9 = L.circleMarker(
+                [43.6, 1.44],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 38.110460991509555, "stroke": true, "weight": 2}
+            ).addTo(map_84af7ce596c75d0bb858ef01ec007f4c);
+        
+    
+        var popup_b4ab15cf4f6de14ef0c3b8611f34141a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_902b425e8fff2778e167aeef3bebd92c = $(`<div id="html_902b425e8fff2778e167aeef3bebd92c" style="width: 100.0%; height: 100.0%;">31 - Haute-Garonne<br>Participation: 76.2%<br>Voix: 335,776</div>`)[0];
+                popup_b4ab15cf4f6de14ef0c3b8611f34141a.setContent(html_902b425e8fff2778e167aeef3bebd92c);
+            
+        
+
+        circle_marker_6f5e208c19d884db4439ce19f04f75c9.bindPopup(popup_b4ab15cf4f6de14ef0c3b8611f34141a)
+        ;
+
+        
+    
+    
+            var circle_marker_dad403915bb2cb8a507c7263eaee5797 = L.circleMarker(
+                [43.65, 0.59],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 38.64759272868004, "stroke": true, "weight": 2}
+            ).addTo(map_84af7ce596c75d0bb858ef01ec007f4c);
+        
+    
+        var popup_27004eb5048b80ed51b8ff8f3e9dcacf = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_50da8c83a1489244f63074409966f826 = $(`<div id="html_50da8c83a1489244f63074409966f826" style="width: 100.0%; height: 100.0%;">32 - Gers<br>Participation: 77.3%<br>Voix: 358,230</div>`)[0];
+                popup_27004eb5048b80ed51b8ff8f3e9dcacf.setContent(html_50da8c83a1489244f63074409966f826);
+            
+        
+
+        circle_marker_dad403915bb2cb8a507c7263eaee5797.bindPopup(popup_27004eb5048b80ed51b8ff8f3e9dcacf)
+        ;
+
+        
+    
+    
+            var circle_marker_d4721db7551c81b0a79a7e7755d9fab9 = L.circleMarker(
+                [43.61, 3.88],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 38.07821240852545, "stroke": true, "weight": 2}
+            ).addTo(map_84af7ce596c75d0bb858ef01ec007f4c);
+        
+    
+        var popup_b5d36c4b341086f7081f3ab3206e24e2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d4e72cac28040483943b67aa8f175b5c = $(`<div id="html_d4e72cac28040483943b67aa8f175b5c" style="width: 100.0%; height: 100.0%;">34 - Hérault<br>Participation: 76.2%<br>Voix: 360,075</div>`)[0];
+                popup_b5d36c4b341086f7081f3ab3206e24e2.setContent(html_d4e72cac28040483943b67aa8f175b5c);
+            
+        
+
+        circle_marker_d4721db7551c81b0a79a7e7755d9fab9.bindPopup(popup_b5d36c4b341086f7081f3ab3206e24e2)
+        ;
+
+        
+    
+    
+            var circle_marker_94c089d4b48021a1e501222e7dd15d85 = L.circleMarker(
+                [44.45, 1.44],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35.73417018504308, "stroke": true, "weight": 2}
+            ).addTo(map_84af7ce596c75d0bb858ef01ec007f4c);
+        
+    
+        var popup_8af38caa484922e9a23b7764f86c28c1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_706442baf6684575a822c8b62c59a933 = $(`<div id="html_706442baf6684575a822c8b62c59a933" style="width: 100.0%; height: 100.0%;">46 - Lot<br>Participation: 71.5%<br>Voix: 393,238</div>`)[0];
+                popup_8af38caa484922e9a23b7764f86c28c1.setContent(html_706442baf6684575a822c8b62c59a933);
+            
+        
+
+        circle_marker_94c089d4b48021a1e501222e7dd15d85.bindPopup(popup_8af38caa484922e9a23b7764f86c28c1)
+        ;
+
+        
+    
+    
+            var circle_marker_94deba0e96eda089fc13fa8573e1c04c = L.circleMarker(
+                [44.52, 3.5],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 37.28909056086754, "stroke": true, "weight": 2}
+            ).addTo(map_84af7ce596c75d0bb858ef01ec007f4c);
+        
+    
+        var popup_97c9f1100ba9b664df908e3811ac815e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_72af5e058cd9eca7920863c9dd66586f = $(`<div id="html_72af5e058cd9eca7920863c9dd66586f" style="width: 100.0%; height: 100.0%;">48 - Lozère<br>Participation: 74.6%<br>Voix: 437,670</div>`)[0];
+                popup_97c9f1100ba9b664df908e3811ac815e.setContent(html_72af5e058cd9eca7920863c9dd66586f);
+            
+        
+
+        circle_marker_94deba0e96eda089fc13fa8573e1c04c.bindPopup(popup_97c9f1100ba9b664df908e3811ac815e)
+        ;
+
+        
+    
+    
+            var circle_marker_82ab46d807c745c64c49f4300e3ed73e = L.circleMarker(
+                [43.23, 0.08],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 39.17032275147992, "stroke": true, "weight": 2}
+            ).addTo(map_84af7ce596c75d0bb858ef01ec007f4c);
+        
+    
+        var popup_89e22cec36714402ff3cd8071c50c219 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f5d609558076affb16b47e50bb24b5c0 = $(`<div id="html_f5d609558076affb16b47e50bb24b5c0" style="width: 100.0%; height: 100.0%;">65 - Hautes-Pyrénées<br>Participation: 78.3%<br>Voix: 405,601</div>`)[0];
+                popup_89e22cec36714402ff3cd8071c50c219.setContent(html_f5d609558076affb16b47e50bb24b5c0);
+            
+        
+
+        circle_marker_82ab46d807c745c64c49f4300e3ed73e.bindPopup(popup_89e22cec36714402ff3cd8071c50c219)
+        ;
+
+        
+    
+    
+            var circle_marker_95bc8064952bba56a753e6dde17c1599 = L.circleMarker(
+                [42.7, 2.9],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 36.938645696580885, "stroke": true, "weight": 2}
+            ).addTo(map_84af7ce596c75d0bb858ef01ec007f4c);
+        
+    
+        var popup_dc0872738a4fbbe5a9c4f7fb9c7377ed = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5210bcd4097e561bc59f565054823e0d = $(`<div id="html_5210bcd4097e561bc59f565054823e0d" style="width: 100.0%; height: 100.0%;">66 - Pyrénées-Orientales<br>Participation: 73.9%<br>Voix: 264,563</div>`)[0];
+                popup_dc0872738a4fbbe5a9c4f7fb9c7377ed.setContent(html_5210bcd4097e561bc59f565054823e0d);
+            
+        
+
+        circle_marker_95bc8064952bba56a753e6dde17c1599.bindPopup(popup_dc0872738a4fbbe5a9c4f7fb9c7377ed)
+        ;
+
+        
+    
+    
+            var circle_marker_eb4a4744612e8d59a2e9d0e0ca6c27e7 = L.circleMarker(
+                [43.93, 2.14],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 39.87303671505391, "stroke": true, "weight": 2}
+            ).addTo(map_84af7ce596c75d0bb858ef01ec007f4c);
+        
+    
+        var popup_a8350465c7ef637500748a30f9fa95a1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5a920f9f1339dcf74277f935fe876a21 = $(`<div id="html_5a920f9f1339dcf74277f935fe876a21" style="width: 100.0%; height: 100.0%;">81 - Tarn<br>Participation: 79.7%<br>Voix: 398,411</div>`)[0];
+                popup_a8350465c7ef637500748a30f9fa95a1.setContent(html_5a920f9f1339dcf74277f935fe876a21);
+            
+        
+
+        circle_marker_eb4a4744612e8d59a2e9d0e0ca6c27e7.bindPopup(popup_a8350465c7ef637500748a30f9fa95a1)
+        ;
+
+        
+    
+    
+            var circle_marker_9d10cfbcca60cb28d7b8e4676fcefb3b = L.circleMarker(
+                [44.02, 1.35],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35.59994550530548, "stroke": true, "weight": 2}
+            ).addTo(map_84af7ce596c75d0bb858ef01ec007f4c);
+        
+    
+        var popup_145d6b7d6fb8d5ed418d187f7e0927ed = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9e1214134f9d25a7b0c5b337aac3fd8b = $(`<div id="html_9e1214134f9d25a7b0c5b337aac3fd8b" style="width: 100.0%; height: 100.0%;">82 - Tarn-et-Garonne<br>Participation: 71.2%<br>Voix: 341,065</div>`)[0];
+                popup_145d6b7d6fb8d5ed418d187f7e0927ed.setContent(html_9e1214134f9d25a7b0c5b337aac3fd8b);
+            
+        
+
+        circle_marker_9d10cfbcca60cb28d7b8e4676fcefb3b.bindPopup(popup_145d6b7d6fb8d5ed418d187f7e0927ed)
+        ;
+
+        
+    
+</script>
+</html>

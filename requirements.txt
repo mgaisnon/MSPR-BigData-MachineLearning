@@ -1,0 +1,30 @@
+# Base de données
+pandas==1.5.3
+sqlalchemy==2.0.13
+pymysql==1.0.3
+mysql-connector-python==8.0.33
+numpy==1.24.3
+
+# Interface web
+streamlit==1.22.0
+
+# Visualisation
+plotly==5.14.1
+matplotlib==3.7.1
+seaborn==0.12.2
+folium==0.14.0
+
+# Machine Learning
+scikit-learn==1.2.2
+xgboost==1.7.4
+lightgbm==3.3.5
+
+# Utils
+python-dotenv==1.0.0
+joblib==1.2.0
+scipy==1.10.1
+tqdm==4.65.0
+
+# Development
+jupyter==1.0.0
+pytest==7.3.1
