@@ -104,26 +104,26 @@ class DatabaseConfig:
 @dataclass
 class OccitanieConfig:
     """Configuration Occitanie"""
-    midi_pyrenees_depts: List[str] = None
-    languedoc_roussillon_depts: List[str] = None
+    midi_pyrenees_depts: List[int] = None
+    languedoc_roussillon_depts: List[int] = None
     
     def __post_init__(self):
         if self.midi_pyrenees_depts is None:
-            self.midi_pyrenees_depts = ['09', '12', '31', '32', '46', '65', '81', '82']
+            self.midi_pyrenees_depts = [9, 12, 31, 32, 46, 65, 81, 82]
         if self.languedoc_roussillon_depts is None:
-            self.languedoc_roussillon_depts = ['11', '30', '34', '48', '66']
+            self.languedoc_roussillon_depts = [11, 30, 34, 48, 66]
         
     @property
-    def all_departments(self) -> List[str]:
+    def all_departments(self) -> List[int]:
         return self.midi_pyrenees_depts + self.languedoc_roussillon_depts
     
     @property
-    def department_names(self) -> Dict[str, str]:
+    def department_names(self) -> Dict[int, str]:
         return {
-            '09': 'Ariège', '11': 'Aude', '12': 'Aveyron', '30': 'Gard',
-            '31': 'Haute-Garonne', '32': 'Gers', '34': 'Hérault', '46': 'Lot',
-            '48': 'Lozère', '65': 'Hautes-Pyrénées', '66': 'Pyrénées-Orientales',
-            '81': 'Tarn', '82': 'Tarn-et-Garonne'
+            9: 'Ariège', 11: 'Aude', 12: 'Aveyron', 30: 'Gard',
+            31: 'Haute-Garonne', 32: 'Gers', 34: 'Hérault', 46: 'Lot',
+            48: 'Lozère', 65: 'Hautes-Pyrénées', 66: 'Pyrénées-Orientales',
+            81: 'Tarn', 82: 'Tarn-et-Garonne'
         }
 
 @dataclass

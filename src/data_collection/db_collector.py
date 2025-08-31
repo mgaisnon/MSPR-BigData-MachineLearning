@@ -216,7 +216,7 @@ class ElectionDBCollector:
             # Filtrage par départements d'Occitanie
             dept_col = self.column_mapping['departement']
             if dept_col in self.table_structure:
-                dept_list = "','".join(self.occitanie_depts)
+                dept_list = "','".join(str(d) for d in self.occitanie_depts)
                 where_conditions.append(f"{dept_col} IN ('{dept_list}')")
             
             # Filtrage par années
@@ -273,29 +273,16 @@ class ElectionDBCollector:
     def _clean_dataframe(self, df: pd.DataFrame) -> pd.DataFrame:
         """Nettoie et standardise le DataFrame"""
         try:
-            # Conversion des types numériques
+        # Conversion des types numériques
             numeric_cols = ['annee', 'tour', 'inscrits', 'votants', 'abstentions', 'exprimes', 'voix']
             for col in numeric_cols:
                 if col in df.columns:
                     df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0).astype('int32')
-            
             # Nettoyage des colonnes texte
-            text_cols = ['departement', 'nuance']
-            for col in text_cols:
-                if col in df.columns:
-                    df[col] = df[col].astype(str).str.strip().str.upper()
-            
-            # Filtrage final sur les départements d'Occitanie
             if 'departement' in df.columns:
-                df = df[df['departement'].isin(self.occitanie_depts)]
-            
-            # Ajouter un ID si manquant
-            if 'id' not in df.columns:
-                df['id'] = range(1, len(df) + 1)
-                df['id'] = df['id'].astype('int32')
-            
+                df['departement'] = df['departement'].astype(str).str.zfill(2)
+            # ... reste du code
             return df
-            
         except Exception as e:
             logger.warning(f"Erreur nettoyage données: {e}")
             return df

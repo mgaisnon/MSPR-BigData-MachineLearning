@@ -117,7 +117,8 @@ def main():
         "🔍 Analyse Exploratoire": "analysis", 
         "📈 Visualisations": "visualizations",
         "🤖 Machine Learning": "ml",
-        "🔮 Prédictions": "predictions"
+        "🔮 Prédictions": "predictions",
+        "🔍 Validation Historique": "validation"
     }
     
     selected_page = st.sidebar.selectbox("Choisissez une section", list(pages.keys()))
@@ -148,6 +149,8 @@ def main():
         show_ml_results(df_processed, processor)
     elif page_key == "predictions":
         show_predictions(df_processed, processor)
+    elif page_key == "validation":
+        show_historical_validation(df_processed, processor)
 
 def show_dashboard(df):
     """Tableau de bord avec vos données MySQL"""
@@ -669,6 +672,250 @@ def show_predictions(df_processed, processor):
                     st.error("❌ Aucune prédiction générée")
                     st.info("Vérifiez la connexion MySQL et les données historiques")
 
+def show_historical_validation(df_processed, processor):
+    import streamlit as st
+    import pandas as pd
+    import plotly.express as px
+
+    st.header("🔍 Validation Historique des Prédictions")
+    st.info("🎯 **Testez la fiabilité de votre modèle sur les années passées**")
+
+    if df_processed is None or df_processed.empty:
+        st.error("❌ Aucune donnée disponible pour la validation")
+        return
+
+    numerics = ['annee', 'tour', 'departement', 'inscrits', 'votants', 'abstentions', 'exprimes', 'voix']
+    for col in numerics:
+        if col in df_processed.columns:
+            df_processed[col] = pd.to_numeric(df_processed[col], errors="coerce").astype("Int64")
+
+    # Charger le prédicteur
+    try:
+        from src.prediction.real_prediction import RealElectionPredictor
+        predictor = RealElectionPredictor()
+        model_info = predictor.get_model_info()
+        st.success(f"✅ Modèle chargé : {model_info['model_name']} (Accuracy: {model_info['accuracy']:.1%})")
+    except Exception as e:
+        st.error(f"❌ Erreur chargement prédicteur : {e}")
+        return
+
+    st.subheader("⚙️ Paramètres de Validation")
+    col1, col2 = st.columns(2)
+
+    with col1:
+        if 'annee' in df_processed.columns:
+            annees_disponibles = sorted(df_processed['annee'].dropna().unique(), reverse=True)
+            annee_test = st.selectbox(
+                "📅 Année à tester",
+                annees_disponibles,
+                help="Sélectionnez une année présente dans votre BDD pour la validation"
+            )
+        else:
+            st.error("Colonne 'annee' non trouvée dans les données")
+            return
+
+        all_depts = [
+            (9, "09 - Ariège"),
+            (11, "11 - Aude"),
+            (12, "12 - Aveyron"),
+            (30, "30 - Gard"),
+            (31, "31 - Haute-Garonne"),
+            (32, "32 - Gers"),
+            (34, "34 - Hérault"),
+            (46, "46 - Lot"),
+            (48, "48 - Lozère"),
+            (65, "65 - Hautes-Pyrénées"),
+            (66, "66 - Pyrénées-Orientales"),
+            (81, "81 - Tarn"),
+            (82, "82 - Tarn-et-Garonne"),
+        ]
+        dept_options = [f"{label} ({code})" for code, label in all_depts]
+        dept_options.sort()
+        dept_selected = st.selectbox("🗺️ Département à tester", dept_options)
+        departement_code = int(dept_selected.split('(')[1].split(')')[0])
+
+    with col2:
+        if 'tour' in df_processed.columns:
+            tours_disponibles = sorted(df_processed[df_processed['annee'] == annee_test]['tour'].dropna().unique())
+            tour_test = st.selectbox("🗳️ Tour", tours_disponibles)
+        else:
+            tour_test = 1
+            st.info("Colonne 'tour' non trouvée, utilisation du tour 1")
+
+        show_details = st.checkbox("📊 Afficher les détails", value=True)
+        show_charts = st.checkbox("📈 Afficher les graphiques", value=True)
+
+    annee_test = int(annee_test)
+    departement_code = int(departement_code)
+    tour_test = int(tour_test)
+
+    if st.button("🚀 Lancer la Validation", use_container_width=True):
+        st.markdown("---")
+
+        vraies_donnees = df_processed[
+            (df_processed['annee'] == annee_test) &
+            (df_processed['departement'] == departement_code) &
+            (df_processed['tour'] == tour_test)
+        ].copy()
+
+        if vraies_donnees.empty:
+            st.error(f"❌ Aucune donnée trouvée pour {annee_test}, département {departement_code}, tour {tour_test}")
+            return
+
+        st.success(f"✅ {len(vraies_donnees)} enregistrements trouvés pour la validation")
+
+        sample_row = vraies_donnees.iloc[0]
+        midi_pyrenees_depts = [9,12,31,32,46,65,81,82]
+        region = 'Midi-Pyrénées' if departement_code in midi_pyrenees_depts else 'Languedoc-Roussillon'
+        typologie = 'Urbaine' if departement_code in [31, 34] else 'Rurale'
+        election_data = {
+            'annee': annee_test,
+            'departement': departement_code,
+            'tour': tour_test,
+            'inscrits': int(sample_row.get('inscrits', 25000)),
+            'taux_participation': float(sample_row.get('taux_participation', 65.0)) if 'taux_participation' in sample_row else 65.0,
+            'typologie': typologie,
+            'region': region
+        }
+
+        st.subheader("🤖 Prédiction vs Réalité")
+        with st.spinner("🔄 Génération des prédictions..."):
+            predictions = predictor.predict_election(election_data)
+
+        if 'nuance' in vraies_donnees.columns and 'voix' in vraies_donnees.columns:
+            total_voix = vraies_donnees['voix'].sum()
+            vraies_resultats = {}
+            for _, row in vraies_donnees.iterrows():
+                nuance = row['nuance']
+                voix = row['voix']
+                pourcentage = (voix / total_voix) * 100 if total_voix > 0 else 0
+                vraies_resultats[nuance] = vraies_resultats.get(nuance, 0) + pourcentage
+        else:
+            st.error("❌ Colonnes 'nuance' ou 'voix' non trouvées dans les données")
+            return
+
+        if predictions and vraies_resultats:
+            st.subheader("📊 Résultats de la Validation")
+            toutes_nuances = set(predictions.keys()) | set(vraies_resultats.keys())
+            comparaison_data = []
+            for nuance in toutes_nuances:
+                pred_val = predictions.get(nuance, 0)
+                vrai_val = vraies_resultats.get(nuance, 0)
+                ecart = abs(pred_val - vrai_val)
+                comparaison_data.append({
+                    'Nuance': nuance,
+                    'Prédiction (%)': round(pred_val, 2),
+                    'Réalité (%)': round(vrai_val, 2),
+                    'Écart (%)': round(ecart, 2),
+                    'Écart Relatif': f"{(ecart/max(vrai_val, 0.1)*100):.1f}%" if vrai_val > 0 else "N/A"
+                })
+            df_comparaison = pd.DataFrame(comparaison_data).sort_values('Réalité (%)', ascending=False)
+
+            col1, col2, col3, col4 = st.columns(4)
+            with col1:
+                ecart_moyen = df_comparaison['Écart (%)'].mean()
+                st.metric("📊 Écart Moyen", f"{ecart_moyen:.2f}%")
+            with col2:
+                ecart_max = df_comparaison['Écart (%)'].max()
+                st.metric("📈 Écart Maximum", f"{ecart_max:.2f}%")
+            with col3:
+                pred_gagnant = max(predictions.keys(), key=lambda k: predictions[k])
+                vrai_gagnant = max(vraies_resultats.keys(), key=lambda k: vraies_resultats[k])
+                gagnant_correct = pred_gagnant == vrai_gagnant
+                st.metric("🏆 Gagnant Prédit", "✅ Correct" if gagnant_correct else "❌ Incorrect")
+            with col4:
+                score_precision = 100 - min(ecart_moyen * 2, 100)
+                st.metric("🎯 Score Précision", f"{score_precision:.1f}%")
+
+            if show_details:
+                st.subheader("📋 Comparaison Détaillée")
+                def color_ecart(val):
+                    if isinstance(val, (int, float)):
+                        if val < 2:
+                            return 'background-color: #d4edda'
+                        elif val < 5:
+                            return 'background-color: #fff3cd'
+                        else:
+                            return 'background-color: #f8d7da'
+                    return ''
+                styled_df = df_comparaison.style.applymap(color_ecart, subset=['Écart (%)'])
+                st.dataframe(styled_df, use_container_width=True)
+
+            if show_charts:
+                st.subheader("📈 Visualisations Comparatives")
+                col1, col2 = st.columns(2)
+                with col1:
+                    fig_bar = px.bar(
+                        df_comparaison,
+                        x='Nuance',
+                        y=['Prédiction (%)', 'Réalité (%)'],
+                        title="Prédiction vs Réalité par Nuance",
+                        barmode='group',
+                        color_discrete_sequence=['#ff7f0e', '#1f77b4']
+                    )
+                    fig_bar.update_xaxes(tickangle=45)
+                    st.plotly_chart(fig_bar, use_container_width=True)
+                with col2:
+                    fig_scatter = px.scatter(
+                        df_comparaison,
+                        x='Réalité (%)',
+                        y='Prédiction (%)',
+                        text='Nuance',
+                        title="Corrélation Prédiction-Réalité",
+                        color='Écart (%)',
+                        color_continuous_scale='RdYlGn_r'
+                    )
+                    max_val = max(df_comparaison['Réalité (%)'].max(), df_comparaison['Prédiction (%)'].max())
+                    fig_scatter.add_shape(
+                        type="line", line=dict(dash="dash"),
+                        x0=0, x1=max_val, y0=0, y1=max_val
+                    )
+                    st.plotly_chart(fig_scatter, use_container_width=True)
+                st.subheader("📊 Analyse des Écarts")
+                fig_ecarts = px.bar(
+                    df_comparaison.sort_values('Écart (%)', ascending=True),
+                    x='Écart (%)',
+                    y='Nuance',
+                    orientation='h',
+                    title="Écarts de Prédiction par Nuance",
+                    color='Écart (%)',
+                    color_continuous_scale='RdYlGn_r'
+                )
+                st.plotly_chart(fig_ecarts, use_container_width=True)
+
+            st.subheader("📝 Analyse des Résultats")
+            analyse_points = []
+            if gagnant_correct:
+                analyse_points.append(f"✅ **Gagnant correct** : Le modèle a correctement prédit {pred_gagnant} comme gagnant")
+            else:
+                analyse_points.append(f"❌ **Gagnant incorrect** : Prédit {pred_gagnant}, réel {vrai_gagnant}")
+            if ecart_moyen < 3:
+                analyse_points.append("🎯 **Précision excellente** : Écart moyen < 3%")
+            elif ecart_moyen < 5:
+                analyse_points.append("👍 **Précision correcte** : Écart moyen < 5%")
+            else:
+                analyse_points.append("⚠️ **Précision à améliorer** : Écart moyen > 5%")
+            meilleure = df_comparaison.loc[df_comparaison['Écart (%)'].idxmin()]
+            pire = df_comparaison.loc[df_comparaison['Écart (%)'].idxmax()]
+            analyse_points.append(f"🏅 **Meilleure prédiction** : {meilleure['Nuance']} (écart {meilleure['Écart (%)']}%)")
+            analyse_points.append(f"📉 **Prédiction à améliorer** : {pire['Nuance']} (écart {pire['Écart (%)']}%)")
+            for point in analyse_points:
+                st.info(point)
+
+            st.subheader("💡 Recommandations")
+            recommandations = []
+            if ecart_moyen > 5:
+                recommandations.append("🔧 Ajuster les paramètres du modèle pour réduire l'écart moyen")
+            if len([x for x in df_comparaison['Écart (%)'] if x > 10]) > 0:
+                recommandations.append("📊 Analyser les nuances avec de gros écarts pour améliorer le modèle")
+            if not gagnant_correct:
+                recommandations.append("🎯 Revoir les variables les plus importantes pour la prédiction du gagnant")
+            recommandations.append("🔄 Tester sur d'autres années/départements pour validation croisée")
+            recommandations.append("📈 Comparer avec d'autres algorithmes (RandomForest, XGBoost, etc.)")
+            for reco in recommandations:
+                st.warning(reco)
+        else:
+            st.error("❌ Erreur lors de la génération des prédictions ou du traitement des vraies données")
 
 if __name__ == "__main__":
     main()

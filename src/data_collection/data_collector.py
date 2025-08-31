@@ -94,7 +94,7 @@ class ElectionDataCollector:
                     'inscrits': total_inscrits,
                     'votants': total_votants,
                     'abstentions': total_inscrits - total_votants,
-                    'exprimes': total_votants - int(total_votants * 0.02),  # 2% blancs/nuls
+                    'exprimes': total_votants - int(total_votants * 0.02), 
                     'nuance': candidate,
                     'voix': voix
                 })

@@ -1,178 +1,155 @@
-# Modèle Prédictif des Élections - Région Occitanie
+# MSPR-BigData-MachineLearning
 
 ## Description
 
-Ce projet développe un système complet d'analyse et de prédiction des résultats électoraux pour la région Occitanie, dans le cadre du cours TPRE813 - Big Data & Business Intelligence.
+Ce projet propose une plateforme complète pour l'analyse, la visualisation et la prédiction des résultats électoraux en région Occitanie, dans le cadre de la MSPR Big Data & Machine Learning (TPRE813). Il couvre la collecte de données réelles, leur traitement, la création de modèles prédictifs avancés et la mise à disposition d'une interface web interactive.
 
 ## Équipe
 
 - Paul CARION
-- Yassin FARASSI  
+- Yassin FARASSI
 - Mathieu GAISNON
 - Julie MONTOUX
 
 ## Fonctionnalités
 
-- 🗳️ Collecte et traitement des données électorales des 13 départements d'Occitanie
-- 📊 Analyses statistiques et visualisations interactives
-- 🤖 Modèles de machine learning pour la prédiction
-- 📈 Dashboard web interactif avec Streamlit
-- 📋 Génération de rapports automatiques
+- 🗳️ Collecte et traitement des résultats électoraux pour les 13 départements d'Occitanie via une base MySQL
+- 📊 Analyses statistiques, géographiques et corrélationnelles interactives
+- 🤖 Prédictions avec modèles de machine learning, basées sur les vraies nuances politiques issues de la BDD
+- 📈 Dashboard web Streamlit convivial : exploration, visualisation, ML, prédiction
+- 📋 Génération de rapports et comparaisons inter-élections
 
-## Architecture
+## Architecture du projet
 
 ```
-election_predictor_occitanie/
-├── config/                 # Configuration
+MSPR-BigData-MachineLearning/
+├── config/                  # Paramétrage et accès BDD
 ├── src/
-│   ├── data_collection/    # Collecte de données
-│   ├── data_processing/    # Traitement des données
-│   ├── models/            # Modèles ML
-│   └── visualization/     # Analyses et visualisations
+│   ├── data_collection/     # Scripts d'import et requêtes MySQL
+│   ├── data_processing/     # Préparation, nettoyage et features
+│   ├── models/              # Modèles ML et gestion du pipeline
+│   ├── prediction/          # Prédicteur basé sur la BDD, nuances réelles
+│   └── visualization/       # Graphiques et analyses avancées
 ├── data/
-│   ├── raw/               # Données brutes
-│   └── processed/         # Données traitées
-├── models/                # Modèles entraînés
-├── visualizations/        # Graphiques générés
-├── main.py               # Pipeline principal
-├── app.py                # Interface Streamlit
-└── requirements.txt      # Dépendances
+│   ├── raw/                 # Données brutes exportées
+│   └── processed/           # Données nettoyées/prêtes
+├── models/                  # Modèles sauvegardés (joblib)
+├── visualizations/          # Graphiques générés
+├── main.py                  # Pipeline principal (CLI)
+├── app.py                   # Interface Streamlit (web)
+├── requirements.txt         # Dépendances Python
+└── tests/                   # Tests unitaires et d'intégration
 ```
 
 ## Installation
 
-### 1. Cloner le projet
+### 1. Clonage du dépôt
+
 ```bash
-git clone <repository-url>
-cd election_predictor_occitanie
+git clone https://github.com/mgaisnon/MSPR-BigData-MachineLearning.git
+cd MSPR-BigData-MachineLearning
 ```
 
-### 2. Créer un environnement virtuel
+### 2. Environnement virtuel
+
 ```bash
 python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# ou
-venv\Scripts\activate     # Windows
+source venv/bin/activate         # Linux/Mac
+venv\Scripts\activate            # Windows
 ```
 
-### 3. Installer les dépendances
+### 3. Installation des dépendances
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ### 4. Configuration de la base de données
-```bash
-cp .env.example .env
-# Éditer .env avec vos paramètres de base de données
+
+Créez un fichier `.env` à la racine, sur le modèle de `.env.example`, avec vos paramètres MySQL :
+
+```env
+MYSQL_HOST=localhost
+MYSQL_PORT=3306
+MYSQL_USER=root
+MYSQL_PASSWORD=mot_de_passe
+MYSQL_DATABASE=bddelections
 ```
+
+Assurez-vous que la base et la table `resultatslegi` existent (voir plus bas).
 
 ## Utilisation
 
 ### Pipeline complet
+
 ```bash
 python main.py --all
 ```
 
 ### Étapes individuelles
+
 ```bash
-# Collecte des données
-python main.py --collect
-
-# Entraînement des modèles
-python main.py --train
-
-# Analyses et visualisations
-python main.py --analyze
-
-# Prédictions
-python main.py --predict
+python main.py --collect    # Collecte des données MySQL
+python main.py --train      # Entraînement des modèles ML
+python main.py --analyze    # Analyses et visualisations
+python main.py --predict    # Génération de prédictions
 ```
 
 ### Interface web
+
 ```bash
 streamlit run app.py
 ```
 
 ## Structure de la base de données
 
-Table `resultatslelegi` :
+Table `resultatslegi` :
+
 - `id` : Identifiant unique
 - `annee` : Année de l'élection
-- `tour` : Tour de l'élection (1 ou 2)
-- `departement` : Code département
+- `tour` : Tour (1 ou 2)
+- `departement` : Code INSEE du département
 - `inscrits` : Nombre d'inscrits
 - `votants` : Nombre de votants
 - `abstentions` : Nombre d'abstentions
 - `exprimes` : Nombre de suffrages exprimés
-- `nuance` : Nuance politique
+- `nuance` : Nuance politique (parti/coalition réelle)
 - `voix` : Nombre de voix
 
 ## Départements couverts
 
-**Ancien Midi-Pyrénées :**
-- 09 - Ariège
-- 12 - Aveyron
-- 31 - Haute-Garonne
-- 32 - Gers
-- 46 - Lot
-- 65 - Hautes-Pyrénées
-- 81 - Tarn
-- 82 - Tarn-et-Garonne
-
-**Ancien Languedoc-Roussillon :**
-- 11 - Aude
-- 30 - Gard
-- 34 - Hérault
-- 48 - Lozère
-- 66 - Pyrénées-Orientales
+**Ancien Midi-Pyrénées** : 09, 12, 31, 32, 46, 65, 81, 82  
+**Ancien Languedoc-Roussillon** : 11, 30, 34, 48, 66
 
 ## Modèles de Machine Learning
 
-Le système teste plusieurs algorithmes :
 - Régression logistique
 - Random Forest
 - Gradient Boosting
-- XGBoost
-- LightGBM
-- SVM
-- Naive Bayes
-- K-NN
+- XGBoost, LightGBM
+- SVM, Naive Bayes, K-NN
+
+Comparaison automatique des modèles sur données réelles (nuances issues de la BDD).
 
 ## Analyses disponibles
 
-1. **Analyses descriptives**
-   - Statistiques par département
-   - Évolution temporelle
-   - Répartition des nuances politiques
-
-2. **Analyses de corrélation**
-   - Matrice de corrélation interactive
-   - Variables les plus influentes
-
-3. **Analyses géographiques**
-   - Cartes des résultats
-   - Comparaisons inter-départementales
-
-4. **Analyses de performance**
-   - Métriques des modèles
-   - Courbes ROC
-   - Importance des variables
+- Statistiques descriptives, temporelles, par nuance/département
+- Corrélations, importance des variables
+- Cartes interactives
+- Visualisation des performances modèles (accuracy, ROC, importance)
 
 ## Interface Streamlit
 
-L'application web propose :
-- 🏠 **Accueil** : Vue d'ensemble du projet
-- 📊 **Données** : Exploration des données brutes
-- 📈 **Analyses** : Analyses par département et évolution temporelle
-- 🤖 **Prédictions** : Interface de prédiction interactive
-- 📋 **Comparaisons** : Comparaisons inter-élections
+- 🏠 Accueil
+- 📊 Données (exploration, requêtes)
+- 📈 Analyses (stats, graphiques, cartes)
+- 🤖 Prédictions (simulateur interactif, nuances authentiques)
+- 📋 Comparaisons historiques
 
 ## Logging
 
-Les logs sont sauvegardés dans `election_predictor.log` avec différents niveaux :
-- INFO : Informations générales
-- WARNING : Avertissements
-- ERROR : Erreurs
+Logs dans `election_predictor.log`  
+Niveaux : INFO, WARNING, ERROR
 
 ## Tests
 
@@ -182,11 +159,11 @@ pytest tests/
 
 ## Contribution
 
-1. Fork le projet
-2. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
-3. Commit les changements (`git commit -m 'Add AmazingFeature'`)
-4. Push vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrir une Pull Request
+1. Fork
+2. Branche feature (`git checkout -b feature/maFeature`)
+3. Commit (`git commit -m 'Ajout de ma fonctionnalité'`)
+4. Push (`git push origin feature/maFeature`)
+5. Pull Request
 
 ## Licence
 
@@ -194,12 +171,12 @@ Projet académique - MSPR TPRE813
 
 ## Support
 
-Pour toute question, contacter l'équipe de développement.
+Pour toute question, ouvrir une issue ou contacter l'équipe.
 
 ## Roadmap
 
-- [ ] Intégration de données socio-économiques externes
-- [ ] Modèles de deep learning
-- [ ] API REST pour les prédictions
-- [ ] Déploiement sur cloud
+- [ ] Intégration de données socio-économiques
+- [ ] Modèles Deep Learning
+- [ ] API REST pour prédictions
+- [ ] Déploiement cloud
 - [ ] Interface mobile

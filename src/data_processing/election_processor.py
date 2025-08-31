@@ -95,7 +95,7 @@ class ElectionDataProcessor:
             if 'tour' in df.columns:
                 df['tour'] = pd.to_numeric(df['tour'], errors='coerce')
             if 'departement' in df.columns:
-                df['departement'] = df['departement'].astype(str).str.zfill(2)
+                df['departement'] = pd.to_numeric(df['departement'], errors='coerce').astype('int32')
             
             # Colonnes numériques
             numeric_cols = ['voix', 'inscrits', 'votants', 'abstentions', 'exprimes']
