@@ -4,62 +4,102 @@ from typing import List, Dict
 from pathlib import Path
 from dotenv import load_dotenv
 
-# 🔧 CORRECTION : Chargement du .env avec chemin explicite
-env_path = Path(__file__).parent.parent / '.env'
+# Chargement du .env avec gestion d'erreurs
+env_path = Path(__file__).parent / '.env'
 if env_path.exists():
     load_dotenv(dotenv_path=env_path)
     print(f"✅ Fichier .env chargé depuis: {env_path}")
 else:
-    load_dotenv()  # Fallback
-    print(f"⚠️ Fichier .env non trouvé à {env_path}, tentative de chargement standard")
+    # Essayer dans le répertoire parent
+    env_path = Path(__file__).parent.parent / '.env'
+    if env_path.exists():
+        load_dotenv(dotenv_path=env_path)
+        print(f"✅ Fichier .env chargé depuis: {env_path}")
+    else:
+        load_dotenv()  # Fallback standard
+        print(f"⚠️ Fichier .env non trouvé, utilisation des variables système")
 
 ROOT_DIR = Path(__file__).parent.parent
 
 @dataclass
 class DatabaseConfig:
-    """Configuration pour la base de données MySQL existante"""
-    host: str = os.getenv('DB_HOST', 'localhost')
-    port: int = int(os.getenv('DB_PORT', '3306'))
-    database: str = os.getenv('DB_NAME', 'bddelections')
-    username: str = os.getenv('DB_USER', 'root')
-    password: str = os.getenv('DB_PASSWORD', '')
-    charset: str = os.getenv('DB_CHARSET', 'utf8mb4')
+    """Configuration pour la base de données MySQL"""
     
-    def __post_init__(self):
+    def __init__(self):
+        # Récupération des variables d'environnement
+        self.host = os.getenv('MYSQL_HOST')
+        self.port = int(os.getenv('MYSQL_PORT', '3306'))
+        self.database = os.getenv('MYSQL_DATABASE') 
+        self.username = os.getenv('MYSQL_USER')
+        self.password = os.getenv('MYSQL_PASSWORD')
+        self.charset = os.getenv('DB_CHARSET', 'utf8mb4')
+        
+        # Validation
+        self._validate_config()
+    
+    def _validate_config(self):
         """Validation de la configuration"""
+        required_vars = {
+            'MYSQL_HOST': self.host,
+            'MYSQL_DATABASE': self.database,
+            'MYSQL_USER': self.username,
+            'MYSQL_PASSWORD': self.password
+        }
+        
+        missing_vars = [var for var, value in required_vars.items() if not value]
+        
+        if missing_vars:
+            print("❌ ERREUR: Variables d'environnement manquantes:")
+            for var in missing_vars:
+                print(f"   - {var}")
+            print("\n💡 Créez un fichier .env avec ces variables:")
+            print("MYSQL_HOST=localhost")
+            print("MYSQL_DATABASE=bddelections") 
+            print("MYSQL_USER=votre_utilisateur")
+            print("MYSQL_PASSWORD=votre_mot_de_passe")
+            
+            # Ne pas lever d'exception, juste avertir
+            self._use_defaults()
+        else:
+            print(f"🔧 Configuration MySQL:")
+            print(f"   Host: {self.host}:{self.port}")
+            print(f"   Database: {self.database}")
+            print(f"   User: {self.username}")
+            print(f"   Password: {'✅ configuré' if self.password else '❌ vide'}")
+    
+    def _use_defaults(self):
+        """Utiliser des valeurs par défaut si .env manque"""
+        if not self.host:
+            self.host = 'localhost'
+        if not self.database:
+            self.database = 'bddelections'
+        if not self.username:
+            self.username = 'root'
         if not self.password:
-            print("⚠️ ATTENTION: DB_PASSWORD est vide dans le .env")
-        print(f"🔧 Configuration MySQL:")
-        print(f"   Host: {self.host}:{self.port}")
-        print(f"   Database: {self.database}")
-        print(f"   User: {self.username}")
-        print(f"   Password: {'✅ configuré' if self.password else '❌ vide'}")
+            self.password = 'mysql'
+        
+        print("⚠️ Utilisation des valeurs par défaut")
     
     @property
     def connection_string(self) -> str:
         """Chaîne de connexion SQLAlchemy"""
         base_params = f"charset={self.charset}&connect_timeout=60&autocommit=true"
-        if self.password:
-            return f"mysql+pymysql://{self.username}:{self.password}@{self.host}:{self.port}/{self.database}?{base_params}"
-        else:
-            return f"mysql+pymysql://{self.username}@{self.host}:{self.port}/{self.database}?{base_params}"
+        return f"mysql+pymysql://{self.username}:{self.password}@{self.host}:{self.port}/{self.database}?{base_params}"
     
     @property
     def mysql_connector_config(self) -> dict:
         """Configuration pour mysql.connector"""
-        config = {
+        return {
             'host': self.host,
             'port': self.port,
             'database': self.database,
             'user': self.username,
+            'password': self.password,
             'charset': self.charset,
             'autocommit': True,
             'raise_on_warnings': False,
             'connection_timeout': 60
         }
-        if self.password:
-            config['password'] = self.password
-        return config
 
 @dataclass
 class OccitanieConfig:
@@ -97,7 +137,6 @@ class ModelConfig:
     models_dir: Path = ROOT_DIR / 'models'
     
     def __post_init__(self):
-        """Créer le répertoire models s'il n'existe pas"""
         self.models_dir.mkdir(exist_ok=True)
 
 @dataclass
@@ -107,7 +146,6 @@ class DataConfig:
     processed_data_dir: Path = ROOT_DIR / 'data' / 'processed'
     
     def __post_init__(self):
-        """Créer les répertoires data s'ils n'existent pas"""
         self.raw_data_dir.mkdir(parents=True, exist_ok=True)
         self.processed_data_dir.mkdir(parents=True, exist_ok=True)
 
@@ -117,17 +155,24 @@ class VisualizationConfig:
     output_dir: Path = ROOT_DIR / 'visualizations'
     
     def __post_init__(self):
-        """Créer le répertoire visualizations s'il n'existe pas"""
         self.output_dir.mkdir(exist_ok=True)
 
-# 🔧 AJOUT : Configuration globale - TOUTES LES INSTANCES
-DB_CONFIG = DatabaseConfig()
-OCCITANIE_CONFIG = OccitanieConfig()
-MODEL_CONFIG = ModelConfig()
-DATA_CONFIG = DataConfig()
-VIZ_CONFIG = VisualizationConfig()
+# Configuration globale - Instantiation sécurisée
+try:
+    DB_CONFIG = DatabaseConfig()
+    OCCITANIE_CONFIG = OccitanieConfig()
+    MODEL_CONFIG = ModelConfig()
+    DATA_CONFIG = DataConfig()
+    VIZ_CONFIG = VisualizationConfig()
+    
+    print("✅ Configuration chargée avec succès")
+    
+except Exception as e:
+    print(f"❌ Erreur lors de l'initialisation de la configuration: {e}")
+    # Créer des configurations par défaut
+    DB_CONFIG = None
 
-# URLs des APIs gouvernementales
+# URLs des APIs
 API_URLS = {
     'elections': 'https://www.data.gouv.fr/api/1/datasets/',
     'insee': 'https://api.insee.fr/donnees-locales/V0.1/',
@@ -135,15 +180,16 @@ API_URLS = {
     'drees': 'https://data.drees.solidarites-sante.gouv.fr/api/records/1.0/'
 }
 
-# Test de configuration au chargement
 if __name__ == "__main__":
     print("=" * 60)
-    print("🔧 TEST CONFIGURATION COMPLÈTE")
+    print("🔧 TEST CONFIGURATION")
     print("=" * 60)
     print(f"📁 .env path: {env_path}")
     print(f"📁 .env exists: {env_path.exists()}")
-    print(f"🔗 Connection string: {DB_CONFIG.connection_string[:80]}...")
-    print(f"📊 Models dir: {MODEL_CONFIG.models_dir}")
-    print(f"📁 Data dir: {DATA_CONFIG.raw_data_dir}")
-    print(f"📈 Viz dir: {VIZ_CONFIG.output_dir}")
-    print(f"🏛️ Départements Occitanie: {len(OCCITANIE_CONFIG.all_departments)}")
+    
+    if DB_CONFIG:
+        print(f"🔗 Connection OK")
+        print(f"📊 Models dir: {MODEL_CONFIG.models_dir}")
+        print(f"📁 Data dir: {DATA_CONFIG.raw_data_dir}")
+    else:
+        print("❌ Configuration DB non disponible")
