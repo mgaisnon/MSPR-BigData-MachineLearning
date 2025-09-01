@@ -16,7 +16,7 @@ from config.config import DB_CONFIG
 class RealElectionPredictor:
     """Prédicteur basé sur les vrais modèles + données MySQL en direct"""
     
-    def __init__(self):
+    def __init__(self, nuances_list=None):
         # Vérifier que la configuration DB est valide
         if DB_CONFIG is None:
             raise ValueError("Configuration de base de données non initialisée. Vérifiez votre fichier .env")
@@ -24,14 +24,7 @@ class RealElectionPredictor:
         # Utiliser la configuration centralisée
         self.mysql_config = DB_CONFIG.mysql_connector_config
         
-        # Debug (optionnel - à retirer en production)
-        print("🔍 Configuration MySQL chargée depuis .env")
-        print(f"  Host: {self.mysql_config['host']}:{self.mysql_config['port']}")
-        print(f"  Database: {self.mysql_config['database']}")
-        print(f"  User: {self.mysql_config['user']}")
-        print(f"  Password: {'*' * len(self.mysql_config['password'])}")
-        
-        # MODIFICATION : Chemin des modèles adapté à la structure
+        # Chemin des modèles adapté à la structure
         self.models_dir = Path(__file__).parent.parent.parent / "models"
         self.model = None
         self.is_loaded = False
@@ -41,16 +34,25 @@ class RealElectionPredictor:
         # Départements d'Occitanie
         self.occitanie_depts = [9, 11, 12, 30, 31, 32, 34, 46, 48, 65, 66, 81, 82]
         
-        # Principales nuances de vos données
-        self.main_nuances = [
-            'SOC', 'UMP', 'LR', 'RN', 'FN', 'ENS', 'REM', 'NUP', 'DVD', 'DVG',
-            'ECO', 'VEC', 'COM', 'FI', 'UDF', 'RPR', 'DIV', 'REG'
-        ]
+        # CORRECTION : Nuances dynamiques basées sur votre BDD
+        self.main_nuances = nuances_list if nuances_list else []
         
         # Initialiser
         self.load_models()
         self.load_historical_data()
-    
+        
+        # NOUVEAU : Charger les vraies nuances depuis MySQL
+        self.load_real_nuances()
+
+    def load_real_nuances(self):
+        """Charge les vraies nuances depuis votre base MySQL"""
+        if self.historical_data is not None and not self.historical_data.empty:
+            real_nuances = self.historical_data['nuance'].unique().tolist()
+            self.main_nuances = sorted([n for n in real_nuances if n is not None and str(n).strip()])
+            print(f"✅ {len(self.main_nuances)} nuances chargées depuis MySQL : {self.main_nuances}")
+        else:
+            print("⚠️ Impossible de charger les nuances, utilisation des valeurs par défaut")
+
     def load_models(self):
         """Charge les modèles ML entraînés"""
         try:
@@ -237,11 +239,17 @@ class RealElectionPredictor:
                         base_probs[nuance] = 1.0
                         
             else:
-                # Fallback ultime basé sur les tendances nationales connues
-                base_probs = {
-                    'LR': 22.0, 'RN': 20.0, 'ENS': 18.0, 'NUP': 15.0, 
-                    'SOC': 12.0, 'DVD': 8.0, 'ECO': 5.0
-                }
+                if self.main_nuances and len(self.main_nuances) > 0:
+                    # Répartition équitable basée sur vos vraies nuances
+                    base_value = 100.0 / len(self.main_nuances)
+                    base_probs = {nuance: base_value for nuance in self.main_nuances}
+                    print(f"📊 Fallback avec vraies nuances MySQL : {list(base_probs.keys())}")
+                else:
+                    # Fallback ultime si aucune nuance trouvée
+                    base_probs = {
+                        'Erreur': 100.0  # Indique un problème
+                    }
+                    print("❌ Aucune nuance trouvée dans la BDD MySQL")
         
         # Ajustements contextuels basés sur le département
         if dept == 31:  # Haute-Garonne (Toulouse)
@@ -307,14 +315,11 @@ class RealElectionPredictor:
             final_probs = {'RN': 25, 'LR': 25, 'ENS': 20, 'NUP': 15, 'ECO': 10, 'DIV': 5}
         
         # Garder les principales nuances (top 6-7)
-        sorted_probs = sorted(final_probs.items(), key=lambda x: x[1], reverse=True)
-        top_nuances = dict(sorted_probs[:6])
-        autres_total = sum([v for k, v in sorted_probs[6:]])
-        
-        if autres_total > 1.0:
-            top_nuances['Autres'] = autres_total
-        
-        return top_nuances
+        if self.main_nuances:
+            result = {k: v for k, v in sorted(final_probs.items(), key=lambda x: x[1], reverse=True) if k in self.main_nuances}
+        else:
+            result = dict(sorted(final_probs.items(), key=lambda x: x[1], reverse=True))
+        return result
     
     def predict_election(self, election_data):
         """Prédiction principale - utilise données MySQL avec nuances"""
@@ -351,3 +356,13 @@ class RealElectionPredictor:
             'years_covered': years_covered,
             'departments': 13
         }
+        
+    def get_available_nuances(self):
+        """Retourne la liste des nuances disponibles dans votre BDD"""
+        return self.main_nuances.copy()
+
+    def get_model_nuances(self):
+        """Alias pour compatibilité"""
+        return self.get_available_nuances()
+
+        

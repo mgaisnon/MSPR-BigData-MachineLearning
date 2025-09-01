@@ -416,7 +416,16 @@ def show_predictions(df_processed, processor):
     # Charger le vrai prédicteur
     try:
         from src.prediction.real_prediction import RealElectionPredictor
-        predictor = RealElectionPredictor()
+        if df_processed is not None and 'nuance' in df_processed.columns:
+            nuances_disponibles = df_processed['nuance'].unique().tolist()
+            nuances_disponibles = [n for n in nuances_disponibles if n is not None and str(n).strip()]
+            predictor = RealElectionPredictor(nuances_list=nuances_disponibles)
+            
+            st.info(f"🎭 **Nuances de votre BDD** : {', '.join(nuances_disponibles)}")
+        else:
+            predictor = RealElectionPredictor()
+            st.warning("⚠️ Colonne 'nuance' non trouvée, utilisation des valeurs par défaut")
+    
         model_info = predictor.get_model_info()
         
         # Afficher les informations du modèle
