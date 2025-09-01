@@ -324,12 +324,30 @@ class RealElectionPredictor:
         """Informations sur le modèle et données MySQL"""
         mysql_status = "✅ Connecté" if (self.historical_data is not None and not self.historical_data.empty) else "❌ Non connecté"
         data_count = len(self.historical_data) if self.historical_data is not None else 0
-        
+
+        # Tente de récupérer le nom du meilleur modèle depuis les métadonnées
+        model_name = None
+        accuracy = None
+        years_covered = None
+
+        if self.metadata:
+            model_name = self.metadata.get('best_model_name', None)
+            accuracy = self.metadata.get('best_score', None)
+            if 'years_covered' in self.metadata:
+                years_covered = self.metadata['years_covered']
+
+        if not model_name:
+            model_name = "Analyse Nuances MySQL"
+        if not accuracy:
+            accuracy = 0.0
+        if not years_covered:
+            years_covered = "2012-2022"
+
         return {
-            'model_name': 'Analyse Nuances MySQL',
-            'accuracy': 0.87,
+            'model_name': model_name,
+            'accuracy': accuracy,
             'data_points': data_count,
             'mysql_status': mysql_status,
-            'years_covered': '2012-2022',
+            'years_covered': years_covered,
             'departments': 13
         }
